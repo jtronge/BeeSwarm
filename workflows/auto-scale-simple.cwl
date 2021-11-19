@@ -1,24 +1,24 @@
 cwlVersion: v1.0
 class: Workflow
 
-requirements:
-  InlineJavascriptRequirement: {}
+requirements: {}
 inputs:
+  # Version indicating the version of the code to run
   version:
     type: string
-  build_script:
-    type: File
-    default:
-      class: File
-      location: ../scripts/build_script.py
-  scale_script:
-    type: File
-    default:
-      class: File
-      location: ../scripts/scale_test.py
-  # Arguments to the binary to run
-  bin_args:
-    type: string
+#  build_script:
+#    type: File
+#    default:
+#      class: File
+#      location: ../scripts/build_script.py
+#  scale_script:
+#    type: File
+#    default:
+#      class: File
+#      location: ../scripts/scale_test.py
+#  # Arguments to the binary to run
+#  bin_args:
+#    type: string
 
 # outputs: []
 outputs:
@@ -36,10 +36,10 @@ steps:
     run:
       class: CommandLineTool
       requirements:
-        InitialWorkDirRequirement:
-          listing:
-            - entryname: build_script.py
-              entry: $(inputs.build_script)
+        #InitialWorkDirRequirement:
+        #  listing:
+        #    - entryname: build_script.py
+        #      entry: $(inputs.build_script)
         DockerRequirement:
           dockerImageId: beeswarm
       inputs:
@@ -47,7 +47,7 @@ steps:
           type: string
         build_script:
           type: File
-      baseCommand: [./build_script.py]
+      baseCommand: [/scripts/build_script.py]
       arguments:
         - valueFrom: $(inputs.version)
           prefix: --version
@@ -65,23 +65,23 @@ steps:
     run:
       class: CommandLineTool
       requirements:
-        InitialWorkDirRequirement:
-          listing:
-            - entryname: scale_test.py
-              entry: $(inputs.scale_script)
+        #InitialWorkDirRequirement:
+        #  listing:
+        #    - entryname: scale_test.py
+        #      entry: $(inputs.scale_script)
         DockerRequirement:
           dockerImageId: beeswarm
       inputs:
         code_tarball:
           type: File
-        scale_script:
-          type: File
-      baseCommand: [./scale_test.py]
+        #scale_script:
+        #  type: File
+      baseCommand: [/scripts/scale_test.py]
       arguments:
         - valueFrom: $(inputs.code_tarball.path)
           prefix: --tarball
-        - valueFrom: $(inputs.bin_args)
-          prefix: --bin
+        #- valueFrom: $(inputs.bin_args)
+        #  prefix: --bin
       outputs:
         results:
           type: File
@@ -90,6 +90,6 @@ steps:
             glob: "scale_result.json"
     in:
       code_tarball: build/code_tarball
-      bin_args: bin_args
+      #bin_args: bin_args
       scale_script: scale_script
     out: [results]
