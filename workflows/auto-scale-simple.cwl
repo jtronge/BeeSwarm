@@ -90,6 +90,4 @@ steps:
             glob: "scale_result.json"
     in:
       code_tarball: build/code_tarball
-      #bin_args: bin_args
-      scale_script: scale_script
     out: [results]
