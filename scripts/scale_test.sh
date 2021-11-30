@@ -1,11 +1,15 @@
 #!/bin/sh
 # Untar and run the code tarball
 
-TARBALL=$1
-OUT_FILE=$2
-ARGS="$3"
-NAME=`echo $TARBALL | rev | cut -d'.' -f2- | rev`
+BIN=$1
+TARBALL=$2
+OUT_FILE=$3
+shift 3
+ARGS="$@"
+
+NAME=`echo $TARBALL | rev | cut -d'.' -f3- | rev`
 # Untar the code tarball
 tar -xvf $TARBALL
 cd $NAME
-exec ./run.sh $OUT_FILE "$ARGS"
+echo "$BIN $ARGS"
+exec ./$BIN $ARGS > $OUT_FILE 2>&1

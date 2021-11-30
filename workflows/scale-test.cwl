@@ -1,7 +1,9 @@
 class: Workflow
 cwlVersion: v1.0
 
-inputs: {}
+inputs:
+  build_in:
+    type: File
 
 outputs:
   build_out:
@@ -14,6 +16,7 @@ outputs:
     type: string
     outputSource: collect/out
 
+# TODO: Need to use input parameters as arguments
 steps:
   build:
     run:
@@ -21,11 +24,18 @@ steps:
       hints:
         DockerRequirement:
           copyContainer: beeswarm.tar.gz
-      baseCommand: []
-      inputs: {}
+      baseCommand: [/opt/build_lulesh.sh]
+      inputs:
+        build_in:
+          type: string
+          default: ""
+          inputBinding:
+            position: 1
       outputs:
-        out: stdout
-    in: {}
+        out:
+          type: File
+    in:
+      build_in: build_in
     out: [out]
   scale_test:
     run:
@@ -33,12 +43,16 @@ steps:
       hints:
         DockerRequirement:
           copyContainer: beeswarm.tar.gz
-      baseCommand: []
+      baseCommand: [/opt/scale_test.sh, lulesh2.0, code.tar.bz2, ~/output.txt, -p]
       inputs:
         build_input:
           type: string
+          default: ""
+          inputBinding:
+            position: 1
       outputs:
-        out: stdout
+        out:
+          type: File
     in:
       build_input: build/out
     out: [out]
@@ -48,12 +62,16 @@ steps:
       hints:
         DockerRequirement:
           copyContainer: beeswarm.tar.gz
-      baseCommand: []
+      baseCommand: [ls, /]
       inputs:
         scale_test_input:
           type: string
+          default: ""
+          inputBinding:
+            position: 1
       outputs:
-        out: stdout
+        out:
+          type: File
     in:
       scale_test_input: scale_test/out
     out: [out]
