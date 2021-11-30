@@ -1,6 +1,8 @@
 #!/bin/sh
 # Run the CI workflow, installing BEE and all dependencies
 CWD=`pwd`
+BEE_BRANCH=cli-client
+CTR_ARCHIVE=$HOME/.beeflow/container_archive
 
 # Install Charliecloud
 cd /tmp
@@ -21,7 +23,8 @@ GDB_IMG=$HOME/img/neo4j-3.5.22.tar.gz
 
 # Install BEE
 cd $HOME
-git clone https://$GITHUB_PAT:x-oauth-basic@github.com/lanl/BEE_Private.git || exit 1
+git clone https://$GITHUB_PAT:x-oauth-basic@github.com/lanl/BEE_Private.git \
+	-b $BEE_BRANCH || exit 1
 cd BEE_Private
 python3 -m venv venv
 . venv/bin/activate
@@ -29,7 +32,8 @@ pip install --upgrade pip poetry
 poetry install
 
 # Write a test config
-cat >> .config/beeflow/bee.conf <<EOF
+mkdir -p $HOME/.config/beeflow
+cat >> $HOME/.config/beeflow/bee.conf <<EOF
 [DEFAULT]
 bee_workdir = $HOME/.beeflow
 workload_scheduler = Simple
@@ -60,12 +64,34 @@ listen_port = 5600
 listen_port = 8933
 
 [builder]
-container_archive = $HOME/.beeflow/container_archive
+container_archive = $CONTAINER_ARCHIVE
 deployed_image_root = /tmp
 container_output_path = /
 container_type = charliecloud
 EOF
 
-python -m beeflow.workflow_manager &
+# Build other containers
+mkdir -p $CONTAINER_ARCHIVE
+(cd /tmp
+git clone https://github.com/jtronge/containers.git
+# CLAMR
+cd containers/clamr
+ch-image build --force -t clamr .
+ch-builder2tar -b ch-image clamr $CONTAINER_ARCHIVE
+# ffmpeg
+cd ../ffmpeg
+ch-image build --force -t ffmpeg .
+ch-builder2tar -b ch-image ffmpeg $CONTAINER_ARCHIVE)
+
+# Start all components
+beeflow --sched
+sleep 5
+python -m beeflow.wf_manager &
+python -m beeflow.task_manager &
+
+# Now start the CLAMR workflow
+beeflow-client --cli package $CWD/workflows/clamr-wf
+WF_ID=`beeflow-client --cli submit clamr-test-run ./clamr-wf.tgz clamr_wf.cwl -y clamr_job.yml | cut -d'=' -f2`
+beeflow-client --cli start $WF_ID
 
 sleep 100
