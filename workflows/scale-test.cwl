@@ -2,8 +2,14 @@ class: Workflow
 cwlVersion: v1.0
 
 inputs:
-  build_in:
-    type: File
+  build_script:
+    type: string
+  scale_script:
+    type: string
+  scale_args: # Arguments to the scaling script
+    type: string
+  collect_script:
+    type: string
 
 outputs:
   build_out:
@@ -26,16 +32,15 @@ steps:
           copyContainer: beeswarm.tar.gz
       baseCommand: [/opt/build.sh]
       inputs:
-        build_in:
+        build_script:
           type: string
-          default: ""
           inputBinding:
             position: 1
       outputs:
         out:
-          type: File
+          type: string
     in:
-      build_in: build_in
+      build_script: build_script
     out: [out]
   scale_test:
     run:
@@ -45,16 +50,26 @@ steps:
           copyContainer: beeswarm.tar.gz
       baseCommand: [/opt/run.sh]
       inputs:
+        scale_script:
+          type: string
+          inputBinding:
+            position: 1
+        scale_args:
+          type: string
+          inputBinding:
+            position: 2
         build_input:
           type: string
           default: ""
           inputBinding:
-            position: 1
+            position: 3
       outputs:
         out:
           type: File
     in:
       build_input: build/out
+      scale_args: scale_args
+      scale_script: scale_script
     out: [out]
   collect:
     run:
@@ -64,14 +79,19 @@ steps:
           copyContainer: beeswarm.tar.gz
       baseCommand: [/opt/collect.sh]
       inputs:
+        collect_script:
+          type: string
+          inputBinding:
+            position: 1
         scale_test_input:
           type: string
           default: ""
           inputBinding:
-            position: 1
+            position: 2
       outputs:
         out:
           type: File
     in:
       scale_test_input: scale_test/out
+      collect_script: collect_script
     out: [out]
