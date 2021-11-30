@@ -89,6 +89,8 @@ sleep 5
 python -m beeflow.wf_manager &
 python -m beeflow.task_manager &
 
+sleep 15
+
 # Now start the CLAMR workflow
 echo "Before package"
 beeflow-client --cli package $CWD/workflows/clamr-wf
