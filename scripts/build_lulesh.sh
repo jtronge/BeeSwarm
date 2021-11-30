@@ -1,7 +1,7 @@
 #!/bin/sh
 # Build and bzip2 the LULESH binary
 BIN=lulesh2.0
-TMP=/tmp
+# TMP=/tmp
 REPO=https://github.com/LLNL/LULESH.git
 CWD=`pwd`
 
@@ -14,7 +14,7 @@ cd build
 cmake -DCMAKE_BUILD_TYPE=Release -DMPI_CXX_COMPILER=`which mpicxx` ../
 make
 
-mkdir code
-cp $BIN code
+mkdir -p ~/scale-bin
+cp $BIN ~/scale-bin
 # Wrap up the code
-tar -cf $CWD/code.tar.bz2 code
+# tar -cf $CWD/code.tar.bz2 code
