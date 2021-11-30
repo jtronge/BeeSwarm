@@ -24,7 +24,7 @@ steps:
       hints:
         DockerRequirement:
           copyContainer: beeswarm.tar.gz
-      baseCommand: [/opt/build_lulesh.sh]
+      baseCommand: [/opt/build.sh]
       inputs:
         build_in:
           type: string
@@ -43,7 +43,7 @@ steps:
       hints:
         DockerRequirement:
           copyContainer: beeswarm.tar.gz
-      baseCommand: [/opt/scale_test.sh, lulesh2.0, code.tar.bz2, ~/output.txt, -p]
+      baseCommand: [/opt/run.sh]
       inputs:
         build_input:
           type: string
@@ -62,7 +62,7 @@ steps:
       hints:
         DockerRequirement:
           copyContainer: beeswarm.tar.gz
-      baseCommand: [ls, /]
+      baseCommand: [/opt/collect.sh]
       inputs:
         scale_test_input:
           type: string
