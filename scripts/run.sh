@@ -7,4 +7,4 @@ shift 1
 ARGS="$@"
 
 echo "$BIN $ARGS"
-exec ./$BIN $ARGS > $OUT_FILE 2>&1
+exec $BIN $ARGS > $OUT_FILE 2>&1

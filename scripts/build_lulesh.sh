@@ -1,7 +1,7 @@
 #!/bin/sh
 # Build and bzip2 the LULESH binary
 BIN=lulesh2.0
-# TMP=/tmp
+TMP=/tmp
 REPO=https://github.com/LLNL/LULESH.git
 CWD=`pwd`
 
