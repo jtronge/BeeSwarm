@@ -29,23 +29,5 @@ jobs:
       - name: Run a multi-line script
         env:
           GITHUB_PAT: ${{ secrets.GitHubPAT }}
-        run: |
-          # Install Charliecloud
-          curl -O -L https://github.com/hpc/charliecloud/releases/download/v0.25/charliecloud-0.25.tar.gz
-          tar -xvf charliecloud-0.25.tar.gz
-          cd charliecloud-0.25
-          ./configure --prefix=$HOME
-          make
-          make install
-          export PATH=$HOME/bin:$PATH
-
-          # Pull neo4j
-          ch-image pull neo4j:3.5.22
-
-          # Install BEE
-          git clone https://$GITHUB_PAT:x-oauth-basic@github.com/lanl/BEE_Private.git || exit 1
-          cd BEE_Private
-          python3 -m venv venv
-          . venv/bin/activate
-          pip install --upgrade pip poetry
-          poetry install
+          GDB_PASS: ${{ secrets.GDBPass }}
+        run: ./scripts/ci-workflow.sh
