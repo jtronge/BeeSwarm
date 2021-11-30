@@ -31,10 +31,13 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
+        env:
+          GITHUB_PAT: ${{ secrets.GitHubPAT }}
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-          git clone git@github.com:lanl/BEE_Private.git
+          # git clone git@github.com:lanl/BEE_Private.git
+          git clone https://$GITHUB_PAT:x-oauth-basic@github.com/lanl/BEE_Private.git || exit 1
           cd BEE_Private
           python3 -m venv venv
           . venv/bin/activate
