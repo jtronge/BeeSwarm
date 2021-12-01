@@ -71,3 +71,5 @@ deployed_image_root = /tmp
 container_output_path = /
 container_type = charliecloud
 EOF
+
+cd $CWD
