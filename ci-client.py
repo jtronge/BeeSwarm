@@ -1,4 +1,5 @@
 """Special client for interacting with BEE in a CI environment."""
+import argparse
 import sys
 import os
 import subprocess
@@ -21,8 +22,9 @@ def launch(argv):
 class BEEManager:
     """Class for starting and managing the BEE components."""
 
-    def __init__(self):
+    def __init__(self, wfm_port):
         """BEE manager constructor."""
+        self.wfm_port = wfm_port
         self.sched = None
         self.wfm = None
         self.tm = None
@@ -37,7 +39,7 @@ class BEEManager:
 
     def run_workflow(self, workflow_path, main_cwl, yaml):
         """Execute a workflow."""
-        url = 'http://127.0.0.1:{}/{}/'.format(PORT, 'bee_wfm/v1/jobs')
+        url = 'http://127.0.0.1:{}/{}/'.format(self.wfm_port, 'bee_wfm/v1/jobs')
         files = {
             'wf_name': 'test'.encode(),
             'wf_filename': 'some_wfl.tgz',
@@ -55,10 +57,15 @@ class BEEManager:
 
         # Now poll the WFM until the workflow is done
         # TODO: There should be a better way to do this
+        time.sleep(20)
 
 
-def main():
-    bee = BEEManager()
+def main(argv):
+    parser = argparse.ArgumentParser(description='BEE CI client program')
+    parser.add_argument('wfm_port', help='Workflow Manager Port')
+    args = parser.parse_args(argv)
+
+    bee = BEEManager(wfm_port=args.wfm_port)
     bee.start()
 
     bee.run_workflow('clamr-wf.tgz', 'clamr_wf.cwl', 'clamr_job.yml')
@@ -67,4 +74,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    main(sys.argv)
