@@ -83,21 +83,25 @@ cd ../ffmpeg
 ch-image build --force -t ffmpeg .
 ch-builder2tar -b ch-image ffmpeg $CONTAINER_ARCHIVE)
 
-# Start all components
-beeflow --sched
-sleep 5
-python -m beeflow.wf_manager &
-python -m beeflow.task_manager &
+cd $CWD/workflows
+tar -cf clamr-wf.tgz clamr-wf/
+python ci-client.py
 
-sleep 15
+# Start all components
+#beeflow --sched
+#sleep 5
+#python -m beeflow.wf_manager &
+#python -m beeflow.task_manager &
+
+#sleep 15
 
 # Now start the CLAMR workflow
-echo "Before package"
-beeflow-client --cli package $CWD/workflows/clamr-wf
-echo "Before submit"
-WF_ID=`beeflow-client --cli submit clamr-test-run ./clamr-wf.tgz clamr_wf.cwl -y clamr_job.yml | cut -d'=' -f2`
-echo "WF_ID=" $WF_ID
-beeflow-client --cli start $WF_ID
-echo "After start"
+#echo "Before package"
+#beeflow-client --cli package $CWD/workflows/clamr-wf
+#echo "Before submit"
+#WF_ID=`beeflow-client --cli submit clamr-test-run ./clamr-wf.tgz clamr_wf.cwl -y clamr_job.yml | cut -d'=' -f2`
+#echo "WF_ID=" $WF_ID
+#beeflow-client --cli start $WF_ID
+#echo "After start"
 
 sleep 100
