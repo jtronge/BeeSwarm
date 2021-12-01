@@ -7,7 +7,7 @@ CTR_ARCHIVE=$HOME/.beeflow/container_archive
 # Install Charliecloud
 cd /tmp
 curl -O -L https://github.com/hpc/charliecloud/releases/download/v0.25/charliecloud-0.25.tar.gz
-tar -xvf charliecloud-0.25
+tar -xvf charliecloud-0.25.tar.gz
 cd charliecloud-0.25
 ./configure --prefix=$HOME
 make
