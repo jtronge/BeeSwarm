@@ -30,7 +30,7 @@ steps:
       hints:
         DockerRequirement:
           copyContainer: beeswarm.tar.gz
-      baseCommand: [/opt/build.sh]
+      baseCommand: [ls, /]
       inputs:
         build_script:
           type: string
@@ -77,7 +77,7 @@ steps:
       hints:
         DockerRequirement:
           copyContainer: beeswarm.tar.gz
-      baseCommand: [/opt/collect.sh]
+      baseCommand: [ls, /]
       inputs:
         collect_script:
           type: string

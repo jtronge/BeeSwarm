@@ -2,13 +2,9 @@
 import argparse
 import sys
 import os
-import subprocess
 import time
 import requests
 import shutil
-
-
-PORT = 5005
 
 
 def launch(argv):
@@ -32,10 +28,10 @@ class BEEManager:
     def start(self):
         """Start all the components."""
         self.sched = launch(['python', '-m', 'beeflow.scheduler.scheduler'])
-        time.sleep(3)
+        time.sleep(8)
         self.wfm = launch(['python', '-m', 'beeflow.wf_manager'])
         self.tm = launch(['python', '-m', 'beeflow.task_manager'])
-        time.sleep(3)
+        time.sleep(8)
 
     def run_workflow(self, workflow_path, main_cwl, yaml):
         """Execute a workflow."""
@@ -55,9 +51,13 @@ class BEEManager:
         resp = requests.post(url + wf_id, json={'wf_id': wf_id})
         assert resp.ok
 
-        # Now poll the WFM until the workflow is done
-        # TODO: There should be a better way to do this
-        time.sleep(20)
+        # Now wait until the workflow is complete (there should be a better way
+        # to do this)
+        time.sleep(256)
+
+    def shutdown(self):
+        """Shutdown and cleanup BEE."""
+        # TODO
 
 
 def main(argv):
@@ -67,10 +67,8 @@ def main(argv):
 
     bee = BEEManager(wfm_port=args.wfm_port)
     bee.start()
-
     bee.run_workflow('clamr-wf.tgz', 'clamr_wf.cwl', 'clamr_job.yml')
-    # Now start workflows as configured
-    pass
+    bee.shutdown()
 
 
 if __name__ == '__main__':
