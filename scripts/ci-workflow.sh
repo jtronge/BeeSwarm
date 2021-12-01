@@ -85,7 +85,7 @@ ch-builder2tar -b ch-image ffmpeg $CONTAINER_ARCHIVE)
 
 cd $CWD/workflows
 tar -cf clamr-wf.tgz clamr-wf/
-python ../ci-client.py
+python ../ci-client.py 8933
 
 # Start all components
 #beeflow --sched
