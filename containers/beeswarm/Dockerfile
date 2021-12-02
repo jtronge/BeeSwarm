@@ -9,5 +9,3 @@ RUN curl -O -L https://github.com/hpc/charliecloud/releases/download/v0.25/charl
     ./configure --prefix=/usr && \
     make && \
     make install
-
-RUN 
