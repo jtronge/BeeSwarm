@@ -12,7 +12,7 @@ ch-image build --force -t lulesh .
 
 cd $REPO_ROOT/containers/beeswarm
 ch-image build --force -t beeswarm .
-ch-builder2tar beeswarm .
+ch-builder2tar -b ch-image beeswarm .
 ch-tar2dir beeswarm.tar.gz .
 ch-run beeswarm -- cat /etc/release
 
