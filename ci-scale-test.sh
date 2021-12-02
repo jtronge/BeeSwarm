@@ -3,6 +3,7 @@
 REPO_ROOT=`pwd`
 
 # Set up BEE
+. ./beeswarm/charliecloud.sh
 # . ./bee-setup.sh
 
 # Build the container

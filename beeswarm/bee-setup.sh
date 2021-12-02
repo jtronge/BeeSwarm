@@ -6,16 +6,6 @@ CTR_ARCHIVE=$HOME/.beeflow/container_archive
 WFM_PORT=8000
 TM_PORT=7888
 
-# Install Charliecloud
-cd /tmp
-curl -O -L https://github.com/hpc/charliecloud/releases/download/v0.25/charliecloud-0.25.tar.gz
-tar -xvf charliecloud-0.25.tar.gz
-cd charliecloud-0.25
-./configure --prefix=$HOME
-make
-make install
-export PATH=$HOME/bin:$PATH
-
 # Pull down the neo4j container
 mkdir -p $HOME/img
 ch-image pull neo4j:3.5.22
