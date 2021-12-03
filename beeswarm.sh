@@ -8,7 +8,9 @@ REPO_ROOT=`pwd`
 . ./beeswarm/charliecloud.sh
 . ./beeswarm/bee-setup.sh
 
-# Build the container
+cd $REPO_ROOT
+
+# Launch the BeeSwarm Python script
 ./beeswarm.py $WFM_PORT
 
 #cd $REPO_ROOT/containers/lulesh
