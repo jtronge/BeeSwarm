@@ -47,12 +47,18 @@ class BEEManager:
             'yaml': yaml,
         }
         resp = requests.post(url, files=files)
-        assert resp.ok
+        if not resp.ok:
+            print('WFM request failed', file=sys.stderr)
+            print(resp.text, file=sys.stderr)
+            sys.exit(1)
         wf_id = resp.json()['wf_id']
 
         # Now start it
         resp = requests.post(url + wf_id, json={'wf_id': wf_id})
-        assert resp.ok
+        if not resp.ok:
+            print('WFM request failed', file=sys.stderr)
+            print(resp.text, file=sys.stderr)
+            sys.exit(1)
 
         # Now wait until the workflow is complete (there should be a better way
         # to do this)
