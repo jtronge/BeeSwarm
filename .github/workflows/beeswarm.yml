@@ -17,4 +17,4 @@ jobs:
           GDB_PASS: ${{ secrets.GDBPass }}
           CH_IMAGE_USER: ${{ secrets.ChImageUser }}
           CH_IMAGE_PASSWORD: ${{ secrets.ChImagePassword }}
-        run: ./ci-scale-test.sh
+        run: ./beeswarm.sh

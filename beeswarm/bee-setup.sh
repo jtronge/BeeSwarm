@@ -1,10 +1,6 @@
 #!/bin/sh
 # Run the CI workflow, installing BEE and all dependencies
 CWD=`pwd`
-BEE_BRANCH=cli-client
-CTR_ARCHIVE=$HOME/.beeflow/container_archive
-WFM_PORT=8000
-TM_PORT=7888
 
 # Pull down the neo4j container
 mkdir -p $HOME/img
