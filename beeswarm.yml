@@ -1,0 +1,11 @@
+scale_tests:
+  - wfl_dir: './workflows/lulesh'
+    params:
+      container: 'jtronge/lulesh:newest'
+    template_files: ['lulesh.cwl']
+    main_cwl: 'lulesh.cwl'
+    yaml: 'lulesh.yml'
+    container:
+      ctx_dir: 'containers/lulesh'
+      name: 'lulesh:newest'
+      remote: 'jtronge/lulesh:newest'

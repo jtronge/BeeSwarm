@@ -8,6 +8,7 @@ import time
 import requests
 import shutil
 import jinja2
+import yaml
 
 
 def launch(argv):
@@ -146,33 +147,37 @@ def expand_package_workflow(wfl_path, params, template_files):
 
 
 def main():
-    # build_container('containers/lulesh', 'lulesh:newest', 'jtronge/lulesh:newest')
+    with open('beeswarm.yml') as fp:
+        conf = yaml.load(fp, Loader=yaml.CLoader)
+
     wfm_port = int(sys.argv[1])
-
-    wfl_dir = './workflows/lulesh'
-    params = {'container': 'jtronge/lulesh:newest'}
-    template_files = ['lulesh.cwl']
-    wfl_tarball = expand_package_workflow(wfl_dir, params, template_files)
-
-    main_cwl = 'lulesh.cwl'
-    yaml = 'lulesh.yml'
-    # Submit the workflow
     bee = BEEManager(wfm_port=wfm_port)
     bee.start()
-    bee.run_workflow(wfl_tarball, main_cwl, yaml)
-    bee.shutdown()
 
-    #tmp_wfl
-    #main_cwl = 'lulesh.cwl'
-    #yml = 'lulesh.yml'
-    #beeswarm = 'beeswarm.yml'
-    #wfl_tarball = prepare_workflow('./workflows/test-wfl')
-    #main_cwl = 'scale-test.cwl'
-    #yaml = 'scale-test.yml'
-    #bee = BEEManager(wfm_port=5005)
-    #bee.start()
-    #bee.run_workflow(wfl_tarball, main_cwl, yaml)
-    #bee.shutdown()
+    for test in conf['scale_tests']:
+        ctx_dir = test['container']['ctx_dir']
+        name = test['container']['name']
+        remote = test['container']['remote']
+        # build_container('containers/lulesh', 'lulesh:newest', 'jtronge/lulesh:newest')
+        build_container(ctx_dir, name, remote)
+
+        # Expand and generate the workflow
+        wfl_dir = test['wfl_dir']
+        params = test['params']
+        template_files = test['template_files']
+        #wfl_dir = './workflows/lulesh'
+        #params = {'container': 'jtronge/lulesh:newest'}
+        #template_files = ['lulesh.cwl']
+        wfl_tarball = expand_package_workflow(wfl_dir, params, template_files)
+
+        main_cwl = test['main_cwl']
+        yaml = test['yaml']
+        #main_cwl = 'lulesh.cwl'
+        #yaml = 'lulesh.yml'
+        # Submit the workflow
+        bee.run_workflow(wfl_tarball, main_cwl, yaml)
+
+    bee.shutdown()
 
 
 if __name__ == '__main__':
