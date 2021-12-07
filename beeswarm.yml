@@ -1,3 +1,7 @@
+wfm_port: 8000
+tm_port: 7866
+bee_branch: 'beeswarm'
+ctr_archive: '${HOME}/.beeflow/container_archive'
 scale_tests:
   - wfl_dir: './workflows/lulesh'
     params:
@@ -9,3 +13,68 @@ scale_tests:
       ctx_dir: 'containers/lulesh'
       name: 'lulesh:newest'
       remote: 'jtronge/lulesh:newest'
+bee_cloud_conf_fname: '${HOME}/cloud.yml'
+bee_cloud_conf:
+  # Cloud launcher parameters
+  provider: google
+  project: bee-kent
+  zone: us-east1-b
+  wfm_listen_port: 5005
+  tm_listen_port: 7656
+  private_key_file: /data/bee/google
+  bee_user: bee
+  tm_launch_cmd: /bee/tm
+  head_node: bee-main
+  template_file: ./cloud_templates/gce-slurm.jinja
+  copy_files: []
+  
+  # Template parameters
+  # user: bee
+  password: bee
+  pubkey_base64: ${PUBKEY_BASE64}
+  munge_key_base64: ${MUNGE_KEY_BASE64}
+  
+  # Network info
+  net_cidr: '10.100.0.0/24'
+  vpn_port: 7878
+  
+  # Main node info
+  main_node: bee-main
+  main_vpn_key: ${MAIN_VPN_KEY}
+  main_vpn_pubkey: ${MAIN_VPN_PUBKEY}
+  # main_ext_ip: 34.138.240.133
+  main_ext_ip_name: test-ip
+  # main_ext_ip: 34.138.249.176
+  main_ext_ip: 34.138.249.176
+  # main_ext_ip: 34.117.85.99
+  main_ip: 10.100.0.1
+  main_machine_str: 'zones/us-east1-b/machineTypes/n1-standard-1'
+  main_src_image: 'https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/family/debian-11'
+  main_disk_size_gb: 10
+  
+  # Compute node info
+  compute_nodes:
+    bee-node0:
+      machine_str: 'zones/us-east1-b/machineTypes/n1-standard-2'
+      src_image: 'https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/family/debian-11'
+      disk_size_gb: 10
+      vpn_key: ${BEE_NODE0_VPN_KEY}
+      vpn_pubkey: ${BEE_NODE0_VPN_PUBKEY}
+      psk: ${BEE_NODE0_PSK}
+      ip: '10.100.0.2'
+    bee-node1:
+      machine_str: 'zones/us-east1-b/machineTypes/n1-standard-2'
+      src_image: 'https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/family/debian-11'
+      disk_size_gb: 10
+      vpn_key: ${BEE_NODE1_VPN_KEY}
+      vpn_pubkey: ${BEE_NODE1_VPN_PUBKEY}
+      psk: ${BEE_NODE1_PSK}
+      ip: '10.100.0.3'
+  
+  # BEE Install info
+  bee_cfg: /bee/bee.conf
+  bee_dir: /bee
+  github_pat: ${GITHUB_PAT}
+  # git_branch: mpi-dev
+  git_branch: beeswarm
+  slurm_socket: /tmp/slurm.sock

@@ -9,6 +9,7 @@ import requests
 import shutil
 import jinja2
 import yaml
+# from beeflow import cloud_launcher
 
 
 def launch(argv):
@@ -22,9 +23,10 @@ def launch(argv):
 class BEEManager:
     """Class for starting and managing the BEE components."""
 
-    def __init__(self, wfm_port):
+    def __init__(self, wfm_port, bee_cloud_conf, bee_cloud_conf_fname, **kwargs):
         """BEE manager constructor."""
         self.wfm_port = wfm_port
+        self.bee_cloud_conf = bee_cloud_conf
         self.sched = None
         self.wfm = None
         self.tm = None
@@ -34,7 +36,8 @@ class BEEManager:
         self.sched = launch(['python', '-m', 'beeflow.scheduler.scheduler'])
         time.sleep(8)
         self.wfm = launch(['python', '-m', 'beeflow.wf_manager'])
-        self.tm = launch(['python', '-m', 'beeflow.task_manager'])
+        self.tm = launch(['beeflow-cloud', '--tm', self.bee_cloud_conf_fname])
+        # self.tm = launch(['python', '-m', 'beeflow.task_manager'])
         time.sleep(8)
 
     def run_workflow(self, workflow_path, main_cwl, yaml):
@@ -150,8 +153,7 @@ def main():
     with open('beeswarm.yml') as fp:
         conf = yaml.load(fp, Loader=yaml.CLoader)
 
-    wfm_port = int(sys.argv[1])
-    bee = BEEManager(wfm_port=wfm_port)
+    bee = BEEManager(**conf)
     bee.start()
 
     for test in conf['scale_tests']:
@@ -171,11 +173,11 @@ def main():
         wfl_tarball = expand_package_workflow(wfl_dir, params, template_files)
 
         main_cwl = test['main_cwl']
-        yaml = test['yaml']
+        yml_file = test['yaml']
         #main_cwl = 'lulesh.cwl'
         #yaml = 'lulesh.yml'
         # Submit the workflow
-        bee.run_workflow(wfl_tarball, main_cwl, yaml)
+        bee.run_workflow(wfl_tarball, main_cwl, yml_file)
 
     bee.shutdown()
 
