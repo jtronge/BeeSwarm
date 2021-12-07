@@ -9,8 +9,8 @@ import requests
 import shutil
 import jinja2
 import yaml
-from beeswarm_conf import conf
-# from beeflow import cloud_launcher
+import json
+import string
 
 
 def launch(argv):
@@ -151,7 +151,8 @@ def expand_package_workflow(wfl_path, params, template_files):
     return tarball
 
 
-def main():
+def scale_tests(args):
+    """Run the configured scale tests."""
     # Start running BEE
     bee = BEEManager(**conf)
     bee.start()
@@ -177,6 +178,95 @@ def main():
         # Save results
 
     bee.shutdown()
+
+
+def sub_env(param):
+    """Substitute the environment into the configuration values."""
+    # This could probably be more Pythonic
+    if type(param) is dict:
+        return {key: sub_env(param[key]) for key in param}
+    elif type(param) is list:
+        return [sub_env(elm) for elm in param]
+
+    if type(param) is not str:
+        return param
+
+    tmpl = string.Template(param)
+    return tmpl.safe_substitute(**os.environ)
+
+
+def resolve_key(key):
+    """Resolve a BeeSwarm configuration key value (or None)."""
+    keys = key.split('.')
+    val = conf
+    for key in keys:
+        try:
+            try:
+                val = val[int(key)]
+            except ValueError:
+                val = val[key]
+        except KeyError:
+            val = None
+            break
+    return val
+
+
+# if __name__ == '__main__':
+def cfg(args):
+    """BeeSwarm configuration management."""
+    parser = argparse.ArgumentParser(description='beeswarm configuration tool')
+    parser.add_argument('-k', '--key', help='get config value')
+    parser.add_argument('--cloud-conf', action='store_true', help='output cloud config')
+    args = parser.parse_args(args)
+    if args.key is not None:
+        val = resolve_key(args.key)
+        if val is not None:
+            print(val)
+
+    # Dump the cloud launcher config
+    if args.cloud_conf:
+        cfg = conf['cloud_launcher_conf']
+        yaml.dump(cfg, sys.stdout)
+
+
+commands = {
+    'scale-tests': scale_tests,
+    'cfg': cfg,
+}
+
+
+def usage():
+    """Print usage information."""
+    print('usage:', sys.argv[0], '[command] [opts]...', file=sys.stderr)
+    print('', file=sys.stderr)
+    print('commands:', file=sys.stderr)
+    for cmd in commands:
+       print('{} -- {}'.format(cmd, commands[cmd].__doc__), file=sys.stderr)
+    sys.exit(1)
+
+
+def main():
+    """Main launch function."""
+    if len(sys.argv) < 2:
+        usage()
+    cmd = sys.argv[1]
+    if cmd.startswith('-'):
+        usage()
+    if cmd not in commands:
+        print('invalid cmd', cmd, file=sys.stderr)
+        usage()
+    commands[cmd](sys.argv[2:])
+
+
+# Load the main beeswarm config file
+dirname = os.path.dirname(__file__)
+with open(os.path.join(dirname, 'beeswarm.yml')) as fp:
+    conf = yaml.load(fp, Loader=yaml.CLoader)
+# Load the BeeSwarm configuration secrets from the JSON-encoded secrets variable
+secrets = os.getenv('SECRETS_JSON')
+# Update the configuration
+conf.update(json.loads(secrets))
+conf = sub_env(conf)
 
 
 if __name__ == '__main__':

@@ -11,8 +11,8 @@ GDB_IMG=$HOME/img/neo4j-3.5.22.tar.gz
 
 # Install BEE
 cd $HOME
-git clone https://`beeswarm_conf.py -k github_pat`:x-oauth-basic@github.com/lanl/BEE_Private.git \
-	-b `beeswarm_conf.py -k bee_branch` || exit 1
+git clone https://`beeswarm.py cfg -k github_pat`:x-oauth-basic@github.com/lanl/BEE_Private.git \
+	-b `beeswarm.py cfg -k bee_branch` || exit 1
 cd BEE_Private
 python3 -m venv venv
 . venv/bin/activate
@@ -28,7 +28,7 @@ workload_scheduler = Simple
 use_archive = False
 
 [task_manager]
-listen_port = `beeswarm_conf.py -k tm_port`
+listen_port = `beeswarm.py cfg -k tm_port`
 container_runtime = Charliecloud
 
 [charliecloud]
@@ -38,7 +38,7 @@ container_dir = $HOME/img
 
 [graphdb]
 hostname = localhost
-dbpass = `beeswarm_conf.py -k gdb_pass`
+dbpass = `beeswarm.py cfg -k gdb_pass`
 bolt_port = 7687
 http_port = 7474
 https_port = 7473
@@ -49,10 +49,10 @@ gdb_image_mntdir = /tmp
 listen_port = 5600
 
 [workflow_manager]
-listen_port = `beeswarm_conf.py -k wfm_port`
+listen_port = `beeswarm.py cfg -k wfm_port`
 
 [builder]
-container_archive = `beeswarm_conf.py -k ctr_archive`
+container_archive = `beeswarm.py cfg -k ctr_archive`
 deployed_image_root = /tmp
 container_output_path = /
 container_type = charliecloud
