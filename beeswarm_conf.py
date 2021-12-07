@@ -6,6 +6,7 @@ import os
 import re
 import sys
 import string
+import argparse
 
 
 def sub_env(param):
@@ -51,8 +52,16 @@ def resolve_key(key):
 
 
 if __name__ == '__main__':
-    assert len(sys.argv) == 2
-    key = sys.argv[1]
-    val = resolve_key(key)
-    if val is not None:
-        print(val)
+    parser = argparse.ArgumentParser(description='beeswarm configuration tool')
+    parser.add_argument('-k', '--key', help='get config value')
+    parser.add_argument('--cloud-conf', action='store_true', help='output cloud config')
+    args = parser.parse_args()
+    if args.key is not None:
+        val = resolve_key(args.key)
+        if val is not None:
+            print(val)
+
+    # Dump the cloud launcher config
+    if args.cloud_conf:
+        cfg = conf['cloud_launcher_conf']
+        yaml.dump(cfg, sys.stdout)

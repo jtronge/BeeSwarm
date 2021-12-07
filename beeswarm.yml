@@ -15,6 +15,6 @@ scale_tests:
       ctx_dir: 'containers/lulesh'
       name: 'lulesh:newest'
       remote: 'jtronge/lulesh:newest'
-bee_cloud_conf_fname: '${HOME}/cloud.yml'
 private_key_data: ${PRIVATE_KEY_DATA}
 private_key_path: '${HOME}/key'
+cloud_conf_path: '$HOME/cloud.yml'

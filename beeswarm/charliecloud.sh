@@ -9,6 +9,4 @@ cd charliecloud-0.25
 make
 make install
 export PATH=$HOME/bin:$PATH
-# Needed for ch-builder2tar (until it is deprecated)
-export CH_BUILDER=ch-image
 cd $CWD
