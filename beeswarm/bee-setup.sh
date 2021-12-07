@@ -17,7 +17,8 @@ cd BEE_Private
 python3 -m venv venv
 . venv/bin/activate
 pip install --upgrade pip poetry
-poetry install
+# Install with cloud_extras
+poetry install -E cloud_extras
 
 # Write a test config
 mkdir -p $HOME/.config/beeflow
