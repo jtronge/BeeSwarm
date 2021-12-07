@@ -18,13 +18,20 @@ beeswarm.py cfg -k google_application_credentials_base64 | base64 -d >> $GOOGLE_
 . ./beeswarm/charliecloud.sh
 . ./beeswarm/bee-setup.sh
 
+git checkout -B test-branch
+mkdir results
+touch results/testfile
+git add results/testfile
+git commit -am "Add test results"
+git push -u origin test-branch
+
 sleep 20
 
 # Output the cloud config
-CLOUD_CONFIG=`beeswarm.py cfg -k cloud_config_path`
-beeswarm.py cfg --cloud-conf >> $CLOUD_CONFIG
+#CLOUD_CONFIG=`beeswarm.py cfg -k cloud_config_path`
+#beeswarm.py cfg --cloud-conf >> $CLOUD_CONFIG
 # python -m beeflow.task_manager &
-beeflow-cloud --tm $CLOUD_CONFIG &
+#beeflow-cloud --tm $CLOUD_CONFIG &
 
 sleep 10
 
