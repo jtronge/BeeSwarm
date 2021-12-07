@@ -1,2 +1,5 @@
 cwl-utils
 matplotlib
+pyyaml
+# Required for the GitHub secrets API
+pynacl

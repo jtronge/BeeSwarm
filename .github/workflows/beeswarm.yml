@@ -13,8 +13,5 @@ jobs:
       - uses: actions/checkout@v2
       - name: Scale test
         env:
-          GITHUB_PAT: ${{ secrets.GitHubPAT }}
-          GDB_PASS: ${{ secrets.GDBPass }}
-          CH_IMAGE_USER: ${{ secrets.ChImageUser }}
-          CH_IMAGE_PASSWORD: ${{ secrets.ChImagePassword }}
+          SECRETS_JSON: ${{ secrets.SECRETS_JSON }}
         run: ./beeswarm.sh

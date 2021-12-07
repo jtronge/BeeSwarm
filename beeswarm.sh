@@ -1,17 +1,23 @@
 #!/bin/sh
+# Workflow init script
+
+# Set important environment variables
 REPO_ROOT=`pwd`
-
-# Load base configuration
-./beeswarm-configure.py
-
-# Load the shell configuration
-. ./beeswarm.conf
+# For the beeswarm_conf.py script
+export PATH=$REPO_ROOT:$PATH
+# Charliecloud registry authentication
+export CH_IMAGE_USERNAME=`beeswarm_conf.py ch_image_username`
+export CH_IMAGE_PASSWORD=`beeswarm_conf.py ch_image_password`
 
 # Set up BEE and dependencies
 . ./beeswarm/charliecloud.sh
 . ./beeswarm/bee-setup.sh
 
-# Launch the BeeSwarm Python script
-./beeswarm.py $WFM_PORT
+python -m beeflow.scheduler.scheduler
 
-cat ~/.beeflow/*.json
+sleep 10
+
+# Launch the BeeSwarm Python script
+# ./beeswarm.py $WFM_PORT
+
+# cat ~/.beeflow/*.json

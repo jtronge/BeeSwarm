@@ -27,6 +27,7 @@ class BEEManager:
         """BEE manager constructor."""
         self.wfm_port = wfm_port
         self.bee_cloud_conf = bee_cloud_conf
+        self.bee_cloud_conf_fname = bee_cloud_conf_fname
         self.sched = None
         self.wfm = None
         self.tm = None
