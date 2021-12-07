@@ -9,6 +9,7 @@ import requests
 import shutil
 import jinja2
 import yaml
+from beeswarm_conf import conf
 # from beeflow import cloud_launcher
 
 
@@ -151,34 +152,29 @@ def expand_package_workflow(wfl_path, params, template_files):
 
 
 def main():
-    with open('beeswarm.yml') as fp:
-        conf = yaml.load(fp, Loader=yaml.CLoader)
-
+    # Start running BEE
     bee = BEEManager(**conf)
     bee.start()
 
+    # Run each scale test as configured
     for test in conf['scale_tests']:
         ctx_dir = test['container']['ctx_dir']
         name = test['container']['name']
         remote = test['container']['remote']
-        # build_container('containers/lulesh', 'lulesh:newest', 'jtronge/lulesh:newest')
         build_container(ctx_dir, name, remote)
 
         # Expand and generate the workflow
         wfl_dir = test['wfl_dir']
         params = test['params']
         template_files = test['template_files']
-        #wfl_dir = './workflows/lulesh'
-        #params = {'container': 'jtronge/lulesh:newest'}
-        #template_files = ['lulesh.cwl']
         wfl_tarball = expand_package_workflow(wfl_dir, params, template_files)
 
+        # Run the workflow
         main_cwl = test['main_cwl']
         yml_file = test['yaml']
-        #main_cwl = 'lulesh.cwl'
-        #yaml = 'lulesh.yml'
-        # Submit the workflow
         bee.run_workflow(wfl_tarball, main_cwl, yml_file)
+
+        # Save results
 
     bee.shutdown()
 

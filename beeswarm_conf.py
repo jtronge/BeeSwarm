@@ -8,6 +8,21 @@ import sys
 import string
 
 
+def sub_env(param):
+    """Substitute the environment into the configuration values."""
+    # This could probably be more Pythonic
+    if type(param) is dict:
+        return {key: sub_env(param[key]) for key in param}
+    elif type(param) is list:
+        return [sub_env(elm) for elm in param]
+
+    if type(param) is not str:
+        return param
+
+    tmpl = string.Template(param)
+    return tmpl.safe_substitute(**os.environ)
+
+
 # Load the main beeswarm config file
 dirname = os.path.dirname(__file__)
 with open(os.path.join(dirname, 'beeswarm.yml')) as fp:
@@ -16,6 +31,7 @@ with open(os.path.join(dirname, 'beeswarm.yml')) as fp:
 secrets = os.getenv('SECRETS_JSON')
 # Update the configuration
 conf.update(json.loads(secrets))
+conf = sub_env(conf)
 
 
 def resolve_key(key):
@@ -31,11 +47,7 @@ def resolve_key(key):
         except KeyError:
             val = None
             break
-    if val is not None:
-        tmpl = string.Template(val)
-        # Replace environment strings if we can
-        return tmpl.safe_substitute(**os.environ)
-    return None
+    return val
 
 
 if __name__ == '__main__':
