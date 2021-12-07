@@ -26,7 +26,7 @@ mkdir results
 touch results/testfile
 git add results/testfile
 git commit -am "Add test results"
-git push -u origin test-branch
+git push -u origin results
 
 sleep 20
 
