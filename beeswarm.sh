@@ -13,12 +13,15 @@ export CH_BUILDER=ch-image
 # Google application credentials
 export GOOGLE_APPLICATION_CREDENTIALS=$HOME/google_cred.json
 beeswarm.py cfg -k google_application_credentials_base64 | base64 -d >> $GOOGLE_APPLICATION_CREDENTIALS
+# Configure git
+git config --global user.email `beeswarm.py cfg -k email`
+git config --global user.name `beeswarm.py cfg -k name`
 
 # Set up BEE and dependencies
 . ./beeswarm/charliecloud.sh
 . ./beeswarm/bee-setup.sh
 
-git checkout -B test-branch
+git checkout -B results
 mkdir results
 touch results/testfile
 git add results/testfile
