@@ -203,11 +203,13 @@ def scale_tests(args):
         # Build and push the container
         ctx_dir = test['container']['ctx_dir']
         name = test['container']['name']
+        """
         ctr = Container(ctx_dir, name)
         ctr.build(**test['container']['build_args'])
         # build_container(ctx_dir, name, remote)
         if 'remote' in test['container']:
             ctr.push(test['container']['remote'])
+"""
 
         # Expand and generate the workflow
         wfl_dir = test['wfl_dir']
