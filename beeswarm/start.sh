@@ -2,7 +2,7 @@
 # Launch the BeeSwarm init script inside of a container
 
 CWD=`pwd`
-INIT_SCRIPT=./beeswarm/beeswarm.sh
+INIT_SCRIPT=${INIT_SCRIPT:-./beeswarm/beeswarm.sh}
 CH_RUN_OPTS="-b /var/tmp --cd $CWD"
 
 # Install Charliecloud
