@@ -5,22 +5,27 @@ CWD=`pwd`
 # Pull down the neo4j container
 mkdir -p $HOME/img
 ch-image pull neo4j:3.5.22
-ch-builder2tar -b ch-image neo4j:3.5.22 $HOME/img
-mv $HOME/img/neo4j* $HOME/img/neo4j-3.5.22.tar.gz
-GDB_IMG=$HOME/img/neo4j-3.5.22.tar.gz
+mkdir -p $REPO_ROOT/img
+ch-builder2tar -b ch-image neo4j:3.5.22 $REPO_ROOT/img
+mv $REPO_ROOT/img/neo4j* $REPO_ROOT/img/neo4j.tar.gz
+GDB_IMG=$REPO_ROOT/img/neo4j.tar.gz
 
 # Install BEE
-cd $HOME
+cd $BUILD_DIR
 git clone https://`beeswarm.py cfg -k github_pat`:x-oauth-basic@github.com/lanl/BEE_Private.git \
 	-b `beeswarm.py cfg -k bee_branch` || exit 1
 cd BEE_Private
-python3 -m venv venv
-. venv/bin/activate
-pip install --upgrade pip poetry
+# Set up the environment
+# python3 -m venv venv
+# . venv/bin/activate
+# pip install --upgrade pip poetry
+# We assume that the virtual env has been created at a higher level
+pip install poetry
 # Install with cloud_extras
 poetry install -E cloud_extras
 
 # Write a test config
+rm -rf $HOME/.config/beeflow
 mkdir -p $HOME/.config/beeflow
 cat >> $HOME/.config/beeflow/bee.conf <<EOF
 [DEFAULT]

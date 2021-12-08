@@ -24,11 +24,10 @@ def launch(argv):
 class BEEManager:
     """Class for starting and managing the BEE components."""
 
-    def __init__(self, wfm_port, bee_cloud_conf, bee_cloud_conf_fname, **kwargs):
+    def __init__(self, cloud_conf_path, **kwargs):
         """BEE manager constructor."""
-        self.wfm_port = wfm_port
-        self.bee_cloud_conf = bee_cloud_conf
-        self.bee_cloud_conf_fname = bee_cloud_conf_fname
+        self.wfm_port = conf['wfm_port']
+        self.cloud_conf_path = cloud_conf_path
         self.sched = None
         self.wfm = None
         self.tm = None
@@ -38,7 +37,7 @@ class BEEManager:
         self.sched = launch(['python', '-m', 'beeflow.scheduler.scheduler'])
         time.sleep(8)
         self.wfm = launch(['python', '-m', 'beeflow.wf_manager'])
-        self.tm = launch(['beeflow-cloud', '--tm', self.bee_cloud_conf_fname])
+        self.tm = launch(['beeflow-cloud', '--tm', self.cloud_conf_path])
         # self.tm = launch(['python', '-m', 'beeflow.task_manager'])
         time.sleep(8)
 
@@ -89,6 +88,44 @@ def main(argv):
     bee.run_workflow('clamr-wf.tgz', 'clamr_wf.cwl', 'clamr_job.yml')
     bee.shutdown()
 """
+
+
+class ContainerError(Exception):
+    """Container error class."""
+
+    def __init__(self, msg):
+        """Container error class constructor."""
+        self.msg = msg
+
+
+class Container:
+    """Container class around Charliecloud interface."""
+
+    def __init__(self, ctx_dir, name):
+        """Container constructor."""
+        self.ctx_dir = ctx_dir
+        self.name = name
+        self._build_complete = False
+
+    def build(self, **build_args):
+        """Build the container."""
+        cmd = ['ch-image', 'build', '--force', '-t', self.name]
+        for arg in build_args:
+            cmd.append('{}={}'.format(arg, build_args[arg]))
+        cmd.append('.')
+        # Run the build in the context dir
+        cp = subprocess.run(cmd, cwd=self.ctx_dir)
+        if cp.returncode != 0:
+            raise ContainerError('Charliecloud build of container {} failed'.format(self.name))
+        self._build_complete = True
+
+    def push(self, remote):
+        """Push the container up to a remote registry."""
+        if not self._build_complete:
+            raise ContainerError('Cannot push {}, no build has been done'.format(self.name))
+        cp = subprocess.run('ch-image push {} {}'.format(self.name, remote).split())
+        if cp.returncode != 0:
+            raise ContainerError('Failed to push container {}'.format(self.name))
 
 
 def build_container(ctx_dir, name, remote=None):
@@ -153,16 +190,24 @@ def expand_package_workflow(wfl_path, params, template_files):
 
 def scale_tests(args):
     """Run the configured scale tests."""
+    parser = argparse.ArgumentParser(description='run configured scale tests')
+    parser.add_argument('--cloud-conf-path', required=True, help='path to cloud config file')
+    args = parser.parse_args(args)
+
     # Start running BEE
-    bee = BEEManager(**conf)
+    bee = BEEManager(cloud_conf_path=args.cloud_conf_path)
     bee.start()
 
     # Run each scale test as configured
     for test in conf['scale_tests']:
+        # Build and push the container
         ctx_dir = test['container']['ctx_dir']
         name = test['container']['name']
-        remote = test['container']['remote']
-        build_container(ctx_dir, name, remote)
+        ctr = Container(ctx_dir, name)
+        ctr.build(**test['container']['build_args'])
+        # build_container(ctx_dir, name, remote)
+        if 'remote' in test['container']:
+            ctr.push(test['container']['remote'])
 
         # Expand and generate the workflow
         wfl_dir = test['wfl_dir']

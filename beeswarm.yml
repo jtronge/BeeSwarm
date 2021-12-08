@@ -1,5 +1,5 @@
 email: jtronge@kent.edu
-name: Jake Tronge
+name: 'Jake Tronge'
 beeswarm_repo_owner: jtronge
 beeswarm_repo: BeeSwarm
 wfm_port: 8000
@@ -17,6 +17,7 @@ scale_tests:
       ctx_dir: 'containers/lulesh'
       name: 'lulesh:newest'
       remote: 'jtronge/lulesh:newest'
+      build_args: {}
 private_key_data: ${PRIVATE_KEY_DATA}
 private_key_path: '${HOME}/key'
 cloud_conf_path: '$HOME/cloud.yml'

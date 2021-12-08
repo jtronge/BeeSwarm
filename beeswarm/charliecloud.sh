@@ -2,11 +2,12 @@
 CWD=`pwd`
 # Install Charliecloud
 cd /tmp
+rm -rf charliecloud-*
 curl -O -L https://github.com/hpc/charliecloud/releases/download/v0.25/charliecloud-0.25.tar.gz
 tar -xvf charliecloud-0.25.tar.gz
 cd charliecloud-0.25
-./configure --prefix=$HOME
+./configure --prefix=$BUILD_DIR
 make
 make install
-export PATH=$HOME/bin:$PATH
+export PATH=$BUILD_DIR/bin:$PATH
 cd $CWD
