@@ -7,7 +7,7 @@
 #CLOUD_CONFIG=`beeswarm.py cfg -k cloud_config_path`
 # pytho -m beeflow.task_manager &
 #beeflow-cloud --tm $CLOUD_CONFIG &
-# beeswarm.py scale-tests --cloud-conf-path $CLOUD_CONF
+beeswarm.py scale-tests --cloud-conf-path $CLOUD_CONF
 
 exit 1
 
