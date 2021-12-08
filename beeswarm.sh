@@ -2,7 +2,17 @@
 # Workflow init script
 
 # Set important environment variables
-REPO_ROOT=`pwd`
+export REPO_ROOT=`pwd`
+# Create the virtual env
+rm -rf $REPO_ROOT/venv
+python -m venv $REPO_ROOT/venv
+. $REPO_ROOT/venv/bin/activate
+pip install --upgrade pip
+pip install -r $REPO_ROOT/requirements.txt
+# Set the BUILD_DIR for the Charliecloud and BEE installation
+export BUILD_DIR=$REPO_ROOT/build
+rm -rf $BUILD_DIR
+mkdir -p $BUILD_DIR
 # For the beeswarm_conf.py script
 export PATH=$REPO_ROOT:$PATH
 # Charliecloud registry authentication
@@ -11,35 +21,38 @@ export CH_IMAGE_PASSWORD=`beeswarm.py cfg -k ch_image_password`
 # Needed for ch-builder2tar (until it is deprecated)
 export CH_BUILDER=ch-image
 # Google application credentials
-export GOOGLE_APPLICATION_CREDENTIALS=$HOME/google_cred.json
-beeswarm.py cfg -k google_application_credentials_base64 | base64 -d >> $GOOGLE_APPLICATION_CREDENTIALS
+export GOOGLE_APPLICATION_CREDENTIALS=$REPO_ROOT/google_cred.json
+beeswarm.py cfg -k google_application_credentials_base64 | base64 -d > $GOOGLE_APPLICATION_CREDENTIALS
 # Configure git
-git config --global user.email `beeswarm.py cfg -k email`
-git config --global user.name `beeswarm.py cfg -k name`
+git config --local user.email "`beeswarm.py cfg -k email`"
+git config --local user.name "`beeswarm.py cfg -k name`"
 
 # Set up BEE and dependencies
 . ./beeswarm/charliecloud.sh
 . ./beeswarm/bee-setup.sh
 
-git checkout -B results
-mkdir results
-touch results/testfile
-git add results/testfile
-git commit -am "Add test results"
-git push -u origin results
-
-sleep 20
-
 # Output the cloud config
+CLOUD_CONF=$REPO_ROOT/cloud.yml
+beeswarm.py cfg --cloud-conf > $CLOUD_CONF
 #CLOUD_CONFIG=`beeswarm.py cfg -k cloud_config_path`
-#beeswarm.py cfg --cloud-conf >> $CLOUD_CONFIG
 # python -m beeflow.task_manager &
 #beeflow-cloud --tm $CLOUD_CONFIG &
+beeswarm.py scale-tests --cloud-conf-path $CLOUD_CONF
 
-sleep 10
+exit 1
 
 
 # Launch the BeeSwarm Python script
 # ./beeswarm.py $WFM_PORT
 
 # cat ~/.beeflow/*.json
+
+# Upon completion of the scale tests, commit all results to the `results` branch
+# in the results folder
+git checkout results
+# touch results/testfile
+# git add results/testfile
+git add results/*
+git commit -am "BeeSwarm test results: `date +%F_%T`"
+git push -u origin results
+
