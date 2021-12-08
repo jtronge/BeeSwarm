@@ -5,6 +5,8 @@ python() {
     python3 $@
 }
 
+echo $SECRETS_JSON
+
 . ./beeswarm-env.sh
 
 # Set important environment variables
