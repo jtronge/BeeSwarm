@@ -41,11 +41,11 @@ class BEEManager:
         # self.tm = launch(['python', '-m', 'beeflow.task_manager'])
         time.sleep(10)
 
-    def run_workflow(self, workflow_path, main_cwl, yaml):
+    def run_workflow(self, name, workflow_path, main_cwl, yaml):
         """Execute a workflow."""
         url = 'http://127.0.0.1:{}/{}/'.format(self.wfm_port, 'bee_wfm/v1/jobs')
         files = {
-            'wf_name': 'test'.encode(),
+            'wf_name': name.encode(),
             'wf_filename': 'some_wfl.tgz',
             'workflow': open(workflow_path, 'rb'),
             'main_cwl': main_cwl, 
@@ -203,13 +203,11 @@ def scale_tests(args):
         # Build and push the container
         ctx_dir = test['container']['ctx_dir']
         name = test['container']['name']
-        """
         ctr = Container(ctx_dir, name)
         ctr.build(**test['container']['build_args'])
         # build_container(ctx_dir, name, remote)
         if 'remote' in test['container']:
             ctr.push(test['container']['remote'])
-"""
 
         # Expand and generate the workflow
         wfl_dir = test['wfl_dir']
@@ -218,9 +216,10 @@ def scale_tests(args):
         wfl_tarball = expand_package_workflow(wfl_dir, params, template_files)
 
         # Run the workflow
+        wfl_name = test['name']
         main_cwl = test['main_cwl']
         yml_file = test['yaml']
-        bee.run_workflow(wfl_tarball, main_cwl, yml_file)
+        bee.run_workflow(wfl_name, wfl_tarball, main_cwl, yml_file)
 
         # Save results
 

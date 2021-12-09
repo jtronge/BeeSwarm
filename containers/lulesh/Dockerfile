@@ -1,8 +1,11 @@
 FROM jtronge/openmpi-debian
 
+ARG REPO=https://github.com/jtronge/LULESH.git
 ARG BRANCH=master
-RUN git clone -b $BRANCH https://github.com/LLNL/LULESH.git && \
+ARG COMMIT=3e01c40b3281aadb7f996525cdd4a3354f6d3801
+RUN git clone -b $BRANCH $REPO && \
     cd LULESH && \
+    git checkout $COMMIT && \
     mkdir -p build &&  \
     cd build && \
     cmake -DCMAKE_BUILD_TYPE=Release -DMPI_CXX_COMPILER=`which mpicxx` ../ && \
