@@ -2,7 +2,7 @@ email: jtronge@kent.edu
 name: 'Jake Tronge'
 beeswarm_repo_owner: jtronge
 beeswarm_repo: BeeSwarm
-wfm_port: 8000
+wfm_port: 8020
 tm_port: 7866
 bee_branch: 'beeswarm'
 ctr_archive: '${HOME}/.beeflow/container_archive'
