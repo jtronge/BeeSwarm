@@ -7,17 +7,20 @@ tm_port: 7866
 bee_branch: 'beeswarm'
 ctr_archive: '${HOME}/.beeflow/container_archive'
 scale_tests:
-  - wfl_dir: './workflows/lulesh'
+  - name: 'lulesh-3e01c40b3281aadb7f996525cdd4a3354f6d3801'
+    wfl_dir: './workflows/lulesh'
+    # Workflow params
     params:
-      container: 'jtronge/lulesh:newest'
+      container: 'jtronge/lulesh:3e01c40b3281aadb7f996525cdd4a3354f6d3801'
     template_files: ['lulesh.cwl']
     main_cwl: 'lulesh.cwl'
     yaml: 'lulesh.yml'
     container:
       ctx_dir: 'containers/lulesh'
-      name: 'lulesh:newest'
-      remote: 'jtronge/lulesh:newest'
-      build_args: {}
+      name: 'lulesh:3e01c40b3281aadb7f996525cdd4a3354f6d3801'
+      remote: 'jtronge/lulesh:3e01c40b3281aadb7f996525cdd4a3354f6d3801'
+      build_args:
+        COMMIT: '3e01c40b3281aadb7f996525cdd4a3354f6d3801'
 private_key_data: ${PRIVATE_KEY_DATA}
 private_key_path: '${HOME}/key'
 cloud_conf_path: '$HOME/cloud.yml'
