@@ -39,7 +39,7 @@ class BEEManager:
         self.wfm = launch(['python', '-m', 'beeflow.wf_manager'])
         self.tm = launch(['beeflow-cloud', '--tm', self.cloud_conf_path])
         # self.tm = launch(['python', '-m', 'beeflow.task_manager'])
-        time.sleep(8)
+        time.sleep(10)
 
     def run_workflow(self, workflow_path, main_cwl, yaml):
         """Execute a workflow."""

@@ -10,7 +10,7 @@ export REPO_ROOT=`pwd`
 # Set the BUILD_DIR for the Charliecloud and BEE installation
 export BUILD_DIR=$REPO_ROOT/build
 # For the beeswarm.py script
-export PATH=$REPO_ROOT:$PATH
+export PATH=$REPO_ROOT:/usr/bin:/bin:/usr/sbin:/sbin
 # Charliecloud registry authentication
 export CH_IMAGE_USERNAME=`beeswarm.py cfg -k ch_image_username`
 export CH_IMAGE_PASSWORD=`beeswarm.py cfg -k ch_image_password`
