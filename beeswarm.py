@@ -223,6 +223,7 @@ def scale_tests(args):
         bee.run_workflow(wfl_name, wfl_tarball, main_cwl, yml_file)
 
         # Save results
+        # TODO
 
     bee.shutdown()
 
@@ -258,7 +259,6 @@ def resolve_key(key):
     return val
 
 
-# if __name__ == '__main__':
 def cfg(args):
     """BeeSwarm configuration management."""
     parser = argparse.ArgumentParser(description='beeswarm configuration tool')
