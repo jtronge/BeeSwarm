@@ -113,6 +113,7 @@ class Container:
         for arg in build_args:
             cmd.append('{}={}'.format(arg, build_args[arg]))
         cmd.append('.')
+        print('Running command:', ' '.join(cmd))
         # Run the build in the context dir
         cp = subprocess.run(cmd, cwd=self.ctx_dir)
         if cp.returncode != 0:
