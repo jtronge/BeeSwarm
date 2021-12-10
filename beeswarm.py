@@ -192,7 +192,7 @@ def expand_package_workflow(wfl_path, params, template_files, yaml_data):
             fp.write(tmpl.render(**params))
 
     # Dump the yaml input file
-    yml_file = 'input.yml'
+    yml_data = 'input.yml'
     fname = os.path.join(tmp_wfl_path, yml_file)
     with open(fname, 'w') as fp:
         yaml.dump(yml_data, fp)
