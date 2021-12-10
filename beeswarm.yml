@@ -8,10 +8,12 @@ bee_branch: 'beeswarm'
 ctr_archive: '${HOME}/.beeflow/container_archive'
 scale_tests:
   - name: 'lulesh-3e01c40b3281aadb7f996525cdd4a3354f6d3801'
-    wfl_dir: './workflows/lulesh'
+    wfl_dir: './workflows/lulesh-mpi'
     # Workflow params
     params:
       container: 'jtronge/lulesh:3e01c40b3281aadb7f996525cdd4a3354f6d3801'
+      nodes: 2
+      ntasks: 8
     template_files: ['lulesh.cwl']
     main_cwl: 'lulesh.cwl'
     yaml: 'lulesh.yml'
@@ -21,48 +23,6 @@ scale_tests:
       remote: 'jtronge/lulesh:3e01c40b3281aadb7f996525cdd4a3354f6d3801'
       build_args:
         COMMIT: '3e01c40b3281aadb7f996525cdd4a3354f6d3801'
-  - name: 'lulesh-cfe7c43a301c2edf713872249ab1dead6c562601'
-    wfl_dir: './workflows/lulesh'
-    # Workflow params
-    params:
-      container: 'jtronge/lulesh:cfe7c43a301c2edf713872249ab1dead6c562601'
-    template_files: ['lulesh.cwl']
-    main_cwl: 'lulesh.cwl'
-    yaml: 'lulesh.yml'
-    container:
-      ctx_dir: 'containers/lulesh'
-      name: 'lulesh:cfe7c43a301c2edf713872249ab1dead6c562601'
-      remote: 'jtronge/lulesh:cfe7c43a301c2edf713872249ab1dead6c562601'
-      build_args:
-        COMMIT: 'cfe7c43a301c2edf713872249ab1dead6c562601'
-  - name: 'lulesh-d57e3bfa1fac36a2c237e7f14e0dff2687bc4e5c'
-    wfl_dir: './workflows/lulesh'
-    # Workflow params
-    params:
-      container: 'jtronge/lulesh:d57e3bfa1fac36a2c237e7f14e0dff2687bc4e5c'
-    template_files: ['lulesh.cwl']
-    main_cwl: 'lulesh.cwl'
-    yaml: 'lulesh.yml'
-    container:
-      ctx_dir: 'containers/lulesh'
-      name: 'lulesh:d57e3bfa1fac36a2c237e7f14e0dff2687bc4e5c'
-      remote: 'jtronge/lulesh:d57e3bfa1fac36a2c237e7f14e0dff2687bc4e5c'
-      build_args:
-        COMMIT: 'd57e3bfa1fac36a2c237e7f14e0dff2687bc4e5c'
-  - name: 'lulesh-eaf687767a7c4325733475d5ea1b45f891a0bb7e'
-    wfl_dir: './workflows/lulesh'
-    # Workflow params
-    params:
-      container: 'jtronge/lulesh:eaf687767a7c4325733475d5ea1b45f891a0bb7e'
-    template_files: ['lulesh.cwl']
-    main_cwl: 'lulesh.cwl'
-    yaml: 'lulesh.yml'
-    container:
-      ctx_dir: 'containers/lulesh'
-      name: 'lulesh:eaf687767a7c4325733475d5ea1b45f891a0bb7e'
-      remote: 'jtronge/lulesh:eaf687767a7c4325733475d5ea1b45f891a0bb7e'
-      build_args:
-        COMMIT: 'eaf687767a7c4325733475d5ea1b45f891a0bb7e'
 private_key_data: ${PRIVATE_KEY_DATA}
 private_key_path: '${HOME}/key'
 cloud_conf_path: '$HOME/cloud.yml'
