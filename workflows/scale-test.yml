@@ -1,4 +1,0 @@
-build_script: "https://raw.githubusercontent.com/jtronge/BeeSwarm/main/scripts/build_lulesh.sh"
-scale_script: "~/scale-bin/lulesh2.0"
-scale_args: ""
-collect_script: ""
