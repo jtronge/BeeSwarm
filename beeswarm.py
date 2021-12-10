@@ -173,7 +173,7 @@ def prepare_workflow(loc):
 TMPDIR = '/tmp'
 
 
-def expand_package_workflow(wfl_path, params, template_files):
+def expand_package_workflow(wfl_path, params, template_files, yaml_data):
     """Expand a workflow and put in a tarball to be submitted to BEE."""
     # tmp_wfl_path = '/tmp/{}'.format(int(time.time()))
     # TODO: Use tempfile.mkdtemp() here 
@@ -191,11 +191,18 @@ def expand_package_workflow(wfl_path, params, template_files):
         with open(f, 'w') as fp:
             fp.write(tmpl.render(**params))
 
+    # Dump the yaml input file
+    yml_file = 'input.yml'
+    fname = os.path.join(tmp_wfl_path, yml_file)
+    with open(fname, 'w') as fp:
+        yaml.dump(yml_data, fp)
+
+    # Tar it up
     tarball = '{}.tgz'.format('rendered-wfl')
     print('Saving workflow tarball to', tarball)
     cmd = 'tar -C {} -czf {} {}'.format(TMPDIR, tarball, basename)
     subprocess.run(cmd.split())
-    return tarball
+    return tarball, yml_file
 
 
 def scale_tests(args):
@@ -223,12 +230,13 @@ def scale_tests(args):
         wfl_dir = test['wfl_dir']
         params = test['params']
         template_files = test['template_files']
-        wfl_tarball = expand_package_workflow(wfl_dir, params, template_files)
+        # Note 'inputs' used to be called 'yaml'
+        yml_data = test['inputs']
+        wfl_tarball, yml_file = expand_package_workflow(wfl_dir, params, template_files, yml_data)
 
         # Run the workflow
         wfl_name = test['name']
         main_cwl = test['main_cwl']
-        yml_file = test['yaml']
         bee.run_workflow(wfl_name, wfl_tarball, main_cwl, yml_file)
 
         # Save results

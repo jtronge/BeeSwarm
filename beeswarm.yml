@@ -7,22 +7,29 @@ tm_port: 7866
 bee_branch: 'beeswarm'
 ctr_archive: '${HOME}/.beeflow/container_archive'
 scale_tests:
-  - name: 'lulesh-3e01c40b3281aadb7f996525cdd4a3354f6d3801'
-    wfl_dir: './workflows/lulesh-mpi'
+  - name: 'comd-3d48396b77ca8caa3124bc2391f9139c3ffb556c'
+    wfl_dir: './workflows/comd-mpi'
     # Workflow params
     params:
-      container: 'jtronge/lulesh:3e01c40b3281aadb7f996525cdd4a3354f6d3801'
-      nodes: 2
-      ntasks: 8
-    template_files: ['lulesh.cwl']
-    main_cwl: 'lulesh.cwl'
-    yaml: 'lulesh.yml'
+      container: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
+      nodes: 1
+      ntasks: 1
+    template_files: ['comd.cwl']
+    main_cwl: 'comd.cwl'
+    # yaml: 'lulesh.yml'
+    inputs:
+      i: 1
+      j: 1
+      k: 1
+      x: 40
+      y: 40
+      z: 40
     container:
-      ctx_dir: 'containers/lulesh'
-      name: 'lulesh:3e01c40b3281aadb7f996525cdd4a3354f6d3801'
-      remote: 'jtronge/lulesh:3e01c40b3281aadb7f996525cdd4a3354f6d3801'
+      ctx_dir: 'containers/comd'
+      name: 'comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
+      remote: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
       build_args:
-        COMMIT: '3e01c40b3281aadb7f996525cdd4a3354f6d3801'
+        COMMIT: '3d48396b77ca8caa3124bc2391f9139c3ffb556c'
 private_key_data: ${PRIVATE_KEY_DATA}
 private_key_path: '${HOME}/key'
 cloud_conf_path: '$HOME/cloud.yml'
