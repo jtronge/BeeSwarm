@@ -111,6 +111,7 @@ class Container:
         """Build the container."""
         cmd = ['ch-image', 'build', '--force', '-t', self.name]
         for arg in build_args:
+            cmd.append('--build-arg')
             cmd.append('{}={}'.format(arg, build_args[arg]))
         cmd.append('.')
         print('Running command:', ' '.join(cmd))
