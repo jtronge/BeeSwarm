@@ -43,7 +43,8 @@ class BEEManager:
 
     def run_workflow(self, name, workflow_path, main_cwl, yaml):
         """Execute a workflow."""
-        url = 'http://127.0.0.1:{}/{}/'.format(self.wfm_port, 'bee_wfm/v1/jobs')
+        base_url = 'http://127.0.0.1:{}'.format(self.wfm_port)
+        url = '{}/{}/'.format(base_url, 'bee_wfm/v1/jobs')
         files = {
             'wf_name': name.encode(),
             'wf_filename': 'some_wfl.tgz',
@@ -67,7 +68,14 @@ class BEEManager:
 
         # Now wait until the workflow is complete (there should be a better way
         # to do this)
-        time.sleep(256)
+        # time.sleep(256)
+        status_url = '{}/bee_wfm/v1/status/{}'.format(base_url, wf_id)
+        resp = requests.get(status_url)
+        status = resp.json()
+        while not status['complete']:
+            time.sleep(4)
+            resp = requests.get(status_url)
+            status = resp.json()
 
     def shutdown(self):
         """Shutdown and cleanup BEE (there should be a better way to do this)."""
@@ -224,7 +232,7 @@ def scale_tests(args):
         bee.run_workflow(wfl_name, wfl_tarball, main_cwl, yml_file)
 
         # Save results
-        # TODO
+        # TODO: for now this is done by git in the outer script
 
     bee.shutdown()
 
