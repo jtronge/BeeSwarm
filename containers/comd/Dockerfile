@@ -1,7 +1,10 @@
 FROM jtronge/openmpi-debian
 
+ARG REPO=https://github.com/jtronge/CoMD.git
 ARG BRANCH
-RUN git clone https://github.com/ECP-copa/CoMD.git && \
+
+# Build the MPI version
+RUN git clone $REPO && \
     cd CoMD && \
     git checkout $BRANCH && \
     cp src-mpi/Makefile.vanilla src-mpi/Makefile && \

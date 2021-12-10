@@ -16,7 +16,9 @@ beeswarm.py scale-tests --cloud-conf-path $CLOUD_CONF
 
 # Upon completion of the scale tests, commit all results to the `results` branch
 # in the results folder
+git fetch
 git checkout results
+mkdir -p results/
 cp ~/.beeflow/*.json results/
 git add results
 git commit -am "BeeSwarm test results: `date +%F_%T`"
