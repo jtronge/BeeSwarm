@@ -173,7 +173,7 @@ def prepare_workflow(loc):
 TMPDIR = '/tmp'
 
 
-def expand_package_workflow(wfl_path, params, template_files, yaml_data):
+def expand_package_workflow(wfl_path, params, template_files, yml_data):
     """Expand a workflow and put in a tarball to be submitted to BEE."""
     # tmp_wfl_path = '/tmp/{}'.format(int(time.time()))
     # TODO: Use tempfile.mkdtemp() here 
@@ -192,7 +192,7 @@ def expand_package_workflow(wfl_path, params, template_files, yaml_data):
             fp.write(tmpl.render(**params))
 
     # Dump the yaml input file
-    yml_data = 'input.yml'
+    yml_file = 'input.yml'
     fname = os.path.join(tmp_wfl_path, yml_file)
     with open(fname, 'w') as fp:
         yaml.dump(yml_data, fp)
