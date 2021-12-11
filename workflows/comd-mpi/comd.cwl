@@ -8,6 +8,7 @@ inputs:
   x: int
   y: int
   z: int
+  pot_dir: string
 
 outputs:
   comd_stdout:
@@ -45,6 +46,10 @@ steps:
           type: int
           inputBinding:
             prefix: -z
+        pot_dir:
+          type: string
+          inputBinding:
+            prefix: --potDir
       outputs:
         comd_stdout:
           type: stdout
@@ -55,6 +60,7 @@ steps:
       x: x
       y: y
       z: z
+      pot_dir: pot_dir
     out: [comd_stdout]
     hints:
       DockerRequirement:

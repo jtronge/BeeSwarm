@@ -24,6 +24,7 @@ scale_tests:
       x: 40
       y: 40
       z: 40
+      pot_dir: "/CoMD/pots"
     container:
       ctx_dir: 'containers/comd'
       name: 'comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
@@ -47,11 +48,13 @@ scale_tests:
       x: 40
       y: 40
       z: 40
+      pot_dir: "/CoMD/pots"
     container:
       ctx_dir: 'containers/comd'
       name: 'comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
       remote: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
       build_args:
+        COMMIT: '3d48396b77ca8caa3124bc2391f9139c3ffb556c'
   - name: 'comd-4'
     wfl_dir: './workflows/comd-mpi'
     # Workflow params
@@ -69,6 +72,7 @@ scale_tests:
       x: 40
       y: 40
       z: 40
+      pot_dir: "/CoMD/pots"
     container:
       ctx_dir: 'containers/comd'
       name: 'comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
@@ -92,6 +96,7 @@ scale_tests:
       x: 40
       y: 40
       z: 40
+      pot_dir: "/CoMD/pots"
     container:
       ctx_dir: 'containers/comd'
       name: 'comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
@@ -115,6 +120,7 @@ scale_tests:
       x: 40
       y: 40
       z: 40
+      pot_dir: "/CoMD/pots"
     container:
       ctx_dir: 'containers/comd'
       name: 'comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
