@@ -287,9 +287,10 @@ instances:
 
     networkInterfaces:
       - network: 'global/networks/default'
-        accessConfigs:
-        - type: 'ONE_TO_ONE_NAT'
-          name: 'External NAT'
+        # Uncomment this to use add an external IP address
+        # accessConfigs:
+        #  - type: 'ONE_TO_ONE_NAT'
+        #    name: 'External NAT'
     metadata:
       items:
         # Start up script for the node
