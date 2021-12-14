@@ -7,23 +7,23 @@ tm_port: 7866
 bee_branch: 'beeswarm'
 ctr_archive: '${HOME}/.beeflow/container_archive'
 scale_tests:
-  - name: 'comd-1'
+  - name: 'comd-1-node-4-cores'
     wfl_dir: './workflows/comd-mpi'
     # Workflow params
     params:
       container: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
       nodes: 1
-      ntasks: 1
+      ntasks: 4
     template_files: ['comd.cwl']
     main_cwl: 'comd.cwl'
     # yaml: 'lulesh.yml'
     inputs:
-      i: 1
-      j: 1
+      i: 2
+      j: 2
       k: 1
-      x: 80
-      y: 80
-      z: 80
+      x: 40
+      y: 40
+      z: 40
       pot_dir: "/CoMD/pots"
     container:
       ctx_dir: 'containers/comd'
@@ -45,9 +45,9 @@ scale_tests:
       i: 2
       j: 1
       k: 1
-      x: 80
-      y: 80
-      z: 80
+      x: 40
+      y: 40
+      z: 40
       pot_dir: "/CoMD/pots"
     container:
       ctx_dir: 'containers/comd'
@@ -55,36 +55,12 @@ scale_tests:
       remote: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
       build_args:
         COMMIT: '3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-  - name: 'comd-4'
+  - name: 'comd-2-nodes-8-cores'
     wfl_dir: './workflows/comd-mpi'
     # Workflow params
     params:
       container: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-      nodes: 1
-      ntasks: 4
-    template_files: ['comd.cwl']
-    main_cwl: 'comd.cwl'
-    # yaml: 'lulesh.yml'
-    inputs:
-      i: 2
-      j: 2
-      k: 1
-      x: 80
-      y: 80
-      z: 80
-      pot_dir: "/CoMD/pots"
-    container:
-      ctx_dir: 'containers/comd'
-      name: 'comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-      remote: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-      build_args:
-        COMMIT: '3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-  - name: 'comd-8'
-    wfl_dir: './workflows/comd-mpi'
-    # Workflow params
-    params:
-      container: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-      nodes: 1
+      nodes: 2
       ntasks: 8
     template_files: ['comd.cwl']
     main_cwl: 'comd.cwl'
@@ -93,9 +69,9 @@ scale_tests:
       i: 2
       j: 2
       k: 2
-      x: 80
-      y: 80
-      z: 80
+      x: 40
+      y: 40
+      z: 40
       pot_dir: "/CoMD/pots"
     container:
       ctx_dir: 'containers/comd'
@@ -103,12 +79,12 @@ scale_tests:
       remote: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
       build_args:
         COMMIT: '3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-  - name: 'comd-16'
+  - name: 'comd-4-nodes-16-cores'
     wfl_dir: './workflows/comd-mpi'
     # Workflow params
     params:
       container: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-      nodes: 1
+      nodes: 4
       ntasks: 16
     template_files: ['comd.cwl']
     main_cwl: 'comd.cwl'
@@ -117,9 +93,33 @@ scale_tests:
       i: 4
       j: 2
       k: 2
-      x: 80
-      y: 80
-      z: 80
+      x: 40
+      y: 40
+      z: 40
+      pot_dir: "/CoMD/pots"
+    container:
+      ctx_dir: 'containers/comd'
+      name: 'comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
+      remote: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
+      build_args:
+        COMMIT: '3d48396b77ca8caa3124bc2391f9139c3ffb556c'
+  - name: 'comd-8-nodes-32-cores'
+    wfl_dir: './workflows/comd-mpi'
+    # Workflow params
+    params:
+      container: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
+      nodes: 8
+      ntasks: 32
+    template_files: ['comd.cwl']
+    main_cwl: 'comd.cwl'
+    # yaml: 'lulesh.yml'
+    inputs:
+      i: 4
+      j: 4
+      k: 2
+      x: 40
+      y: 40
+      z: 40
       pot_dir: "/CoMD/pots"
     container:
       ctx_dir: 'containers/comd'

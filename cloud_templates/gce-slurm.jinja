@@ -37,7 +37,7 @@ AuthType=auth/munge
 
 # NodeName=bee-node0 CPUs=1 Boards=1 SocketsPerBoard=1 CoresPerSocket=1 ThreadsPerCore=1 RealMemory=1982
 {% for node_name in compute_nodes %}
-NodeName={{ node_name }} {{ node_config }}
+NodeName={{ node_name }} {{ compute_nodes[node_name]['node_config'] }}
 {% endfor %}
 
 PartitionName=debug Nodes=ALL Default=YES MaxTime=INFINITE State=UP
