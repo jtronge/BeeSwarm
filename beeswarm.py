@@ -24,10 +24,9 @@ def launch(argv):
 class BEEManager:
     """Class for starting and managing the BEE components."""
 
-    def __init__(self, cloud_conf_path, **kwargs):
+    def __init__(self, **kwargs):
         """BEE manager constructor."""
         self.wfm_port = conf['wfm_port']
-        self.cloud_conf_path = cloud_conf_path
         self.sched = None
         self.wfm = None
         # self.tm = None
@@ -209,11 +208,12 @@ def expand_package_workflow(wfl_path, params, template_files, yml_data):
 def scale_tests(args):
     """Run the configured scale tests."""
     parser = argparse.ArgumentParser(description='run configured scale tests')
-    parser.add_argument('--cloud-conf-path', required=True, help='path to cloud config file')
+    # parser.add_argument('--cloud-conf-path', required=True, help='path to cloud config file')
     args = parser.parse_args(args)
 
     # Start running BEE
-    bee = BEEManager(cloud_conf_path=args.cloud_conf_path)
+    # bee = BEEManager(cloud_conf_path=args.cloud_conf_path)
+    bee = BEEManager()
     bee.start()
 
     # Run each scale test as configured
