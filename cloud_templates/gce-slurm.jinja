@@ -181,6 +181,7 @@ systemctl enable slurmd
 sleep 120
 mount {{ main_node }}:/home /home
 {% endif %}
+
 {% if slurmctld_node %}
 # Install BEE
 mkdir -p {{ bee_dir }}
@@ -229,16 +230,22 @@ cat >> {{ bee_dir }}/tm <<EOF
 export CH_BUILDER=ch-image
 # Note: we have to specify the proper openapi interface to load
 /usr/sbin/slurmrestd -s openapi/v0.0.35 unix:{{ slurm_socket }} &
-cd /bee/BEE_Private
+# Wait a little for slurmrestd to load
+sleep 4
+cd {{ bee_dir }}/BEE_Private
 . ./venv/bin/activate
 exec python -m beeflow.task_manager {{ bee_dir }}/bee.conf
 EOF
 chmod 755 {{ bee_dir }}/tm
-chown -R {{ bee_user }}:{{ bee_user }} /bee
+chown -R {{ bee_user }}:{{ bee_user }} {{ bee_dir }}
+
+# Now start the Task Manager
+# TODO: Need a better way to determine TM failures
+su {{ bee_user }} -c {{ bee_dir }}/tm
 {% endif %}
 
 
-{{ slurmctldnode }}
+# {{ slurmctldnode }}
 {% endmacro %}
 
 instances:

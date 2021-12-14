@@ -30,14 +30,14 @@ class BEEManager:
         self.cloud_conf_path = cloud_conf_path
         self.sched = None
         self.wfm = None
-        self.tm = None
+        # self.tm = None
 
     def start(self):
         """Start all the components."""
         self.sched = launch(['python', '-m', 'beeflow.scheduler.scheduler'])
         time.sleep(8)
         self.wfm = launch(['python', '-m', 'beeflow.wf_manager'])
-        self.tm = launch(['beeflow-cloud', '--tm', self.cloud_conf_path])
+        # self.tm = launch(['beeflow-cloud', '--tm', self.cloud_conf_path])
         # self.tm = launch(['python', '-m', 'beeflow.task_manager'])
         time.sleep(10)
 
@@ -81,7 +81,8 @@ class BEEManager:
         """Shutdown and cleanup BEE (there should be a better way to do this)."""
         # Kill the GDB
         subprocess.run(['pkill', 'java'])
-        for pid in [self.sched, self.wfm, self.tm]:
+        # for pid in [self.sched, self.wfm, self.tm]:
+        for pid in [self.sched, self.wfm]:
             subprocess.run(['kill', str(pid)])
 
 

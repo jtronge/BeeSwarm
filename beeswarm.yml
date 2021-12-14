@@ -21,9 +21,9 @@ scale_tests:
       i: 1
       j: 1
       k: 1
-      x: 40
-      y: 40
-      z: 40
+      x: 80
+      y: 80
+      z: 80
       pot_dir: "/CoMD/pots"
     container:
       ctx_dir: 'containers/comd'
@@ -45,9 +45,9 @@ scale_tests:
       i: 2
       j: 1
       k: 1
-      x: 40
-      y: 40
-      z: 40
+      x: 80
+      y: 80
+      z: 80
       pot_dir: "/CoMD/pots"
     container:
       ctx_dir: 'containers/comd'
@@ -69,9 +69,9 @@ scale_tests:
       i: 2
       j: 2
       k: 1
-      x: 40
-      y: 40
-      z: 40
+      x: 80
+      y: 80
+      z: 80
       pot_dir: "/CoMD/pots"
     container:
       ctx_dir: 'containers/comd'
@@ -93,9 +93,9 @@ scale_tests:
       i: 2
       j: 2
       k: 2
-      x: 40
-      y: 40
-      z: 40
+      x: 80
+      y: 80
+      z: 80
       pot_dir: "/CoMD/pots"
     container:
       ctx_dir: 'containers/comd'
@@ -117,9 +117,9 @@ scale_tests:
       i: 4
       j: 2
       k: 2
-      x: 40
-      y: 40
-      z: 40
+      x: 80
+      y: 80
+      z: 80
       pot_dir: "/CoMD/pots"
     container:
       ctx_dir: 'containers/comd'
