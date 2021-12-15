@@ -36,5 +36,4 @@ steps:
       DockerRequirement:
         dockerPull: "{{ container }}"
       beeflow:MPIRequirement:
-        nodes: {{ nodes }}
         ntasks: {{ ntasks }}

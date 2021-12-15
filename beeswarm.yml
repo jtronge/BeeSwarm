@@ -6,79 +6,29 @@ wfm_port: 8020
 tm_port: 7866
 bee_branch: 'beeswarm'
 ctr_archive: '${HOME}/.beeflow/container_archive'
+# LULESH scaling tests (numRanks needs to be number of nodes)
+# numRanks * nx * nx * nx
+# 0: 1 * 60 * 60 * 60
+# 1: (2 * 2 * 2) * 30 * 30 * 30 = 8 * 30 * 30 * 30
+# 2: (6 * 6 * 6) * 10 * 10 * 10 = 216 * 10 * 10 * 10
 scale_tests:
-  - name: 'comd-1-node-4-cores'
-    wfl_dir: './workflows/comd-mpi'
+  - name: 'lulesh-1-core'
+    wfl_dir: './workflows/lulesh-mpi'
     # Workflow params
     params:
-      container: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-      nodes: 1
-      ntasks: 4
+      container: 'jtronge/lulesh:mpi-no-openmp'
+      ntasks: 1
     template_files: ['comd.cwl']
     main_cwl: 'comd.cwl'
     # yaml: 'lulesh.yml'
     inputs:
-      i: 2
-      j: 2
-      k: 1
-      x: 40
-      y: 40
-      z: 40
-      pot_dir: "/CoMD/pots"
+      size: 60
+      iterations: 600
     container:
-      ctx_dir: 'containers/comd'
-      name: 'comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-      remote: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-      build_args:
-        COMMIT: '3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-  - name: 'comd-2-nodes-8-cores'
-    wfl_dir: './workflows/comd-mpi'
-    # Workflow params
-    params:
-      container: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-      nodes: 2
-      ntasks: 8
-    template_files: ['comd.cwl']
-    main_cwl: 'comd.cwl'
-    # yaml: 'lulesh.yml'
-    inputs:
-      i: 2
-      j: 2
-      k: 2
-      x: 40
-      y: 40
-      z: 40
-      pot_dir: "/CoMD/pots"
-    container:
-      ctx_dir: 'containers/comd'
-      name: 'comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-      remote: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-      build_args:
-        COMMIT: '3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-  - name: 'comd-4-nodes-16-cores'
-    wfl_dir: './workflows/comd-mpi'
-    # Workflow params
-    params:
-      container: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-      nodes: 4
-      ntasks: 16
-    template_files: ['comd.cwl']
-    main_cwl: 'comd.cwl'
-    # yaml: 'lulesh.yml'
-    inputs:
-      i: 4
-      j: 2
-      k: 2
-      x: 40
-      y: 40
-      z: 40
-      pot_dir: "/CoMD/pots"
-    container:
-      ctx_dir: 'containers/comd'
-      name: 'comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-      remote: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-      build_args:
-        COMMIT: '3d48396b77ca8caa3124bc2391f9139c3ffb556c'
+      ctx_dir: 'containers/lulesh'
+      name: 'lulesh:mpi-no-openmp'
+      remote: 'jtronge/lulesh:mpi-no-openmp'
+      build_args: {}
 private_key_data: ${PRIVATE_KEY_DATA}
 private_key_path: '${HOME}/key'
 cloud_conf_path: '$HOME/cloud.yml'
