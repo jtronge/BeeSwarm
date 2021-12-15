@@ -18,8 +18,8 @@ scale_tests:
     params:
       container: 'jtronge/lulesh:mpi-no-openmp'
       ntasks: 1
-    template_files: ['comd.cwl']
-    main_cwl: 'comd.cwl'
+    template_files: ['lulesh.cwl']
+    main_cwl: 'lulesh.cwl'
     # yaml: 'lulesh.yml'
     inputs:
       size: 60
