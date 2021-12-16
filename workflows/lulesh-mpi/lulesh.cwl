@@ -39,4 +39,4 @@ steps:
         ntasks: {{ ntasks }}
       # Collect these files and send then back to the WFM
       beeflow:CollectRequirement:
-        files: "$HOME/.beeflow/workflows/*/*.out,$HOME/.beeflow/workflows/*/*.err"
+        files: "$HOME/.beeflow/workflows/*/*/*.out,$HOME/.beeflow/workflows/*/*/*.err"
