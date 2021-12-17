@@ -1,0 +1,28 @@
+creating new image /tmp/jtronge%lulesh:mpi-no-openmp
+/tmp/jtronge%lulesh:mpi-no-openmp unpacked ok
+Running problem size 60^3 per domain until completion
+Num processors: 1
+Total number of elements: 216000 
+
+To run other sizes, use -s <integer>.
+To run a fixed number of iterations, use -i <integer>.
+To run a more or less balanced region set, use -b <integer>.
+To change the relative costs of regions, use -c <integer>.
+To print out progress, use -p
+To write an output file for VisIt, use -v
+See help (-h) for more options
+
+Run completed:
+   Problem size        =  60
+   MPI tasks           =  1
+   Iteration count     =  600
+   Final Origin Energy =  2.505273e+06
+   Testing Plane 0 of Energy Array on rank 0:
+        MaxAbsDiff   = 7.566996e-10
+        TotalAbsDiff = 6.386309e-09
+        MaxRelDiff   = 3.300332e-12
+
+Elapsed time         =    1.3e+02 (s)
+Grind time (us/z/c)  =  1.0108983 (per dom)  ( 131.01242 overall)
+FOM                  =  989.21917 (z/s)
+

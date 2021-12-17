@@ -1,0 +1,299 @@
+slurmstepd-bee-node0: error: couldn't chdir to `/bee/BEE_Private': No such file or directory: going to /tmp instead
+/var/spool/slurmd/job00004/slurm_script: line 6: module: command not found
+mkdir: cannot create directory ‘/tmp/jtronge%lulesh:mpi-no-openmp’: File exists
+mkdir: cannot create directory ‘/tmp/jtronge%lulesh:mpi-no-openmp’: File exists
+mkdir: cannot create directory ‘/tmp/jtronge%lulesh:mpi-no-openmp’: File exists
+mkdir: cannot create directory ‘/tmp/jtronge%lulesh:mpi-no-openmp’: File exists
+mkdir: cannot create directory ‘/tmp/jtronge%lulesh:mpi-no-openmp’: File exists
+mkdir: cannot create directory ‘/tmp/jtronge%lulesh:mpi-no-openmp’: File exists
+mkdir: cannot create directory ‘/tmp/jtronge%lulesh:mpi-no-openmp’: File exists
+mkdir: cannot create directory ‘/tmp/jtronge%lulesh:mpi-no-openmp’: File exists
+mkdir: cannot create directory ‘/tmp/jtronge%lulesh:mpi-no-openmp’: File exists
+mkdir: cannot create directory ‘/tmp/jtronge%lulesh:mpi-no-openmp’: File exists
+mkdir: cannot create directory ‘/tmp/jtronge%lulesh:mpi-no-openmp’: File exists
+mkdir: cannot create directory ‘/tmp/jtronge%lulesh:mpi-no-openmp’: File exists
+mkdir: cannot create directory ‘/tmp/jtronge%lulesh:mpi-no-openmp’: File exists
+mkdir: cannot create directory ‘/tmp/jtronge%lulesh:mpi-no-openmp’: File exists
+mkdir: cannot create directory ‘/tmp/jtronge%lulesh:mpi-no-openmp’: File exists
+mkdir: cannot create directory ‘/tmp/jtronge%lulesh:mpi-no-openmp’: File exists
+mkdir: cannot create directory ‘/tmp/jtronge%lulesh:mpi-no-openmp’: File exists
+mkdir: cannot create directory ‘/tmp/jtronge%lulesh:mpi-no-openmp’: File exists
+mkdir: cannot create directory ‘/tmp/jtronge%lulesh:mpi-no-openmp’: File exists
+mkdir: cannot create directory ‘/tmp/jtronge%lulesh:mpi-no-openmp’: File exists
+mkdir: cannot create directory ‘/tmp/jtronge%lulesh:mpi-no-openmp’: File exists
+mkdir: cannot create directory ‘/tmp/jtronge%lulesh:mpi-no-openmp’: File exists
+mkdir: cannot create directory ‘/tmp/jtronge%lulesh:mpi-no-openmp’: File exists
+mkdir: cannot create directory ‘/tmp/jtronge%lulesh:mpi-no-openmp’: File exists
+mkdir: cannot create directory ‘/tmp/jtronge%lulesh:mpi-no-openmp’: File exists
+mkdir: cannot create directory ‘/tmp/jtronge%lulesh:mpi-no-openmp’: File exists
+srun: error: bee-node0: tasks 0-21,23-26: Exited with exit code 1
+[bee-node0:14576] PMIX ERROR: ERROR in file ../../../../../../src/mca/gds/ds12/gds_ds12_lock_pthread.c at line 168
+[bee-node0:14554] PMIX ERROR: ERROR in file ../../../../../../src/mca/gds/ds12/gds_ds12_lock_pthread.c at line 168
+[bee-node0:14563] PMIX ERROR: ERROR in file ../../../../../../src/mca/gds/ds12/gds_ds12_lock_pthread.c at line 168
+[bee-node0:14559] PMIX ERROR: ERROR in file ../../../../../../src/mca/gds/ds12/gds_ds12_lock_pthread.c at line 168
+[bee-node0:14551] PMIX ERROR: ERROR in file ../../../../../../src/mca/gds/ds12/gds_ds12_lock_pthread.c at line 168
+[bee-node0:14552] PMIX ERROR: ERROR in file ../../../../../../src/mca/gds/ds12/gds_ds12_lock_pthread.c at line 168
+[bee-node0:14553] PMIX ERROR: ERROR in file ../../../../../../src/mca/gds/ds12/gds_ds12_lock_pthread.c at line 168
+[bee-node0:14555] PMIX ERROR: ERROR in file ../../../../../../src/mca/gds/ds12/gds_ds12_lock_pthread.c at line 168
+[bee-node0:14550] PMIX ERROR: ERROR in file ../../../../../../src/mca/gds/ds12/gds_ds12_lock_pthread.c at line 168
+[bee-node0:14569] PMIX ERROR: ERROR in file ../../../../../../src/mca/gds/ds12/gds_ds12_lock_pthread.c at line 168
+[bee-node0:14556] PMIX ERROR: ERROR in file ../../../../../../src/mca/gds/ds12/gds_ds12_lock_pthread.c at line 168
+[bee-node0:14564] PMIX ERROR: ERROR in file ../../../../../../src/mca/gds/ds12/gds_ds12_lock_pthread.c at line 168
+[bee-node0:14574] PMIX ERROR: ERROR in file ../../../../../../src/mca/gds/ds12/gds_ds12_lock_pthread.c at line 168
+[bee-node0:14570] PMIX ERROR: ERROR in file ../../../../../../src/mca/gds/ds12/gds_ds12_lock_pthread.c at line 168
+[bee-node0:14561] PMIX ERROR: ERROR in file ../../../../../../src/mca/gds/ds12/gds_ds12_lock_pthread.c at line 168
+[bee-node0:14566] PMIX ERROR: ERROR in file ../../../../../../src/mca/gds/ds12/gds_ds12_lock_pthread.c at line 168
+[bee-node0:14557] PMIX ERROR: ERROR in file ../../../../../../src/mca/gds/ds12/gds_ds12_lock_pthread.c at line 168
+[bee-node0:14572] PMIX ERROR: ERROR in file ../../../../../../src/mca/gds/ds12/gds_ds12_lock_pthread.c at line 168
+[bee-node0:14575] PMIX ERROR: ERROR in file ../../../../../../src/mca/gds/ds12/gds_ds12_lock_pthread.c at line 168
+[bee-node0:14558] PMIX ERROR: ERROR in file ../../../../../../src/mca/gds/ds12/gds_ds12_lock_pthread.c at line 168
+[bee-node0:14562] PMIX ERROR: ERROR in file ../../../../../../src/mca/gds/ds12/gds_ds12_lock_pthread.c at line 168
+[bee-node0:14571] PMIX ERROR: ERROR in file ../../../../../../src/mca/gds/ds12/gds_ds12_lock_pthread.c at line 168
+[bee-node0:14568] PMIX ERROR: ERROR in file ../../../../../../src/mca/gds/ds12/gds_ds12_lock_pthread.c at line 168
+[bee-node0:14565] PMIX ERROR: ERROR in file ../../../../../../src/mca/gds/ds12/gds_ds12_lock_pthread.c at line 168
+[bee-node0:14567] PMIX ERROR: ERROR in file ../../../../../../src/mca/gds/ds12/gds_ds12_lock_pthread.c at line 168
+[bee-node0:14560] PMIX ERROR: ERROR in file ../../../../../../src/mca/gds/ds12/gds_ds12_lock_pthread.c at line 168
+[bee-node0:14573] PMIX ERROR: ERROR in file ../../../../../../src/mca/gds/ds12/gds_ds12_lock_pthread.c at line 168
+--------------------------------------------------------------------------
+WARNING: The default btl_vader_single_copy_mechanism CMA is
+not available due to different user namespaces.
+
+The vader shared memory BTL will fall back on another single-copy
+mechanism if one is available. This may result in lower performance.
+
+  Local host: bee-node0
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+WARNING: The default btl_vader_single_copy_mechanism CMA is
+not available due to different user namespaces.
+
+The vader shared memory BTL will fall back on another single-copy
+mechanism if one is available. This may result in lower performance.
+
+  Local host: bee-node0
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+WARNING: The default btl_vader_single_copy_mechanism CMA is
+not available due to different user namespaces.
+
+The vader shared memory BTL will fall back on another single-copy
+mechanism if one is available. This may result in lower performance.
+
+  Local host: bee-node0
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+WARNING: The default btl_vader_single_copy_mechanism CMA is
+not available due to different user namespaces.
+
+The vader shared memory BTL will fall back on another single-copy
+mechanism if one is available. This may result in lower performance.
+
+  Local host: bee-node0
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+WARNING: The default btl_vader_single_copy_mechanism CMA is
+not available due to different user namespaces.
+
+The vader shared memory BTL will fall back on another single-copy
+mechanism if one is available. This may result in lower performance.
+
+  Local host: bee-node0
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+WARNING: The default btl_vader_single_copy_mechanism CMA is
+not available due to different user namespaces.
+
+The vader shared memory BTL will fall back on another single-copy
+mechanism if one is available. This may result in lower performance.
+
+  Local host: bee-node0
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+WARNING: The default btl_vader_single_copy_mechanism CMA is
+not available due to different user namespaces.
+
+The vader shared memory BTL will fall back on another single-copy
+mechanism if one is available. This may result in lower performance.
+
+  Local host: bee-node0
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+WARNING: The default btl_vader_single_copy_mechanism CMA is
+not available due to different user namespaces.
+
+The vader shared memory BTL will fall back on another single-copy
+mechanism if one is available. This may result in lower performance.
+
+  Local host: bee-node0
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+WARNING: The default btl_vader_single_copy_mechanism CMA is
+not available due to different user namespaces.
+
+The vader shared memory BTL will fall back on another single-copy
+mechanism if one is available. This may result in lower performance.
+
+  Local host: bee-node0
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+WARNING: The default btl_vader_single_copy_mechanism CMA is
+not available due to different user namespaces.
+
+The vader shared memory BTL will fall back on another single-copy
+mechanism if one is available. This may result in lower performance.
+
+  Local host: bee-node0
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+WARNING: The default btl_vader_single_copy_mechanism CMA is
+not available due to different user namespaces.
+
+The vader shared memory BTL will fall back on another single-copy
+mechanism if one is available. This may result in lower performance.
+
+  Local host: bee-node0
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+WARNING: The default btl_vader_single_copy_mechanism CMA is
+not available due to different user namespaces.
+
+The vader shared memory BTL will fall back on another single-copy
+mechanism if one is available. This may result in lower performance.
+
+  Local host: bee-node0
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+WARNING: The default btl_vader_single_copy_mechanism CMA is
+not available due to different user namespaces.
+
+The vader shared memory BTL will fall back on another single-copy
+mechanism if one is available. This may result in lower performance.
+
+  Local host: bee-node0
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+WARNING: The default btl_vader_single_copy_mechanism CMA is
+not available due to different user namespaces.
+
+The vader shared memory BTL will fall back on another single-copy
+mechanism if one is available. This may result in lower performance.
+
+  Local host: bee-node0
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+WARNING: The default btl_vader_single_copy_mechanism CMA is
+not available due to different user namespaces.
+
+The vader shared memory BTL will fall back on another single-copy
+mechanism if one is available. This may result in lower performance.
+
+  Local host: bee-node0
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+WARNING: The default btl_vader_single_copy_mechanism CMA is
+not available due to different user namespaces.
+
+The vader shared memory BTL will fall back on another single-copy
+mechanism if one is available. This may result in lower performance.
+
+  Local host: bee-node0
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+WARNING: The default btl_vader_single_copy_mechanism CMA is
+not available due to different user namespaces.
+
+The vader shared memory BTL will fall back on another single-copy
+mechanism if one is available. This may result in lower performance.
+
+  Local host: bee-node0
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+WARNING: The default btl_vader_single_copy_mechanism CMA is
+not available due to different user namespaces.
+
+The vader shared memory BTL will fall back on another single-copy
+mechanism if one is available. This may result in lower performance.
+
+  Local host: bee-node0
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+WARNING: The default btl_vader_single_copy_mechanism CMA is
+not available due to different user namespaces.
+
+The vader shared memory BTL will fall back on another single-copy
+mechanism if one is available. This may result in lower performance.
+
+  Local host: bee-node0
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+WARNING: The default btl_vader_single_copy_mechanism CMA is
+not available due to different user namespaces.
+
+The vader shared memory BTL will fall back on another single-copy
+mechanism if one is available. This may result in lower performance.
+
+  Local host: bee-node0
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+WARNING: The default btl_vader_single_copy_mechanism CMA is
+not available due to different user namespaces.
+
+The vader shared memory BTL will fall back on another single-copy
+mechanism if one is available. This may result in lower performance.
+
+  Local host: bee-node0
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+WARNING: The default btl_vader_single_copy_mechanism CMA is
+not available due to different user namespaces.
+
+The vader shared memory BTL will fall back on another single-copy
+mechanism if one is available. This may result in lower performance.
+
+  Local host: bee-node0
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+WARNING: The default btl_vader_single_copy_mechanism CMA is
+not available due to different user namespaces.
+
+The vader shared memory BTL will fall back on another single-copy
+mechanism if one is available. This may result in lower performance.
+
+  Local host: bee-node0
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+WARNING: The default btl_vader_single_copy_mechanism CMA is
+not available due to different user namespaces.
+
+The vader shared memory BTL will fall back on another single-copy
+mechanism if one is available. This may result in lower performance.
+
+  Local host: bee-node0
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+WARNING: The default btl_vader_single_copy_mechanism CMA is
+not available due to different user namespaces.
+
+The vader shared memory BTL will fall back on another single-copy
+mechanism if one is available. This may result in lower performance.
+
+  Local host: bee-node0
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+WARNING: The default btl_vader_single_copy_mechanism CMA is
+not available due to different user namespaces.
+
+The vader shared memory BTL will fall back on another single-copy
+mechanism if one is available. This may result in lower performance.
+
+  Local host: bee-node0
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+WARNING: The default btl_vader_single_copy_mechanism CMA is
+not available due to different user namespaces.
+
+The vader shared memory BTL will fall back on another single-copy
+mechanism if one is available. This may result in lower performance.
+
+  Local host: bee-node0
+--------------------------------------------------------------------------
