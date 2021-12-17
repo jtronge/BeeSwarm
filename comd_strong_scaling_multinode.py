@@ -33,5 +33,5 @@ for profile in profiles:
 fig, ax = plt.subplots()
 ax.plot(x_axis, y_axis)
 ax.set_ylabel('Execution time (s)')
-ax.set_title('CoMD Strong Scaling Test - Multiple Nodes (n1-standard-4)')
+# ax.set_title('CoMD Strong Scaling Test - Multiple Nodes (n1-standard-4)')
 plt.show()
