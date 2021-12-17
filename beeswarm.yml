@@ -30,6 +30,74 @@ scale_tests:
       name: 'lulesh:mpi-no-openmp'
       remote: 'jtronge/lulesh:mpi-no-openmp'
       build_args: {}
+  - name: 'lulesh-8-core'
+    wfl_dir: './workflows/lulesh-mpi'
+    # Workflow params
+    params:
+      container: 'jtronge/lulesh:mpi-no-openmp'
+      ntasks: 8
+    template_files: ['lulesh.cwl']
+    main_cwl: 'lulesh.cwl'
+    # yaml: 'lulesh.yml'
+    inputs:
+      size: 60
+      iterations: 600
+    container:
+      ctx_dir: 'containers/lulesh'
+      name: 'lulesh:mpi-no-openmp'
+      remote: 'jtronge/lulesh:mpi-no-openmp'
+      build_args: {}
+  - name: 'lulesh-27-core'
+    wfl_dir: './workflows/lulesh-mpi'
+    # Workflow params
+    params:
+      container: 'jtronge/lulesh:mpi-no-openmp'
+      ntasks: 27
+    template_files: ['lulesh.cwl']
+    main_cwl: 'lulesh.cwl'
+    # yaml: 'lulesh.yml'
+    inputs:
+      size: 60
+      iterations: 600
+    container:
+      ctx_dir: 'containers/lulesh'
+      name: 'lulesh:mpi-no-openmp'
+      remote: 'jtronge/lulesh:mpi-no-openmp'
+      build_args: {}
+  - name: 'lulesh-64-core'
+    wfl_dir: './workflows/lulesh-mpi'
+    # Workflow params
+    params:
+      container: 'jtronge/lulesh:mpi-no-openmp'
+      ntasks: 64
+    template_files: ['lulesh.cwl']
+    main_cwl: 'lulesh.cwl'
+    # yaml: 'lulesh.yml'
+    inputs:
+      size: 60
+      iterations: 600
+    container:
+      ctx_dir: 'containers/lulesh'
+      name: 'lulesh:mpi-no-openmp'
+      remote: 'jtronge/lulesh:mpi-no-openmp'
+      build_args: {}
+  - name: 'lulesh-125-core'
+    wfl_dir: './workflows/lulesh-mpi'
+    # Workflow params
+    params:
+      container: 'jtronge/lulesh:mpi-no-openmp'
+      ntasks: 125
+    template_files: ['lulesh.cwl']
+    main_cwl: 'lulesh.cwl'
+    # yaml: 'lulesh.yml'
+    inputs:
+      size: 60
+      iterations: 600
+    container:
+      ctx_dir: 'containers/lulesh'
+      name: 'lulesh:mpi-no-openmp'
+      remote: 'jtronge/lulesh:mpi-no-openmp'
+      build_args: {}
 private_key_data: ${PRIVATE_KEY_DATA}
 private_key_path: '${HOME}/key'
 cloud_conf_path: '$HOME/cloud.yml'
