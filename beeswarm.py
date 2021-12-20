@@ -205,19 +205,38 @@ def expand_package_workflow(wfl_path, params, template_files, yml_data):
     return tarball, yml_file
 
 
+class Log:
+    """Simple log class for timing information."""
+
+    def __init__(self, fname):
+        """Log constructor."""
+        self.fp = open(fname, 'w')
+
+    def log(self, info):
+        """Log some info with a timestamp."""
+        print('{}:{}\n'.format(time.time(), info), file=self.fp)
+
+
 def scale_tests(args):
     """Run the configured scale tests."""
     parser = argparse.ArgumentParser(description='run configured scale tests')
     # parser.add_argument('--cloud-conf-path', required=True, help='path to cloud config file')
     args = parser.parse_args(args)
 
+    log = Log(conf['time_log'])
     # Start running BEE
+    log.log('bee_init_start')
     # bee = BEEManager(cloud_conf_path=args.cloud_conf_path)
     bee = BEEManager()
     bee.start()
+    log.log('bee_init_end')
 
     # Run each scale test as configured
+    log.log('scale_tests_start')
     for test in conf['scale_tests']:
+        wfl_name = test['name']
+        log.log('scale_test_start|{}'.format(wfl_name))
+        log.log('scale_test_container_build_start|{}'.format(wfl_name))
         # Build and push the container
         ctx_dir = test['container']['ctx_dir']
         name = test['container']['name']
@@ -226,24 +245,32 @@ def scale_tests(args):
         # build_container(ctx_dir, name, remote)
         if 'remote' in test['container']:
             ctr.push(test['container']['remote'])
+        log.log('scale_test_container_build_end|{}'.format(wfl_name))
 
         # Expand and generate the workflow
+        log.log('scale_test_workflow_prep_start|{}'.format(wfl_name))
         wfl_dir = test['wfl_dir']
         params = test['params']
         template_files = test['template_files']
         # Note 'inputs' used to be called 'yaml'
         yml_data = test['inputs']
         wfl_tarball, yml_file = expand_package_workflow(wfl_dir, params, template_files, yml_data)
+        log.log('scale_test_workflow_prep_end|{}'.format(wfl_name))
 
         # Run the workflow
-        wfl_name = test['name']
+        log.log('scale_test_workflow_exec_start|{}'.format(wfl_name))
         main_cwl = test['main_cwl']
         bee.run_workflow(wfl_name, wfl_tarball, main_cwl, yml_file)
+        log.log('scale_test_workflow_exec_end|{}'.format(wfl_name))
 
         # Save results
         # TODO: for now this is done by git in the outer script
+        log.log('scale_test_end|{}'.format(wfl_name))
+    log.log('scale_tests_end')
 
+    log.log('bee_shutdown_start')
     bee.shutdown()
+    log.log('bee_shutdown_end')
 
 
 def sub_env(param):

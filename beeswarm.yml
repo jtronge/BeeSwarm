@@ -1,4 +1,5 @@
 test_name: 'lulesh-run'
+time_log: 'time-log-lulesh-openmp.txt'
 email: jtronge@kent.edu
 name: 'Jake Tronge'
 beeswarm_repo_owner: jtronge
@@ -13,12 +14,13 @@ ctr_archive: '${HOME}/.beeflow/container_archive'
 # 1: (2 * 2 * 2) * 30 * 30 * 30 = 8 * 30 * 30 * 30
 # 2: (6 * 6 * 6) * 10 * 10 * 10 = 216 * 10 * 10 * 10
 scale_tests:
-  - name: 'lulesh-1-core'
+  - name: 'lulesh-openmp-2-core'
     wfl_dir: './workflows/lulesh-mpi'
     # Workflow params
     params:
-      container: 'jtronge/lulesh:mpi-no-openmp'
+      container: 'jtronge/lulesh:openmp'
       ntasks: 1
+      nodelist: bee-node0
     template_files: ['lulesh.cwl']
     main_cwl: 'lulesh.cwl'
     # yaml: 'lulesh.yml'
@@ -27,15 +29,17 @@ scale_tests:
       iterations: 600
     container:
       ctx_dir: 'containers/lulesh'
-      name: 'lulesh:mpi-no-openmp'
-      remote: 'jtronge/lulesh:mpi-no-openmp'
-      build_args: {}
-  - name: 'lulesh-8-core'
+      name: 'lulesh:openmp'
+      remote: 'jtronge/lulesh:openmp'
+      build_args:
+        WITH_OPENMP: TRUE
+  - name: 'lulesh-openmp-4-core'
     wfl_dir: './workflows/lulesh-mpi'
     # Workflow params
     params:
-      container: 'jtronge/lulesh:mpi-no-openmp'
-      ntasks: 8
+      container: 'jtronge/lulesh:openmp'
+      ntasks: 1
+      nodelist: bee-node1
     template_files: ['lulesh.cwl']
     main_cwl: 'lulesh.cwl'
     # yaml: 'lulesh.yml'
@@ -44,15 +48,17 @@ scale_tests:
       iterations: 600
     container:
       ctx_dir: 'containers/lulesh'
-      name: 'lulesh:mpi-no-openmp'
-      remote: 'jtronge/lulesh:mpi-no-openmp'
-      build_args: {}
-  - name: 'lulesh-27-core'
+      name: 'lulesh:openmp'
+      remote: 'jtronge/lulesh:openmp'
+      build_args:
+        WITH_OPENMP: TRUE
+  - name: 'lulesh-openmp-8-core'
     wfl_dir: './workflows/lulesh-mpi'
     # Workflow params
     params:
-      container: 'jtronge/lulesh:mpi-no-openmp'
-      ntasks: 27
+      container: 'jtronge/lulesh:openmp'
+      ntasks: 1
+      nodelist: bee-node2
     template_files: ['lulesh.cwl']
     main_cwl: 'lulesh.cwl'
     # yaml: 'lulesh.yml'
@@ -61,15 +67,17 @@ scale_tests:
       iterations: 600
     container:
       ctx_dir: 'containers/lulesh'
-      name: 'lulesh:mpi-no-openmp'
-      remote: 'jtronge/lulesh:mpi-no-openmp'
-      build_args: {}
-  - name: 'lulesh-64-core'
+      name: 'lulesh:openmp'
+      remote: 'jtronge/lulesh:openmp'
+      build_args:
+        WITH_OPENMP: TRUE
+  - name: 'lulesh-openmp-16-core'
     wfl_dir: './workflows/lulesh-mpi'
     # Workflow params
     params:
-      container: 'jtronge/lulesh:mpi-no-openmp'
-      ntasks: 64
+      container: 'jtronge/lulesh:openmp'
+      ntasks: 1
+      nodelist: bee-node3
     template_files: ['lulesh.cwl']
     main_cwl: 'lulesh.cwl'
     # yaml: 'lulesh.yml'
@@ -78,26 +86,12 @@ scale_tests:
       iterations: 600
     container:
       ctx_dir: 'containers/lulesh'
-      name: 'lulesh:mpi-no-openmp'
-      remote: 'jtronge/lulesh:mpi-no-openmp'
-      build_args: {}
-  - name: 'lulesh-125-core'
-    wfl_dir: './workflows/lulesh-mpi'
-    # Workflow params
-    params:
-      container: 'jtronge/lulesh:mpi-no-openmp'
-      ntasks: 125
-    template_files: ['lulesh.cwl']
-    main_cwl: 'lulesh.cwl'
-    # yaml: 'lulesh.yml'
-    inputs:
-      size: 60
-      iterations: 600
-    container:
-      ctx_dir: 'containers/lulesh'
-      name: 'lulesh:mpi-no-openmp'
-      remote: 'jtronge/lulesh:mpi-no-openmp'
-      build_args: {}
+      name: 'lulesh:openmp'
+      remote: 'jtronge/lulesh:openmp'
+      build_args:
+        WITH_OPENMP: TRUE
+private_key_data: ${PRIVATE_KEY_DATA}
+private_key_path: '${HOME}/key'
 private_key_data: ${PRIVATE_KEY_DATA}
 private_key_path: '${HOME}/key'
 cloud_conf_path: '$HOME/cloud.yml'
