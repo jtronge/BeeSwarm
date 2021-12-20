@@ -37,7 +37,7 @@ steps:
         dockerPull: "{{ container }}"
       beeflow:MPIRequirement:
         ntasks: {{ ntasks }}
-        nodelist: {{ nodelist }}
+        cpus_per_task: {{ cpus_per_task }}
       # Collect these files and send then back to the WFM
       beeflow:CollectRequirement:
         files: "$HOME/.beeflow/workflows/*/*/*.out,$HOME/.beeflow/workflows/*/*/*.err"
