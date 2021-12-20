@@ -17,7 +17,7 @@ git fetch
 git checkout results
 RESULTS_DIR=results/`beeswarm.py cfg -k test_name`
 mkdir -p $RESULTS_DIR
-cp `beeswarm.py cfg -k time_log` $RESULTS_DIR
+cp *.log $RESULTS_DIR
 cp ~/.beeflow/*.json $RESULTS_DIR
 git add $RESULTS_DIR
 git commit -am "BeeSwarm test results: `date +%F_%T`"

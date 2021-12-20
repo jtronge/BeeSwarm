@@ -1,5 +1,5 @@
 test_name: 'lulesh-run'
-time_log: 'time-log-lulesh-openmp.txt'
+time_log: 'time-log-lulesh-openmp.log'
 email: jtronge@kent.edu
 name: 'Jake Tronge'
 beeswarm_repo_owner: jtronge
