@@ -1,0 +1,4 @@
+{
+    "lulesh-0b29a6e9-ecc6-4955-8adf-41b529e3cbd8.out": "",
+    "lulesh-0b29a6e9-ecc6-4955-8adf-41b529e3cbd8.err": "slurmstepd-bee-node0: error: couldn't chdir to `/bee/BEE_Private': No such file or directory: going to /tmp instead\n/var/spool/slurmd/job00002/slurm_script: line 7: module: command not found\n"
+}
