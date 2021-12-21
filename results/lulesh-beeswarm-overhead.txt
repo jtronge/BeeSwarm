@@ -1,0 +1,5 @@
+Average scale test time: 216.56399750709534
+Average container build time: 89.36212050914764
+BEE init time: 18.019662380218506
+BEE shutdown time: 0.018732309341430664
+Total time: 884.2944624423981
