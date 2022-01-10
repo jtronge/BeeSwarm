@@ -1,5 +1,5 @@
-test_name: 'lulesh-run'
-time_log: 'time-log-comd-run-2.log'
+test_name: 'nwchem-run'
+time_log: 'time-log-nwchem.log'
 email: jtronge@kent.edu
 name: 'Jake Tronge'
 beeswarm_repo_owner: jtronge
@@ -9,126 +9,127 @@ tm_port: 7866
 bee_branch: 'beeswarm'
 ctr_archive: '${HOME}/.beeflow/container_archive'
 scale_tests:
-  - name: 'run-2_comd-1'
-    wfl_dir: './workflows/comd-mpi'
+  - name: 'nwchem-run-1'
+    wfl_dir: './workflows/nwchem-mpi'
     # Workflow params
     params:
-      container: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
+      container: 'jtronge/nwchem'
       nodes: 1
       ntasks: 1
-    template_files: ['comd.cwl']
-    main_cwl: 'comd.cwl'
+    template_files: ['nwchem.cwl']
+    main_cwl: 'nwchem.cwl'
     # yaml: 'lulesh.yml'
     inputs:
-      i: 1
-      j: 1
-      k: 1
-      x: 80
-      y: 80
-      z: 80
-      pot_dir: "/CoMD/pots"
-    container:
-      ctx_dir: 'containers/comd'
-      name: 'comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-      remote: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-      build_args:
-        COMMIT: '3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-  - name: 'run-2_comd-2'
-    wfl_dir: './workflows/comd-mpi'
-    # Workflow params
-    params:
-      container: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-      nodes: 1
-      ntasks: 2
-    template_files: ['comd.cwl']
-    main_cwl: 'comd.cwl'
-    # yaml: 'lulesh.yml'
-    inputs:
-      i: 2
-      j: 1
-      k: 1
-      x: 80
-      y: 80
-      z: 80
-      pot_dir: "/CoMD/pots"
-    container:
-      ctx_dir: 'containers/comd'
-      name: 'comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-      remote: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-      build_args:
-        COMMIT: '3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-  - name: 'run-2_comd-4'
-    wfl_dir: './workflows/comd-mpi'
-    # Workflow params
-    params:
-      container: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-      nodes: 1
-      ntasks: 4
-    template_files: ['comd.cwl']
-    main_cwl: 'comd.cwl'
-    # yaml: 'lulesh.yml'
-    inputs:
-      i: 2
-      j: 2
-      k: 1
-      x: 80
-      y: 80
-      z: 80
-      pot_dir: "/CoMD/pots"
-    container:
-      ctx_dir: 'containers/comd'
-      name: 'comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-      remote: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-      build_args:
-        COMMIT: '3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-  - name: 'run-2_comd-8'
-    wfl_dir: './workflows/comd-mpi'
-    # Workflow params
-    params:
-      container: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-      nodes: 1
-      ntasks: 8
-    template_files: ['comd.cwl']
-    main_cwl: 'comd.cwl'
-    # yaml: 'lulesh.yml'
-    inputs:
-      i: 2
-      j: 2
-      k: 2
-      x: 80
-      y: 80
-      z: 80
-      pot_dir: "/CoMD/pots"
-    container:
-      ctx_dir: 'containers/comd'
-      name: 'comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-      remote: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-      build_args:
-        COMMIT: '3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-  - name: 'run-2_comd-16'
-    wfl_dir: './workflows/comd-mpi'
-    # Workflow params
-    params:
-      container: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-      nodes: 1
-      ntasks: 16
-    template_files: ['comd.cwl']
-    main_cwl: 'comd.cwl'
-    # yaml: 'lulesh.yml'
-    inputs:
-      i: 4
-      j: 2
-      k: 2
-      x: 80
-      y: 80
-      z: 80
-      pot_dir: "/CoMD/pots"
-    container:
-      ctx_dir: 'containers/comd'
-      name: 'comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-      remote: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-      build_args:
-        COMMIT: '3d48396b77ca8caa3124bc2391f9139c3ffb556c'
+      nw_file: "/nwchem/examples/tcepolar/ccsd_polar_small.nw"
+      #i: 1
+      #j: 1
+      #k: 1
+      #x: 80
+      #y: 80
+      #z: 80
+      #pot_dir: "/CoMD/pots"
+    #container:
+    #  ctx_dir: 'containers/comd'
+    #  name: 'comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
+    #  remote: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
+    #  build_args:
+    #    COMMIT: '3d48396b77ca8caa3124bc2391f9139c3ffb556c'
+  #- name: 'run-2_comd-2'
+  #  wfl_dir: './workflows/comd-mpi'
+  #  # Workflow params
+  #  params:
+  #    container: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
+  #    nodes: 1
+  #    ntasks: 2
+  #  template_files: ['comd.cwl']
+  #  main_cwl: 'comd.cwl'
+  #  # yaml: 'lulesh.yml'
+  #  inputs:
+  #    i: 2
+  #    j: 1
+  #    k: 1
+  #    x: 80
+  #    y: 80
+  #    z: 80
+  #    pot_dir: "/CoMD/pots"
+  #  container:
+  #    ctx_dir: 'containers/comd'
+  #    name: 'comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
+  #    remote: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
+  #    build_args:
+  #      COMMIT: '3d48396b77ca8caa3124bc2391f9139c3ffb556c'
+  #- name: 'run-2_comd-4'
+  #  wfl_dir: './workflows/comd-mpi'
+  #  # Workflow params
+  #  params:
+  #    container: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
+  #    nodes: 1
+  #    ntasks: 4
+  #  template_files: ['comd.cwl']
+  #  main_cwl: 'comd.cwl'
+  #  # yaml: 'lulesh.yml'
+  #  inputs:
+  #    i: 2
+  #    j: 2
+  #    k: 1
+  #    x: 80
+  #    y: 80
+  #    z: 80
+  #    pot_dir: "/CoMD/pots"
+  #  container:
+  #    ctx_dir: 'containers/comd'
+  #    name: 'comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
+  #    remote: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
+  #    build_args:
+  #      COMMIT: '3d48396b77ca8caa3124bc2391f9139c3ffb556c'
+  #- name: 'run-2_comd-8'
+  #  wfl_dir: './workflows/comd-mpi'
+  #  # Workflow params
+  #  params:
+  #    container: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
+  #    nodes: 1
+  #    ntasks: 8
+  #  template_files: ['comd.cwl']
+  #  main_cwl: 'comd.cwl'
+  #  # yaml: 'lulesh.yml'
+  #  inputs:
+  #    i: 2
+  #    j: 2
+  #    k: 2
+  #    x: 80
+  #    y: 80
+  #    z: 80
+  #    pot_dir: "/CoMD/pots"
+  #  container:
+  #    ctx_dir: 'containers/comd'
+  #    name: 'comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
+  #    remote: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
+  #    build_args:
+  #      COMMIT: '3d48396b77ca8caa3124bc2391f9139c3ffb556c'
+  #- name: 'run-2_comd-16'
+  #  wfl_dir: './workflows/comd-mpi'
+  #  # Workflow params
+  #  params:
+  #    container: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
+  #    nodes: 1
+  #    ntasks: 16
+  #  template_files: ['comd.cwl']
+  #  main_cwl: 'comd.cwl'
+  #  # yaml: 'lulesh.yml'
+  #  inputs:
+  #    i: 4
+  #    j: 2
+  #    k: 2
+  #    x: 80
+  #    y: 80
+  #    z: 80
+  #    pot_dir: "/CoMD/pots"
+  #  container:
+  #    ctx_dir: 'containers/comd'
+  #    name: 'comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
+  #    remote: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
+  #    build_args:
+  #      COMMIT: '3d48396b77ca8caa3124bc2391f9139c3ffb556c'
 private_key_data: ${PRIVATE_KEY_DATA}
 private_key_path: '${HOME}/key'
 private_key_data: ${PRIVATE_KEY_DATA}

@@ -238,14 +238,15 @@ def scale_tests(args):
         log.log('scale_test_start|{}'.format(wfl_name))
         log.log('scale_test_container_build_start|{}'.format(wfl_name))
         # Build and push the container
-        ctx_dir = test['container']['ctx_dir']
-        name = test['container']['name']
-        ctr = Container(ctx_dir, name)
-        ctr.build(**test['container']['build_args'])
-        # build_container(ctx_dir, name, remote)
-        if 'remote' in test['container']:
-            ctr.push(test['container']['remote'])
-        log.log('scale_test_container_build_end|{}'.format(wfl_name))
+        if 'container' in test:
+            ctx_dir = test['container']['ctx_dir']
+            name = test['container']['name']
+            ctr = Container(ctx_dir, name)
+            ctr.build(**test['container']['build_args'])
+            # build_container(ctx_dir, name, remote)
+            if 'remote' in test['container']:
+                ctr.push(test['container']['remote'])
+            log.log('scale_test_container_build_end|{}'.format(wfl_name))
 
         # Expand and generate the workflow
         log.log('scale_test_workflow_prep_start|{}'.format(wfl_name))
