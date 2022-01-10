@@ -26,7 +26,7 @@ steps:
           type: stdout
     in:
       nw_file: nw_file
-    out: [nwchem_stdout]
+    out: [nw_stdout]
     hints:
       DockerRequirement:
         dockerPull: "{{ container }}"
