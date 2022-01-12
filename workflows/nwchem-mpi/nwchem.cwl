@@ -20,7 +20,7 @@ steps:
         nw_file:
           type: string
           inputBinding:
-            position: 0
+            position: 1
       outputs:
         nw_stdout:
           type: stdout
