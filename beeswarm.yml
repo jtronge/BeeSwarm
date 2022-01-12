@@ -15,7 +15,7 @@ scale_tests:
     params:
       container: 'jtronge/nwchem'
       nodes: 1
-      ntasks: 1
+      ntasks: 2
     template_files: ['nwchem.cwl']
     main_cwl: 'nwchem.cwl'
     # yaml: 'lulesh.yml'
