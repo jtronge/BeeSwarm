@@ -1,26 +1,26 @@
-1642021267.1234272:bee_init_start
+1642797088.4719431:bee_init_start
 
-1642021285.1392205:bee_init_end
+1642797106.4901567:bee_init_end
 
-1642021285.1392648:scale_tests_start
+1642797106.490199:scale_tests_start
 
-1642021285.1392796:scale_test_start|nwchem-run-1
+1642797106.4902136:scale_test_start|nwchem-run-1
 
-1642021285.1392884:scale_test_container_build_start|nwchem-run-1
+1642797106.490221:scale_test_container_build_start|nwchem-run-1
 
-1642021285.1392944:scale_test_workflow_prep_start|nwchem-run-1
+1642797106.4902272:scale_test_workflow_prep_start|nwchem-run-1
 
-1642021285.1495333:scale_test_workflow_prep_end|nwchem-run-1
+1642797106.5018117:scale_test_workflow_prep_end|nwchem-run-1
 
-1642021285.1495526:scale_test_workflow_exec_start|nwchem-run-1
+1642797106.5018358:scale_test_workflow_exec_start|nwchem-run-1
 
-1642021562.07489:scale_test_workflow_exec_end|nwchem-run-1
+1642799606.562952:scale_test_workflow_exec_end|nwchem-run-1
 
-1642021562.0749018:scale_test_end|nwchem-run-1
+1642799606.5629613:scale_test_end|nwchem-run-1
 
-1642021562.0749052:scale_tests_end
+1642799606.562968:scale_tests_end
 
-1642021562.0749068:bee_shutdown_start
+1642799606.5629702:bee_shutdown_start
 
-1642021562.095535:bee_shutdown_end
+1642799606.5805814:bee_shutdown_end
 
