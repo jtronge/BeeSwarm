@@ -1,3 +1,4 @@
+# This workflow has a fixed number of tasks and a fixed container type
 class: Workflow
 cwlVersion: v1.0
 
@@ -17,8 +18,6 @@ steps:
     out: [nw_stdout]
     hints:
       DockerRequirement:
-        # dockerPull: "{{ container }}"
-        dockerPull: "jtronge/nwchem"
-      #beeflow:MPIRequirement:
-        #  nodes: {{ nodes }}
-        #  ntasks: {{ ntasks }}
+        dockerPull: "jtronge/nwchem:test-tce-ccsd"
+      beeflow:MPIRequirement:
+        ntasks: 2

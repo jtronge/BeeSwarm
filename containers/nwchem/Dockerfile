@@ -37,7 +37,14 @@ ENV DEBIAN_FRONTEND=noninteractive
 #ENV OMPI_DIR=/opt/ompi
 #ENV SINGULARITY_ompi=4.0.5
 #ENV SINGULARITY_ompi_prefix=ompi-$ompi
+ARG VERSION=master
 
+# && bash -c "if [[ ! -f nwchem/src/GNUmakefile ]]; then git clone --depth 1 https://github.com/nwchemgit/nwchem.git; cd nwchem; echo $VERSION; fi " \
+# && cd nwchem \
+# && pwd \
+# && ls . \
+# && git fetch \
+# && git checkout $VERSION \
 RUN pwd \
 && apt-get -y update \
 && apt-get -y install -y tzdata git \
@@ -46,7 +53,6 @@ RUN pwd \
 && ls -lart  \
 && echo '@@ ls on /opt' \
 && ls -lart /opt \
-&& bash -c "if [[ ! -f nwchem/src/GNUmakefile ]]; then git clone --depth 1  https://github.com/nwchemgit/nwchem.git; fi " \
 && apt-get -y install -y curl wget tar libnl-3-200 libnl-route-3-200 libgomp1 libnuma1 \
  g++ gfortran   make ssh patch curl  wget unzip perl-base file \
  python3 python3-dev cmake  unzip zip perl automake libtool autoconf flex  \
@@ -109,7 +115,8 @@ ENV PATH=$OMPI_DIR/bin:$PATH
 ENV ARMCI_NETWORK=MPI-PR
 #export NWCHEM_TOP=/opt/nwchem
 ENV NWCHEM_TARGET=LINUX64
-ENV NWCHEM_MODULES="all python"
+# ENV NWCHEM_MODULES="all python"
+ENV NWCHEM_MODULES="tce"
 ENV BUILD_OPENBLAS=1
 ENV BUILD_SCALAPACK=1
 ENV BLAS_SIZE=8
@@ -126,9 +133,12 @@ ENV SIMINT_MAXAM=5
 #ENV         MRCC_METHODS=y
 #ENV         CCSDTQ=y
 #ENV         CCSDTLR=y
-RUN ls -l nwchem* || true \
-&& bash -c "if [[ ! -f nwchem/src/GNUmakefile ]]; then git clone --depth 1  https://github.com/nwchemgit/nwchem.git; fi" \
+# && bash -c "if [[ ! -f nwchem/src/GNUmakefile ]]; then git clone --depth 1 https://github.com/nwchemgit/nwchem.git; cd nwchem; echo $VERSION; fi " \
+# RUN ls -l nwchem* || true \
+RUN git clone https://github.com/nwchemgit/nwchem.git \
 && cd nwchem \
+&& git fetch \
+&& git checkout $VERSION \
 && export NWCHEM_TOP=`pwd` \
 && ls -lrt \
 && cd src \

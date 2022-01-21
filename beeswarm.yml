@@ -13,11 +13,11 @@ scale_tests:
     wfl_dir: './workflows/nwchem-mpi'
     # Workflow params
     params:
-      container: 'jtronge/nwchem'
-      nodes: 1
-      ntasks: 2
-    template_files: ['nwchem.cwl']
-    main_cwl: 'nwchem.cwl'
+      container: 'jtronge/nwchem:test-tce-ccsd'
+      # nodes: 1
+      ntasks: 16
+    template_files: ['nwchem-beeswarm.cwl']
+    main_cwl: 'nwchem-beeswarm.cwl'
     # yaml: 'lulesh.yml'
     inputs:
       nw_file: "/nwchem/examples/tcepolar/ccsd_polar_small.nw"
