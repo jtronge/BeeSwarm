@@ -71,7 +71,7 @@ AllowedIPs = {{ net_cidr }}
 PersistentKeepAlive = 50
 {% endmacro %}
 
-{% set ch_url = 'https://github.com/hpc/charliecloud/releases/download/v0.25/charliecloud-0.25.tar.gz' %}
+{% set ch_url = 'https://github.com/hpc/charliecloud/releases/download/v0.26/charliecloud-0.26.tar.gz' %}
 
 {% macro startup_script(wg_conf, ip, slurmctld_node, slurm_conf) %}
 #!/bin/sh
@@ -239,7 +239,16 @@ EOF
 chmod 755 {{ bee_dir }}/tm
 chown -R {{ bee_user }}:{{ bee_user }} {{ bee_dir }}
 
-# Now start the Task Manager
+# run extra set up
+cat >> {{ bee_dir }}/extra_setup <<EOF
+#!/bin/sh
+. /etc/profile
+{{ extra_setup }}
+EOF
+chmod 755 {{ bee_dir }}/extra_setup
+su {{ bee_user }} -c {{ bee_dir }}/extra_setup
+
+# now start the Task Manager
 # TODO: Need a better way to determine TM failures
 su {{ bee_user }} -c {{ bee_dir }}/tm
 {% endif %}

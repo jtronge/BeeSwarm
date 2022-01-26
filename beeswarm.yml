@@ -1,4 +1,4 @@
-test_name: 'nwchem-run'
+test_name: 'nwchem-multi-versions'
 time_log: 'time-log-nwchem.log'
 email: jtronge@kent.edu
 name: 'Jake Tronge'
@@ -9,127 +9,62 @@ tm_port: 7866
 bee_branch: 'beeswarm'
 ctr_archive: '${HOME}/.beeflow/container_archive'
 scale_tests:
-  - name: 'nwchem-run-1'
+  - name: 'nwchem-run-35efa19ca7662489b7388c4a00b16645d73ccc48'
     wfl_dir: './workflows/nwchem-mpi'
     # Workflow params
     params:
-      container: 'jtronge/nwchem:test-tce-ccsd'
-      # nodes: 1
-      ntasks: 16
+      container: '/home/bee/nwchem_35efa19ca7662489b7388c4a00b16645d73ccc48.tar.gz'
+      ntasks: 2
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
-    # yaml: 'lulesh.yml'
     inputs:
-      nw_file: "/nwchem/examples/tcepolar/ccsd_polar_small.nw"
-      #i: 1
-      #j: 1
-      #k: 1
-      #x: 80
-      #y: 80
-      #z: 80
-      #pot_dir: "/CoMD/pots"
+      nw_file: "/nwchem/QA/tests/h2o_bnl/h2o_bnl.nw"
     #container:
     #  ctx_dir: 'containers/comd'
     #  name: 'comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
     #  remote: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
     #  build_args:
     #    COMMIT: '3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-  #- name: 'run-2_comd-2'
-  #  wfl_dir: './workflows/comd-mpi'
-  #  # Workflow params
-  #  params:
-  #    container: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-  #    nodes: 1
-  #    ntasks: 2
-  #  template_files: ['comd.cwl']
-  #  main_cwl: 'comd.cwl'
-  #  # yaml: 'lulesh.yml'
-  #  inputs:
-  #    i: 2
-  #    j: 1
-  #    k: 1
-  #    x: 80
-  #    y: 80
-  #    z: 80
-  #    pot_dir: "/CoMD/pots"
-  #  container:
-  #    ctx_dir: 'containers/comd'
-  #    name: 'comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-  #    remote: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-  #    build_args:
-  #      COMMIT: '3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-  #- name: 'run-2_comd-4'
-  #  wfl_dir: './workflows/comd-mpi'
-  #  # Workflow params
-  #  params:
-  #    container: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-  #    nodes: 1
-  #    ntasks: 4
-  #  template_files: ['comd.cwl']
-  #  main_cwl: 'comd.cwl'
-  #  # yaml: 'lulesh.yml'
-  #  inputs:
-  #    i: 2
-  #    j: 2
-  #    k: 1
-  #    x: 80
-  #    y: 80
-  #    z: 80
-  #    pot_dir: "/CoMD/pots"
-  #  container:
-  #    ctx_dir: 'containers/comd'
-  #    name: 'comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-  #    remote: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-  #    build_args:
-  #      COMMIT: '3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-  #- name: 'run-2_comd-8'
-  #  wfl_dir: './workflows/comd-mpi'
-  #  # Workflow params
-  #  params:
-  #    container: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-  #    nodes: 1
-  #    ntasks: 8
-  #  template_files: ['comd.cwl']
-  #  main_cwl: 'comd.cwl'
-  #  # yaml: 'lulesh.yml'
-  #  inputs:
-  #    i: 2
-  #    j: 2
-  #    k: 2
-  #    x: 80
-  #    y: 80
-  #    z: 80
-  #    pot_dir: "/CoMD/pots"
-  #  container:
-  #    ctx_dir: 'containers/comd'
-  #    name: 'comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-  #    remote: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-  #    build_args:
-  #      COMMIT: '3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-  #- name: 'run-2_comd-16'
-  #  wfl_dir: './workflows/comd-mpi'
-  #  # Workflow params
-  #  params:
-  #    container: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-  #    nodes: 1
-  #    ntasks: 16
-  #  template_files: ['comd.cwl']
-  #  main_cwl: 'comd.cwl'
-  #  # yaml: 'lulesh.yml'
-  #  inputs:
-  #    i: 4
-  #    j: 2
-  #    k: 2
-  #    x: 80
-  #    y: 80
-  #    z: 80
-  #    pot_dir: "/CoMD/pots"
-  #  container:
-  #    ctx_dir: 'containers/comd'
-  #    name: 'comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-  #    remote: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-  #    build_args:
-  #      COMMIT: '3d48396b77ca8caa3124bc2391f9139c3ffb556c'
+  - name: 'nwchem-run-2afe98c0a9f842cdad0b1bc25aedb1fd66ac1db0'
+    wfl_dir: './workflows/nwchem-mpi'
+    # Workflow params
+    params:
+      container: '/home/bee/nwchem_2afe98c0a9f842cdad0b1bc25aedb1fd66ac1db0.tar.gz'
+      ntasks: 2
+    template_files: ['nwchem-beeswarm.cwl']
+    main_cwl: 'nwchem-beeswarm.cwl'
+    inputs:
+      nw_file: "/nwchem/QA/tests/h2o_bnl/h2o_bnl.nw"
+  - name: 'nwchem-run-a4d514a59c8014fe60b70c1aec0b494ee654aad3'
+    wfl_dir: './workflows/nwchem-mpi'
+    # Workflow params
+    params:
+      container: '/home/bee/nwchem_a4d514a59c8014fe60b70c1aec0b494ee654aad3.tar.gz'
+      ntasks: 2
+    template_files: ['nwchem-beeswarm.cwl']
+    main_cwl: 'nwchem-beeswarm.cwl'
+    inputs:
+      nw_file: "/nwchem/QA/tests/h2o_bnl/h2o_bnl.nw"
+  - name: 'nwchem-run-adab52acbbc0fb65b35856abf53937360bb52026'
+    wfl_dir: './workflows/nwchem-mpi'
+    # Workflow params
+    params:
+      container: '/home/bee/nwchem_adab52acbbc0fb65b35856abf53937360bb52026.tar.gz'
+      ntasks: 2
+    template_files: ['nwchem-beeswarm.cwl']
+    main_cwl: 'nwchem-beeswarm.cwl'
+    inputs:
+      nw_file: "/nwchem/QA/tests/h2o_bnl/h2o_bnl.nw"
+  - name: 'nwchem-run-519b710bd09ebe3c10703293093d3cf70ce44333'
+    wfl_dir: './workflows/nwchem-mpi'
+    # Workflow params
+    params:
+      container: '/home/bee/nwchem_519b710bd09ebe3c10703293093d3cf70ce44333.tar.gz'
+      ntasks: 2
+    template_files: ['nwchem-beeswarm.cwl']
+    main_cwl: 'nwchem-beeswarm.cwl'
+    inputs:
+      nw_file: "/nwchem/QA/tests/h2o_bnl/h2o_bnl.nw"
 private_key_data: ${PRIVATE_KEY_DATA}
 private_key_path: '${HOME}/key'
 private_key_data: ${PRIVATE_KEY_DATA}

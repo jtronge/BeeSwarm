@@ -18,6 +18,6 @@ steps:
     out: [nw_stdout]
     hints:
       DockerRequirement:
-        dockerPull: "{{ container }}"
+        copyContainer: "{{ container }}"
       beeflow:MPIRequirement:
         ntasks: {{ ntasks }}
