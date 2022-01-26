@@ -8,7 +8,7 @@
 beeflow-cloud --setup $CLOUD_CONF
 # Wait for set up completion
 sleep 300
-beeflow-cloud --connect $CLOUD_CONF
+beeflow-cloud --connect $CLOUD_CONF --max-retries 2048
 beeswarm.py scale-tests # --cloud-conf-path $CLOUD_CONF
 
 # Upon completion of the scale tests, commit all results to the `results` branch
