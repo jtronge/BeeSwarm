@@ -9,52 +9,26 @@ tm_port: 7866
 bee_branch: 'beeswarm'
 ctr_archive: '${HOME}/.beeflow/container_archive'
 scale_tests:
-  - name: 'nwchem-run-35efa19ca7662489b7388c4a00b16645d73ccc48'
+  - name: 'nwchem-run-f29685d5bde59ac9c7f71b7ce6193720aaba1a8b'
     wfl_dir: './workflows/nwchem-mpi'
     # Workflow params
     params:
-      container: '/home/bee/nwchem_35efa19ca7662489b7388c4a00b16645d73ccc48.tar.gz'
+      container: '/home/bee/nwchem_f29685d5bde59ac9c7f71b7ce6193720aaba1a8b.tar.gz'
       ntasks: 2
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
-      nw_file: "/nwchem/QA/tests/h2o_bnl/h2o_bnl.nw"
-    #container:
-    #  ctx_dir: 'containers/comd'
-    #  name: 'comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-    #  remote: 'jtronge/comd:3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-    #  build_args:
-    #    COMMIT: '3d48396b77ca8caa3124bc2391f9139c3ffb556c'
-  - name: 'nwchem-run-2afe98c0a9f842cdad0b1bc25aedb1fd66ac1db0'
+      nw_file: "/nwchem/QA/tests/tce_hyperpolar_ccsd_small/tce_hyperpolar_ccsd_small.nw"
+  - name: 'nwchem-run-05aafc87223af82f58865d8b0f924dabd1adacbc'
     wfl_dir: './workflows/nwchem-mpi'
     # Workflow params
     params:
-      container: '/home/bee/nwchem_2afe98c0a9f842cdad0b1bc25aedb1fd66ac1db0.tar.gz'
+      container: '/home/bee/nwchem_05aafc87223af82f58865d8b0f924dabd1adacbc.tar.gz'
       ntasks: 2
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
-      nw_file: "/nwchem/QA/tests/h2o_bnl/h2o_bnl.nw"
-  - name: 'nwchem-run-a4d514a59c8014fe60b70c1aec0b494ee654aad3'
-    wfl_dir: './workflows/nwchem-mpi'
-    # Workflow params
-    params:
-      container: '/home/bee/nwchem_a4d514a59c8014fe60b70c1aec0b494ee654aad3.tar.gz'
-      ntasks: 2
-    template_files: ['nwchem-beeswarm.cwl']
-    main_cwl: 'nwchem-beeswarm.cwl'
-    inputs:
-      nw_file: "/nwchem/QA/tests/h2o_bnl/h2o_bnl.nw"
-  - name: 'nwchem-run-adab52acbbc0fb65b35856abf53937360bb52026'
-    wfl_dir: './workflows/nwchem-mpi'
-    # Workflow params
-    params:
-      container: '/home/bee/nwchem_adab52acbbc0fb65b35856abf53937360bb52026.tar.gz'
-      ntasks: 2
-    template_files: ['nwchem-beeswarm.cwl']
-    main_cwl: 'nwchem-beeswarm.cwl'
-    inputs:
-      nw_file: "/nwchem/QA/tests/h2o_bnl/h2o_bnl.nw"
+      nw_file: "/nwchem/QA/tests/tce_hyperpolar_ccsd_small/tce_hyperpolar_ccsd_small.nw"
   - name: 'nwchem-run-519b710bd09ebe3c10703293093d3cf70ce44333'
     wfl_dir: './workflows/nwchem-mpi'
     # Workflow params
@@ -64,7 +38,17 @@ scale_tests:
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
-      nw_file: "/nwchem/QA/tests/h2o_bnl/h2o_bnl.nw"
+      nw_file: "/nwchem/QA/tests/tce_hyperpolar_ccsd_small/tce_hyperpolar_ccsd_small.nw"
+  - name: 'nwchem-run-adab52acbbc0fb65b35856abf53937360bb52026'
+    wfl_dir: './workflows/nwchem-mpi'
+    # Workflow params
+    params:
+      container: '/home/bee/nwchem_adab52acbbc0fb65b35856abf53937360bb52026.tar.gz'
+      ntasks: 2
+    template_files: ['nwchem-beeswarm.cwl']
+    main_cwl: 'nwchem-beeswarm.cwl'
+    inputs:
+      nw_file: "/nwchem/QA/tests/tce_hyperpolar_ccsd_small/tce_hyperpolar_ccsd_small.nw"
 private_key_data: ${PRIVATE_KEY_DATA}
 private_key_path: '${HOME}/key'
 private_key_data: ${PRIVATE_KEY_DATA}
