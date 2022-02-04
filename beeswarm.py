@@ -274,37 +274,6 @@ def scale_tests(args):
     log.log('bee_shutdown_end')
 
 
-def sub_env(param):
-    """Substitute the environment into the configuration values."""
-    # This could probably be more Pythonic
-    if type(param) is dict:
-        return {key: sub_env(param[key]) for key in param}
-    elif type(param) is list:
-        return [sub_env(elm) for elm in param]
-
-    if type(param) is not str:
-        return param
-
-    tmpl = string.Template(param)
-    return tmpl.safe_substitute(**os.environ)
-
-
-def resolve_key(key):
-    """Resolve a BeeSwarm configuration key value (or None)."""
-    keys = key.split('.')
-    val = conf
-    for key in keys:
-        try:
-            try:
-                val = val[int(key)]
-            except ValueError:
-                val = val[key]
-        except KeyError:
-            val = None
-            break
-    return val
-
-
 def cfg(args):
     """BeeSwarm configuration management."""
     parser = argparse.ArgumentParser(description='beeswarm configuration tool')
@@ -312,7 +281,7 @@ def cfg(args):
     parser.add_argument('--cloud-conf', action='store_true', help='output cloud config')
     args = parser.parse_args(args)
     if args.key is not None:
-        val = resolve_key(args.key)
+        val = conf.resolve_key(args.key)
         if val is not None:
             print(val)
 
@@ -351,16 +320,72 @@ def main():
     commands[cmd](sys.argv[2:])
 
 
-# Load the main beeswarm config file
-dirname = os.path.dirname(__file__)
-with open(os.path.join(dirname, 'beeswarm.yml')) as fp:
-    conf = yaml.load(fp, Loader=yaml.CLoader)
-# Load the BeeSwarm configuration secrets from the JSON-encoded secrets variable
-secrets = os.getenv('SECRETS_JSON')
-# Update the configuration
-conf.update(json.loads(secrets))
-conf = sub_env(conf)
+def sub_env(param, env):
+    """Substitute the environment into the configuration values."""
+    # This could probably be more Pythonic
+    if type(param) is dict:
+        return {key: sub_env(param[key], env) for key in param}
+    elif type(param) is list:
+        return [sub_env(elm, env) for elm in param]
+    if type(param) is not str:
+        return param
+    tmpl = string.Template(param)
+    return tmpl.safe_substitute(**env)
+
+
+class Config:
+    """Configuration class."""
+
+    def __init__(self, cfg, secrets):
+        """Config constructor."""
+        self.data = sub_env(cfg, secrets)
+
+    def __getitem__(self, key):
+        """Get an item from the config."""
+        return self.data[key]
+
+    def resolve_key(self, key):
+        """Resolve a BeeSwarm configuration key value (or None)."""
+        keys = key.split('.')
+        val = self
+        for key in keys:
+            try:
+                try:
+                    val = val[int(key)]
+                except ValueError:
+                    val = val[key]
+            except KeyError:
+                val = None
+                break
+        return val
+
+
+def load_conf():
+    """Load the BeeSwarm configuration."""
+    # Load the main beeswarm config file
+    dirname = os.path.dirname(__file__)
+    with open(os.path.join(dirname, 'beeswarm.yml')) as fp:
+        conf = yaml.load(fp, Loader=yaml.CLoader)
+    env = dict(os.environ)
+    # Load the BeeSwarm configuration secrets from the JSON-encoded secrets variable
+    secrets = os.getenv('SECRETS_JSON')
+    # Update the configuration
+    secrets = json.loads(secrets)
+    # conf.update(json.loads(secrets))
+    env.update({'SECRET_{}'.format(key.upper()): secrets[key] for key in secrets})
+    # conf = sub_env(conf, env)
+    return Config(conf, env)
 
 
 if __name__ == '__main__':
+    conf = load_conf()
+    # Load the main beeswarm config file
+    #dirname = os.path.dirname(__file__)
+    #with open(os.path.join(dirname, 'beeswarm.yml')) as fp:
+    #    conf = yaml.load(fp, Loader=yaml.CLoader)
+    ## Load the BeeSwarm configuration secrets from the JSON-encoded secrets variable
+    #secrets = os.getenv('SECRETS_JSON')
+    ## Update the configuration
+    #conf.update(json.loads(secrets))
+    #conf = sub_env(conf)
     main()

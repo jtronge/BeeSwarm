@@ -1,0 +1,19 @@
+# BeeSwarm correctness tests
+name: BeeSwarm Tests
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Correctness test
+        run: |
+          python -m venv venv
+          . ./venv/bin/activate
+          pip install pytest
+          pytest test_beeswarm.py

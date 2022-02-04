@@ -15,6 +15,7 @@ scale_tests:
     params:
       container: '/home/bee/nwchem_f29685d5bde59ac9c7f71b7ce6193720aaba1a8b.tar.gz'
       ntasks: 2
+      nodes: 2
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
@@ -25,6 +26,7 @@ scale_tests:
     params:
       container: '/home/bee/nwchem_05aafc87223af82f58865d8b0f924dabd1adacbc.tar.gz'
       ntasks: 2
+      nodes: 2
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
@@ -35,6 +37,7 @@ scale_tests:
     params:
       container: '/home/bee/nwchem_519b710bd09ebe3c10703293093d3cf70ce44333.tar.gz'
       ntasks: 2
+      nodes: 2
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
@@ -45,6 +48,7 @@ scale_tests:
     params:
       container: '/home/bee/nwchem_adab52acbbc0fb65b35856abf53937360bb52026.tar.gz'
       ntasks: 2
+      nodes: 2
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
@@ -54,3 +58,96 @@ private_key_path: '${HOME}/key'
 private_key_data: ${PRIVATE_KEY_DATA}
 private_key_path: '${HOME}/key'
 cloud_conf_path: '$HOME/cloud.yml'
+
+ch_image_username: ${SECRET_CH_IMAGE_USERNAME}
+ch_image_password: ${SECRET_CH_IMAGE_PASSWORD}
+github_user: ${SECRET_GITHUB_USER}
+github_pat: ${SECRET_GITHUB_PAT}
+gdb_pass: ${SECRET_GDB_PASS}
+google_application_credentials_base64: ${SECRET_GOOGLE_APPLICATION_CREDENTIALS_BASE64}
+private_key_data: ${SECRET_PRIVATE_KEY_DATA}
+cloud_launcher_conf:
+  # Cloud launcher parameters
+  provider: google
+  project: ${SECRET_PROJECT}
+  zone: us-east1-b
+  wfm_listen_port: 8020
+  tm_listen_port: 7866
+  private_key_file: $REPO_ROOT/google
+  bee_user: bee
+  tm_launch_cmd: /bee/tm
+  head_node: bee-main
+  template_file: ./cloud_templates/gce-slurm.jinja
+  copy_files: []
+
+  # Template parameters
+  # user: bee
+  password: ${SECRET_USER_PASSWORD}
+  pubkey_base64: ${SECRET_PUBKEY_BASE64}
+  munge_key_base64: ${SECRET_MUNGE_KEY_BASE64}
+
+  # Network info (TODO: Remove this)
+  net_cidr: '10.0.0.0/24'
+  vpn_port: 7878
+
+  # Main node info
+  main_node: bee-main
+  main_vpn_key: ${SECRET_MAIN_VPN_KEY}
+  main_vpn_pubkey: ${SECRET_MAIN_VPN_PUBKEY}
+  main_ext_ip_name: test-ip
+  main_ext_ip: ${SECRET_MAIN_EXT_IP}
+  main_ip: 10.0.0.1
+  main_machine_str: 'zones/us-east1-b/machineTypes/n1-standard-2'
+  main_src_image: 'https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/family/debian-11'
+  main_disk_size_gb: 128
+
+  # Compute node info
+  compute_nodes:
+    bee-node0:
+      # machine_str: 'zones/us-east1-b/machineTypes/n1-standard-16'
+      machine_str: 'zones/us-east1-b/machineTypes/n1-standard-4'
+      src_image: 'https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/family/debian-11'
+      disk_size_gb: 10
+      vpn_key: ${SECRET_VPN_KEY_0}
+      vpn_pubkey: ${SECRET_VPN_PUBKEY_0}
+      psk: ${SECRET_PSK_0}
+      ip: '10.0.0.5'
+      node_config: 'CPUs=4 Boards=1 SocketsPerBoard=1 CoresPerSocket=2 ThreadsPerCore=2 RealMemory=15000'
+    bee-node1:
+      # machine_str: 'zones/us-east1-b/machineTypes/n1-standard-16'
+      machine_str: 'zones/us-east1-b/machineTypes/n1-standard-4'
+      src_image: 'https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/family/debian-11'
+      disk_size_gb: 10
+      vpn_key: ${SECRET_VPN_KEY_1}
+      vpn_pubkey: ${SECRET_VPN_PUBKEY_1}
+      psk: ${SECRET_PSK_1}
+      ip: '10.0.0.6'
+      node_config: 'CPUs=4 Boards=1 SocketsPerBoard=1 CoresPerSocket=2 ThreadsPerCore=2 RealMemory=15000'
+
+      # node_config: 'CPUs=16 Boards=1 SocketsPerBoard=1 CoresPerSocket=8 ThreadsPerCore=2 RealMemory=60000'
+      # node_config: 'CPUs=32 Boards=1 SocketsPerBoard=1 CoresPerSocket=16 ThreadsPerCore=2 RealMemory=120000'
+  # For a n1-standard-2 node
+  # node_config: 'CPUs=1 Boards=1 SocketsPerBoard=1 CoresPerSocket=1 ThreadsPerCore=1 RealMemory=1982'
+  # For a n1-standard-4 node
+  # node_config: 'CPUs=4 Boards=1 SocketsPerBoard=1 CoresPerSocket=2 ThreadsPerCore=2 RealMemory=15033'
+  # For an n1-standard-16 node
+  # node_config: 'CPUs=16 Boards=1 SocketsPerBoard=1 CoresPerSocket=8 ThreadsPerCore=2 RealMemory=60285'
+  # For an n1-standard-32 node
+  # node_config: 'CPUs=32 Boards=1 SocketsPerBoard=1 CoresPerSocket=16 ThreadsPerCore=2 RealMemory=120868'
+
+  # BEE Install info
+  bee_cfg: /bee/bee.conf
+  bee_dir: /bee
+  github_pat: ${SECRET_GITHUB_PAT}
+  # git_branch: mpi-dev
+  git_branch: beeswarm
+  slurm_socket: /tmp/slurm.sock
+  extra_setup: |
+    ch-image pull jtronge/nwchem:f29685d5bde59ac9c7f71b7ce6193720aaba1a8b
+    ch-convert -i ch-image -o tar jtronge/nwchem:f29685d5bde59ac9c7f71b7ce6193720aaba1a8b /home/bee/nwchem_f29685d5bde59ac9c7f71b7ce6193720aaba1a8b.tar.gz
+    ch-image pull jtronge/nwchem:05aafc87223af82f58865d8b0f924dabd1adacbc
+    ch-convert -i ch-image -o tar jtronge/nwchem:05aafc87223af82f58865d8b0f924dabd1adacbc /home/bee/nwchem_05aafc87223af82f58865d8b0f924dabd1adacbc.tar.gz
+    ch-image pull jtronge/nwchem:519b710bd09ebe3c10703293093d3cf70ce44333
+    ch-convert -i ch-image -o tar jtronge/nwchem:519b710bd09ebe3c10703293093d3cf70ce44333 /home/bee/nwchem_519b710bd09ebe3c10703293093d3cf70ce44333.tar.gz
+    ch-image pull jtronge/nwchem:adab52acbbc0fb65b35856abf53937360bb52026
+    ch-convert -i ch-image -o tar jtronge/nwchem:adab52acbbc0fb65b35856abf53937360bb52026 /home/bee/nwchem_adab52acbbc0fb65b35856abf53937360bb52026.tar.gz
