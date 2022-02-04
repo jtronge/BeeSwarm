@@ -14,7 +14,7 @@ scale_tests:
     # Workflow params
     params:
       container: '/home/bee/nwchem_f29685d5bde59ac9c7f71b7ce6193720aaba1a8b.tar.gz'
-      ntasks: 2
+      ntasks: 4
       nodes: 2
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
@@ -25,7 +25,7 @@ scale_tests:
     # Workflow params
     params:
       container: '/home/bee/nwchem_05aafc87223af82f58865d8b0f924dabd1adacbc.tar.gz'
-      ntasks: 2
+      ntasks: 4
       nodes: 2
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
@@ -36,7 +36,7 @@ scale_tests:
     # Workflow params
     params:
       container: '/home/bee/nwchem_519b710bd09ebe3c10703293093d3cf70ce44333.tar.gz'
-      ntasks: 2
+      ntasks: 4
       nodes: 2
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
@@ -47,7 +47,7 @@ scale_tests:
     # Workflow params
     params:
       container: '/home/bee/nwchem_adab52acbbc0fb65b35856abf53937360bb52026.tar.gz'
-      ntasks: 2
+      ntasks: 4
       nodes: 2
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
