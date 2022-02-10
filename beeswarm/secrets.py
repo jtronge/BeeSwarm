@@ -35,6 +35,8 @@ repo = conf['beeswarm_repo']
 # Get the secret key for the repo
 resp = requests.get(f'https://{API_DOMAIN}/repos/{owner}/{repo}/actions/secrets/public-key',
                     auth=(github_user, github_pat))
+if not resp.ok:
+    sys.exit('ERROR: {}'.format(resp.json()))
 data = resp.json()
 repo_key_id = data['key_id']
 repo_pubkey = data['key']

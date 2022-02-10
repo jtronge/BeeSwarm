@@ -9,50 +9,50 @@ tm_port: 7866
 bee_branch: 'beeswarm'
 ctr_archive: '${HOME}/.beeflow/container_archive'
 scale_tests:
-  - name: 'nwchem-run-f29685d5bde59ac9c7f71b7ce6193720aaba1a8b'
+  - name: 'nwchem-c240-f29685d'
     wfl_dir: './workflows/nwchem-mpi'
     # Workflow params
     params:
-      container: '/home/bee/nwchem_f29685d5bde59ac9c7f71b7ce6193720aaba1a8b.tar.gz'
-      ntasks: 4
-      nodes: 2
+      container: '/home/bee/nwchem_f29685d.tar.gz'
+      ntasks_per_node: 2
+      nodes: 4
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
-      nw_file: "/nwchem/QA/tests/tce_hyperpolar_ccsd_small/tce_hyperpolar_ccsd_small.nw"
-  - name: 'nwchem-run-05aafc87223af82f58865d8b0f924dabd1adacbc'
+      nw_file: "/home/bee/c240_631gs.nw"
+  - name: 'nwchem-c240-05aafc8'
     wfl_dir: './workflows/nwchem-mpi'
     # Workflow params
     params:
-      container: '/home/bee/nwchem_05aafc87223af82f58865d8b0f924dabd1adacbc.tar.gz'
-      ntasks: 4
-      nodes: 2
+      container: '/home/bee/nwchem_05aafc8.tar.gz'
+      ntasks_per_node: 2
+      nodes: 4
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
-      nw_file: "/nwchem/QA/tests/tce_hyperpolar_ccsd_small/tce_hyperpolar_ccsd_small.nw"
-  - name: 'nwchem-run-519b710bd09ebe3c10703293093d3cf70ce44333'
+      nw_file: "/home/bee/c240_631gs.nw"
+  - name: 'nwchem-c240-adab52a'
     wfl_dir: './workflows/nwchem-mpi'
     # Workflow params
     params:
-      container: '/home/bee/nwchem_519b710bd09ebe3c10703293093d3cf70ce44333.tar.gz'
-      ntasks: 4
-      nodes: 2
+      container: '/home/bee/nwchem_adab52a.tar.gz'
+      ntasks_per_node: 2
+      nodes: 4
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
-      nw_file: "/nwchem/QA/tests/tce_hyperpolar_ccsd_small/tce_hyperpolar_ccsd_small.nw"
-  - name: 'nwchem-run-adab52acbbc0fb65b35856abf53937360bb52026'
+      nw_file: "/home/bee/c240_631gs.nw"
+  - name: 'nwchem-c240-519b710'
     wfl_dir: './workflows/nwchem-mpi'
     # Workflow params
     params:
-      container: '/home/bee/nwchem_adab52acbbc0fb65b35856abf53937360bb52026.tar.gz'
-      ntasks: 4
-      nodes: 2
+      container: '/home/bee/nwchem_519b710.tar.gz'
+      ntasks_per_node: 2
+      nodes: 4
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
-      nw_file: "/nwchem/QA/tests/tce_hyperpolar_ccsd_small/tce_hyperpolar_ccsd_small.nw"
+      nw_file: "/home/bee/c240_631gs.nw"
 private_key_data: ${PRIVATE_KEY_DATA}
 private_key_path: '${HOME}/key'
 private_key_data: ${PRIVATE_KEY_DATA}
@@ -123,6 +123,26 @@ cloud_launcher_conf:
       psk: ${SECRET_PSK_1}
       ip: '10.0.0.6'
       node_config: 'CPUs=4 Boards=1 SocketsPerBoard=1 CoresPerSocket=2 ThreadsPerCore=2 RealMemory=15000'
+    bee-node2:
+      # machine_str: 'zones/us-east1-b/machineTypes/n1-standard-16'
+      machine_str: 'zones/us-east1-b/machineTypes/n1-standard-4'
+      src_image: 'https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/family/debian-11'
+      disk_size_gb: 10
+      vpn_key: ${SECRET_VPN_KEY_2}
+      vpn_pubkey: ${SECRET_VPN_PUBKEY_2}
+      psk: ${SECRET_PSK_2}
+      ip: '10.0.0.7'
+      node_config: 'CPUs=4 Boards=1 SocketsPerBoard=1 CoresPerSocket=2 ThreadsPerCore=2 RealMemory=15000'
+    bee-node3:
+      # machine_str: 'zones/us-east1-b/machineTypes/n1-standard-16'
+      machine_str: 'zones/us-east1-b/machineTypes/n1-standard-4'
+      src_image: 'https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/family/debian-11'
+      disk_size_gb: 10
+      vpn_key: ${SECRET_VPN_KEY_3}
+      vpn_pubkey: ${SECRET_VPN_PUBKEY_3}
+      psk: ${SECRET_PSK_3}
+      ip: '10.0.0.8'
+      node_config: 'CPUs=4 Boards=1 SocketsPerBoard=1 CoresPerSocket=2 ThreadsPerCore=2 RealMemory=15000'
 
       # node_config: 'CPUs=16 Boards=1 SocketsPerBoard=1 CoresPerSocket=8 ThreadsPerCore=2 RealMemory=60000'
       # node_config: 'CPUs=32 Boards=1 SocketsPerBoard=1 CoresPerSocket=16 ThreadsPerCore=2 RealMemory=120000'
@@ -142,12 +162,15 @@ cloud_launcher_conf:
   # git_branch: mpi-dev
   git_branch: beeswarm
   slurm_socket: /tmp/slurm.sock
+  # extra set up script to run after everything else
   extra_setup: |
-    ch-image pull jtronge/nwchem:f29685d5bde59ac9c7f71b7ce6193720aaba1a8b
-    ch-convert -i ch-image -o tar jtronge/nwchem:f29685d5bde59ac9c7f71b7ce6193720aaba1a8b /home/bee/nwchem_f29685d5bde59ac9c7f71b7ce6193720aaba1a8b.tar.gz
-    ch-image pull jtronge/nwchem:05aafc87223af82f58865d8b0f924dabd1adacbc
-    ch-convert -i ch-image -o tar jtronge/nwchem:05aafc87223af82f58865d8b0f924dabd1adacbc /home/bee/nwchem_05aafc87223af82f58865d8b0f924dabd1adacbc.tar.gz
-    ch-image pull jtronge/nwchem:519b710bd09ebe3c10703293093d3cf70ce44333
-    ch-convert -i ch-image -o tar jtronge/nwchem:519b710bd09ebe3c10703293093d3cf70ce44333 /home/bee/nwchem_519b710bd09ebe3c10703293093d3cf70ce44333.tar.gz
-    ch-image pull jtronge/nwchem:adab52acbbc0fb65b35856abf53937360bb52026
-    ch-convert -i ch-image -o tar jtronge/nwchem:adab52acbbc0fb65b35856abf53937360bb52026 /home/bee/nwchem_adab52acbbc0fb65b35856abf53937360bb52026.tar.gz
+    # pre-pull all the containers (they're huge)
+    ch-image pull jtronge/nwchem:f29685d
+    ch-convert -i ch-image -o tar jtronge/nwchem:f29685d /home/bee/nwchem_f29685d.tar.gz
+    ch-image pull jtronge/nwchem:05aafc8
+    ch-convert -i ch-image -o tar jtronge/nwchem:05aafc8 /home/bee/nwchem_05aafc8.tar.gz
+    ch-image pull jtronge/nwchem:adab52a
+    ch-convert -i ch-image -o tar jtronge/nwchem:adab52a /home/bee/nwchem_adab52a.tar.gz
+    ch-image pull jtronge/nwchem:519b710
+    ch-convert -i ch-image -o tar jtronge/nwchem:519b710 /home/bee/nwchem_519b710.tar.gz
+    curl -L https://raw.githubusercontent.com/jtronge/BeeSwarm/main/inputs/nwchem/c240_631gs.nw > /home/bee/c240_631gs.nw

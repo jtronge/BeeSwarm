@@ -20,5 +20,5 @@ steps:
       DockerRequirement:
         copyContainer: "{{ container }}"
       beeflow:MPIRequirement:
-        ntasks: {{ ntasks }}
+        ntasks_per_node: {{ ntasks_per_node }}
         nodes: {{ nodes }}
