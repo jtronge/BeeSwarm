@@ -75,6 +75,8 @@ class BEEManager:
             time.sleep(4)
             resp = requests.get(status_url)
             status = resp.json()
+        # Wait a little bit so we don't kill anything prematurely
+        time.sleep(2)
 
     def shutdown(self):
         """Shutdown and cleanup BEE (there should be a better way to do this)."""
