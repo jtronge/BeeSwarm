@@ -19,7 +19,7 @@ scale_tests:
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
-      nw_file: "/home/bee/c240_631gs.nw"
+      nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
   - name: 'nwchem-c240-05aafc8'
     wfl_dir: './workflows/nwchem-mpi'
     # Workflow params
@@ -30,7 +30,7 @@ scale_tests:
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
-      nw_file: "/home/bee/c240_631gs.nw"
+      nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
   - name: 'nwchem-c240-adab52a'
     wfl_dir: './workflows/nwchem-mpi'
     # Workflow params
@@ -41,7 +41,7 @@ scale_tests:
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
-      nw_file: "/home/bee/c240_631gs.nw"
+      nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
   - name: 'nwchem-c240-519b710'
     wfl_dir: './workflows/nwchem-mpi'
     # Workflow params
@@ -52,7 +52,7 @@ scale_tests:
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
-      nw_file: "/home/bee/c240_631gs.nw"
+      nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
 private_key_data: ${PRIVATE_KEY_DATA}
 private_key_path: '${HOME}/key'
 private_key_data: ${PRIVATE_KEY_DATA}
