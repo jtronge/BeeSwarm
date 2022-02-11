@@ -9,7 +9,7 @@ tm_port: 7866
 bee_branch: 'beeswarm'
 ctr_archive: '${HOME}/.beeflow/container_archive'
 scale_tests:
-  - name: 'nwchem-c240-f29685d'
+  - name: 'nwchem-scf-f29685d'
     wfl_dir: './workflows/nwchem-mpi'
     # Workflow params
     params:
@@ -20,7 +20,7 @@ scale_tests:
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
       nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
-  - name: 'nwchem-c240-05aafc8'
+  - name: 'nwchem-scf-05aafc8'
     wfl_dir: './workflows/nwchem-mpi'
     # Workflow params
     params:
@@ -31,7 +31,7 @@ scale_tests:
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
       nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
-  - name: 'nwchem-c240-adab52a'
+  - name: 'nwchem-scf-adab52a'
     wfl_dir: './workflows/nwchem-mpi'
     # Workflow params
     params:
@@ -42,7 +42,7 @@ scale_tests:
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
       nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
-  - name: 'nwchem-c240-519b710'
+  - name: 'nwchem-scf-519b710'
     wfl_dir: './workflows/nwchem-mpi'
     # Workflow params
     params:
