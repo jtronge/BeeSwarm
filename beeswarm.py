@@ -263,7 +263,10 @@ def scale_tests(args):
         # Run the workflow
         log.log('scale_test_workflow_exec_start|{}'.format(wfl_name))
         main_cwl = test['main_cwl']
-        bee.run_workflow(wfl_name, wfl_tarball, main_cwl, yml_file)
+        count = test['count']
+        for i in range(count):
+            bee.run_workflow(f'{wfl_name}--{i}', wfl_tarball, main_cwl, yml_file)
+            time.sleep(2)
         log.log('scale_test_workflow_exec_end|{}'.format(wfl_name))
 
         # Save results

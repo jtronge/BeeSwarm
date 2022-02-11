@@ -20,6 +20,8 @@ scale_tests:
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
       nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
+    # run the workflow 4 times for stability
+    count: 4
   - name: 'nwchem-scf-05aafc8'
     wfl_dir: './workflows/nwchem-mpi'
     # Workflow params
@@ -31,6 +33,8 @@ scale_tests:
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
       nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
+    # run the workflow 4 times for stability
+    count: 4
   - name: 'nwchem-scf-adab52a'
     wfl_dir: './workflows/nwchem-mpi'
     # Workflow params
@@ -42,6 +46,8 @@ scale_tests:
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
       nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
+    # run the workflow 4 times for stability
+    count: 4
   - name: 'nwchem-scf-519b710'
     wfl_dir: './workflows/nwchem-mpi'
     # Workflow params
@@ -53,6 +59,8 @@ scale_tests:
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
       nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
+    # run the workflow 4 times for stability
+    count: 4
 private_key_data: ${PRIVATE_KEY_DATA}
 private_key_path: '${HOME}/key'
 private_key_data: ${PRIVATE_KEY_DATA}
