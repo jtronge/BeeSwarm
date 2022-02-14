@@ -9,58 +9,202 @@ tm_port: 7866
 bee_branch: 'beeswarm'
 ctr_archive: '${HOME}/.beeflow/container_archive'
 scale_tests:
-  - name: 'nwchem-scf-f29685d'
+  - name: 'nwchem-scf-f29685d-2'
     wfl_dir: './workflows/nwchem-mpi'
     # Workflow params
     params:
       container: '/home/bee/nwchem_f29685d.tar.gz'
       ntasks_per_node: 2
-      nodes: 4
+      nodes: 1
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
       nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
-    # run the workflow 4 times for stability
     count: 4
-  - name: 'nwchem-scf-05aafc8'
+  - name: 'nwchem-scf-f29685d-4'
+    wfl_dir: './workflows/nwchem-mpi'
+    # Workflow params
+    params:
+      container: '/home/bee/nwchem_f29685d.tar.gz'
+      ntasks_per_node: 4
+      nodes: 1
+    template_files: ['nwchem-beeswarm.cwl']
+    main_cwl: 'nwchem-beeswarm.cwl'
+    inputs:
+      nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
+    count: 4
+  - name: 'nwchem-scf-f29685d-8'
+    wfl_dir: './workflows/nwchem-mpi'
+    # Workflow params
+    params:
+      container: '/home/bee/nwchem_f29685d.tar.gz'
+      ntasks_per_node: 8
+      nodes: 1
+    template_files: ['nwchem-beeswarm.cwl']
+    main_cwl: 'nwchem-beeswarm.cwl'
+    inputs:
+      nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
+    count: 4
+  - name: 'nwchem-scf-f29685d-16'
+    wfl_dir: './workflows/nwchem-mpi'
+    # Workflow params
+    params:
+      container: '/home/bee/nwchem_f29685d.tar.gz'
+      ntasks_per_node: 16
+      nodes: 1
+    template_files: ['nwchem-beeswarm.cwl']
+    main_cwl: 'nwchem-beeswarm.cwl'
+    inputs:
+      nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
+    count: 4
+
+  - name: 'nwchem-scf-05aafc8-2'
     wfl_dir: './workflows/nwchem-mpi'
     # Workflow params
     params:
       container: '/home/bee/nwchem_05aafc8.tar.gz'
       ntasks_per_node: 2
-      nodes: 4
+      nodes: 1
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
       nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
-    # run the workflow 4 times for stability
     count: 4
-  - name: 'nwchem-scf-adab52a'
+  - name: 'nwchem-scf-05aafc8-4'
+    wfl_dir: './workflows/nwchem-mpi'
+    # Workflow params
+    params:
+      container: '/home/bee/nwchem_05aafc8.tar.gz'
+      ntasks_per_node: 4
+      nodes: 1
+    template_files: ['nwchem-beeswarm.cwl']
+    main_cwl: 'nwchem-beeswarm.cwl'
+    inputs:
+      nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
+    count: 4
+  - name: 'nwchem-scf-05aafc8-8'
+    wfl_dir: './workflows/nwchem-mpi'
+    # Workflow params
+    params:
+      container: '/home/bee/nwchem_05aafc8.tar.gz'
+      ntasks_per_node: 8
+      nodes: 1
+    template_files: ['nwchem-beeswarm.cwl']
+    main_cwl: 'nwchem-beeswarm.cwl'
+    inputs:
+      nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
+    count: 4
+  - name: 'nwchem-scf-05aafc8-16'
+    wfl_dir: './workflows/nwchem-mpi'
+    # Workflow params
+    params:
+      container: '/home/bee/nwchem_05aafc8.tar.gz'
+      ntasks_per_node: 16
+      nodes: 1
+    template_files: ['nwchem-beeswarm.cwl']
+    main_cwl: 'nwchem-beeswarm.cwl'
+    inputs:
+      nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
+    count: 4
+
+  - name: 'nwchem-scf-adab52a-2'
     wfl_dir: './workflows/nwchem-mpi'
     # Workflow params
     params:
       container: '/home/bee/nwchem_adab52a.tar.gz'
       ntasks_per_node: 2
-      nodes: 4
+      nodes: 1
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
       nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
-    # run the workflow 4 times for stability
     count: 4
-  - name: 'nwchem-scf-519b710'
+  - name: 'nwchem-scf-adab52a-4'
+    wfl_dir: './workflows/nwchem-mpi'
+    # Workflow params
+    params:
+      container: '/home/bee/nwchem_adab52a.tar.gz'
+      ntasks_per_node: 4
+      nodes: 1
+    template_files: ['nwchem-beeswarm.cwl']
+    main_cwl: 'nwchem-beeswarm.cwl'
+    inputs:
+      nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
+    count: 4
+  - name: 'nwchem-scf-adab52a-8'
+    wfl_dir: './workflows/nwchem-mpi'
+    # Workflow params
+    params:
+      container: '/home/bee/nwchem_adab52a.tar.gz'
+      ntasks_per_node: 8
+      nodes: 1
+    template_files: ['nwchem-beeswarm.cwl']
+    main_cwl: 'nwchem-beeswarm.cwl'
+    inputs:
+      nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
+    count: 4
+  - name: 'nwchem-scf-adab52a-16'
+    wfl_dir: './workflows/nwchem-mpi'
+    # Workflow params
+    params:
+      container: '/home/bee/nwchem_adab52a.tar.gz'
+      ntasks_per_node: 16
+      nodes: 1
+    template_files: ['nwchem-beeswarm.cwl']
+    main_cwl: 'nwchem-beeswarm.cwl'
+    inputs:
+      nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
+    count: 4
+
+  - name: 'nwchem-scf-519b710-2'
     wfl_dir: './workflows/nwchem-mpi'
     # Workflow params
     params:
       container: '/home/bee/nwchem_519b710.tar.gz'
       ntasks_per_node: 2
-      nodes: 4
+      nodes: 1
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
       nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
-    # run the workflow 4 times for stability
     count: 4
+  - name: 'nwchem-scf-519b710-4'
+    wfl_dir: './workflows/nwchem-mpi'
+    # Workflow params
+    params:
+      container: '/home/bee/nwchem_519b710.tar.gz'
+      ntasks_per_node: 4
+      nodes: 1
+    template_files: ['nwchem-beeswarm.cwl']
+    main_cwl: 'nwchem-beeswarm.cwl'
+    inputs:
+      nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
+    count: 4
+  - name: 'nwchem-scf-519b710-8'
+    wfl_dir: './workflows/nwchem-mpi'
+    # Workflow params
+    params:
+      container: '/home/bee/nwchem_519b710.tar.gz'
+      ntasks_per_node: 8
+      nodes: 1
+    template_files: ['nwchem-beeswarm.cwl']
+    main_cwl: 'nwchem-beeswarm.cwl'
+    inputs:
+      nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
+    count: 4
+  - name: 'nwchem-scf-519b710-16'
+    wfl_dir: './workflows/nwchem-mpi'
+    # Workflow params
+    params:
+      container: '/home/bee/nwchem_519b710.tar.gz'
+      ntasks_per_node: 16
+      nodes: 1
+    template_files: ['nwchem-beeswarm.cwl']
+    main_cwl: 'nwchem-beeswarm.cwl'
+    inputs:
+      nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
+    count: 4
+
 private_key_data: ${PRIVATE_KEY_DATA}
 private_key_path: '${HOME}/key'
 private_key_data: ${PRIVATE_KEY_DATA}
@@ -112,45 +256,16 @@ cloud_launcher_conf:
   # Compute node info
   compute_nodes:
     bee-node0:
-      # machine_str: 'zones/us-east1-b/machineTypes/n1-standard-16'
-      machine_str: 'zones/us-east1-b/machineTypes/n1-standard-4'
+      machine_str: 'zones/us-east1-b/machineTypes/n1-standard-16'
+      # machine_str: 'zones/us-east1-b/machineTypes/n1-standard-4'
       src_image: 'https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/family/debian-11'
       disk_size_gb: 10
       vpn_key: ${SECRET_VPN_KEY_0}
       vpn_pubkey: ${SECRET_VPN_PUBKEY_0}
       psk: ${SECRET_PSK_0}
       ip: '10.0.0.5'
-      node_config: 'CPUs=4 Boards=1 SocketsPerBoard=1 CoresPerSocket=2 ThreadsPerCore=2 RealMemory=15000'
-    bee-node1:
-      # machine_str: 'zones/us-east1-b/machineTypes/n1-standard-16'
-      machine_str: 'zones/us-east1-b/machineTypes/n1-standard-4'
-      src_image: 'https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/family/debian-11'
-      disk_size_gb: 10
-      vpn_key: ${SECRET_VPN_KEY_1}
-      vpn_pubkey: ${SECRET_VPN_PUBKEY_1}
-      psk: ${SECRET_PSK_1}
-      ip: '10.0.0.6'
-      node_config: 'CPUs=4 Boards=1 SocketsPerBoard=1 CoresPerSocket=2 ThreadsPerCore=2 RealMemory=15000'
-    bee-node2:
-      # machine_str: 'zones/us-east1-b/machineTypes/n1-standard-16'
-      machine_str: 'zones/us-east1-b/machineTypes/n1-standard-4'
-      src_image: 'https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/family/debian-11'
-      disk_size_gb: 10
-      vpn_key: ${SECRET_VPN_KEY_2}
-      vpn_pubkey: ${SECRET_VPN_PUBKEY_2}
-      psk: ${SECRET_PSK_2}
-      ip: '10.0.0.7'
-      node_config: 'CPUs=4 Boards=1 SocketsPerBoard=1 CoresPerSocket=2 ThreadsPerCore=2 RealMemory=15000'
-    bee-node3:
-      # machine_str: 'zones/us-east1-b/machineTypes/n1-standard-16'
-      machine_str: 'zones/us-east1-b/machineTypes/n1-standard-4'
-      src_image: 'https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/family/debian-11'
-      disk_size_gb: 10
-      vpn_key: ${SECRET_VPN_KEY_3}
-      vpn_pubkey: ${SECRET_VPN_PUBKEY_3}
-      psk: ${SECRET_PSK_3}
-      ip: '10.0.0.8'
-      node_config: 'CPUs=4 Boards=1 SocketsPerBoard=1 CoresPerSocket=2 ThreadsPerCore=2 RealMemory=15000'
+      # node_config: 'CPUs=4 Boards=1 SocketsPerBoard=1 CoresPerSocket=2 ThreadsPerCore=2 RealMemory=15000'
+      node_config: 'CPUs=16 Boards=1 SocketsPerBoard=1 CoresPerSocket=8 ThreadsPerCore=2 RealMemory=60000'
 
       # node_config: 'CPUs=16 Boards=1 SocketsPerBoard=1 CoresPerSocket=8 ThreadsPerCore=2 RealMemory=60000'
       # node_config: 'CPUs=32 Boards=1 SocketsPerBoard=1 CoresPerSocket=16 ThreadsPerCore=2 RealMemory=120000'
