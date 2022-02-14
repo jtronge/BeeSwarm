@@ -1,0 +1,23 @@
+{
+    "state_changes": [
+        {
+            "task_id": "bb881002-ae1e-46ac-9b3c-697fe050acae",
+            "task_name": "nwchem_bin",
+            "next_state": "PENDING",
+            "timestamp": 1644850187
+        },
+        {
+            "task_id": "bb881002-ae1e-46ac-9b3c-697fe050acae",
+            "task_name": "nwchem_bin",
+            "next_state": "RUNNING",
+            "timestamp": 1644850192
+        },
+        {
+            "task_id": "bb881002-ae1e-46ac-9b3c-697fe050acae",
+            "task_name": "nwchem_bin",
+            "next_state": "COMPLETED",
+            "timestamp": 1644850272
+        }
+    ],
+    "scheduling_results": []
+}
