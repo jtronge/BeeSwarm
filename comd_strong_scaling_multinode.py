@@ -31,7 +31,7 @@ for profile in profiles:
     print('Total runtime for "{}": {}'.format(profile[2], runtime))
 
 fig, ax = plt.subplots()
-ax.plot(x_axis, y_axis)
+ax.plot(x_axis, y_axis, marker='o')
 ax.set_ylabel('Execution Time (s)')
 # ax.set_title('CoMD Strong Scaling Test - Multiple Nodes (n1-standard-4)')
 plt.show()

@@ -35,7 +35,7 @@ for pdata in data:
 # Add the VM labels based on the number of threads used
 vms = ['n1-standard-{}'.format(profile[1]) for profile in profiles]
 fig, ax = plt.subplots()
-ax.plot(vms, times)
+ax.plot(vms, times, marker='o')
 ax.set_ylabel('Execution Time (s)')
 ax.set_xlabel('Google Compute Engine VM Type')
 

@@ -41,7 +41,7 @@ results.sort(key=lambda res: res['mpi_tasks'])
 foms = [res['fom'] for res in results]
 mpi_tasks = [str(res['mpi_tasks']) for res in results]
 fig, ax = plt.subplots()
-ax.plot(mpi_tasks, foms)
+ax.plot(mpi_tasks, foms, marker='o')
 ax.set_ylabel('FOM (z/s)')
 # Note: distributed across 2 n1-standard-32 nodes
 ax.set_xlabel('MPI tasks')

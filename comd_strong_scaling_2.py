@@ -2,13 +2,6 @@ import matplotlib.pyplot as plt
 import json
 
 
-# profiles = [
-#     ('results/comd-2021-12-10/comd-1.json', 1),
-#     ('results/comd-2021-12-10/comd-2.json', 2),
-#     ('results/comd-2021-12-10/comd-4.json', 4),
-#     ('results/comd-2021-12-10/comd-8.json', 8),
-#     ('results/comd-2021-12-10/comd-16.json', 16),
-# ]
 profiles = [
     ('results/comd-2021-12-21/run-2_comd-1.json', 1),
     ('results/comd-2021-12-21/run-2_comd-2.json', 2),
@@ -44,7 +37,7 @@ proc_counts = [str(res[0]) for res in results]
 runtimes = [res[1] for res in results]
 
 fig, ax = plt.subplots()
-ax.plot(proc_counts, runtimes)
+ax.plot(proc_counts, runtimes, marker='o')
 ax.set_ylabel('Execution Time (s)')
 ax.set_xlabel('MPI Tasks (on n1-standard-16)')
 # ax.set_title('CoMD Strong Scaling Test (n1-standard-16)')
