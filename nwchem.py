@@ -26,7 +26,7 @@ for file in files:
     times.append(end_time - start_time)
 
 fig, ax = plt.subplots()
-ax.plot(commits, times)
+ax.plot(commits, times, marker='o')
 ax.set_ylabel('Execution time (s)')
 ax.set_xlabel('NWChem commits')
 plt.show()
