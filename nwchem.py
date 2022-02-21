@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
 import json
 
+plt.style.use('./matplotlib-styles/paper.mplstyle')
+
 files = [
     'results/nwchem-run-05aafc87223af82f58865d8b0f924dabd1adacbc.json',
     'results/nwchem-run-519b710bd09ebe3c10703293093d3cf70ce44333.json',

@@ -3,6 +3,7 @@ import json
 import os
 import matplotlib.pyplot as plt
 
+plt.style.use('./matplotlib-styles/paper.mplstyle')
 
 # List of (profile file, OpenMP thread count)
 profiles = [

@@ -1,3 +1,4 @@
+"""Scaling test of NWChem with different numbers of MPI tasks for different committs."""
 import os
 import json
 import matplotlib.pyplot as plt
@@ -17,14 +18,20 @@ task_counts = [
     '8',
     '16',
 ]
+markers = [
+    'o',
+    's',
+    '^',
+    'X',
+]
 
 fig, ax = plt.subplots()
-for commit in commits:
+for i, commit in enumerate(commits):
     runtimes = []
     for tc in task_counts:
         runtime = 0.0
-        for i in range(4):
-            fname = 'nwchem-scf-{}-{}--{}.json'.format(commit, tc, i)
+        for j in range(4):
+            fname = 'nwchem-scf-{}-{}--{}.json'.format(commit, tc, j)
             path = os.path.join(result_dir, fname)
             with open(path) as fp:
                 data = json.load(fp)
@@ -41,7 +48,7 @@ for commit in commits:
         runtime /= 4.0
         print('Runtime -', commit, '-', tc, 'tasks =>', runtime)
         runtimes.append(runtime)
-    ax.plot(task_counts, runtimes, label=commit, marker='o')
+    ax.plot(task_counts, runtimes, label=commit, marker=markers[i])
 ax.set_ylabel('Execution time (s)')
 ax.set_xlabel('MPI task counts')
 ax.legend()

@@ -1,7 +1,9 @@
+"""LULESH run on 1, 8, 27 and 64 MPI tasks on two n1-standard-32 VMs."""
 import json
 import os
 import matplotlib.pyplot as plt
 
+plt.style.use('./matplotlib-styles/paper.mplstyle')
 
 def parse_lulesh_output(lines):
     """Parse the LULESH stdout."""
@@ -22,7 +24,6 @@ def parse_lulesh_output(lines):
         'fom': fom,
         'mpi_tasks': mpi_tasks
     }
-
 
 files = [
     'results/lulesh-results/lulesh-1ca67244-0492-454c-b052-3db81d85fc83/lulesh-1ca67244-0492-454c-b052-3db81d85fc83.out',

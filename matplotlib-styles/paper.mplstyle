@@ -4,3 +4,4 @@ xtick.labelsize : 16
 ytick.labelsize : 16
 lines.linewidth : 5
 lines.markersize : 12
+legend.fontsize : 14

@@ -1,6 +1,8 @@
+"""Strong scaling test of CoMD on 1-4 nodes (n1-standard-4 VM was used)."""
 import matplotlib.pyplot as plt
 import json
 
+plt.style.use('./matplotlib-styles/paper.mplstyle')
 
 profiles = (
     (1, 4, 'results/comd-2021-12-14/comd-1-node-4-cores.json'),
