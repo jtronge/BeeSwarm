@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
 import json
 
+# Set the style to use
+plt.style.use('./matplotlib-styles/paper.mplstyle')
 
 profiles = [
     ('results/comd-2021-12-21/run-2_comd-1.json', 1),
