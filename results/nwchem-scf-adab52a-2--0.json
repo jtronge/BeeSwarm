@@ -1,28 +1,22 @@
 {
     "state_changes": [
         {
-            "task_id": "87a8e8bd-8a38-46f4-ba4d-b85344869b06",
+            "task_id": "490a34da-29ec-431b-95ba-ac13fc364b6e",
             "task_name": "nwchem_bin",
             "next_state": "PENDING",
-            "timestamp": 1644852824
+            "timestamp": 1645566158
         },
         {
-            "task_id": "87a8e8bd-8a38-46f4-ba4d-b85344869b06",
+            "task_id": "490a34da-29ec-431b-95ba-ac13fc364b6e",
             "task_name": "nwchem_bin",
             "next_state": "RUNNING",
-            "timestamp": 1644852827
+            "timestamp": 1645566158
         },
         {
-            "task_id": "87a8e8bd-8a38-46f4-ba4d-b85344869b06",
-            "task_name": "nwchem_bin",
-            "next_state": "COMPLETING",
-            "timestamp": 1644853027
-        },
-        {
-            "task_id": "87a8e8bd-8a38-46f4-ba4d-b85344869b06",
+            "task_id": "490a34da-29ec-431b-95ba-ac13fc364b6e",
             "task_name": "nwchem_bin",
             "next_state": "COMPLETED",
-            "timestamp": 1644853032
+            "timestamp": 1645566438
         }
     ],
     "scheduling_results": []
