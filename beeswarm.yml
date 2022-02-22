@@ -19,7 +19,7 @@ scale_tests:
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
-      nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
+      nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
     count: 4
   - name: 'nwchem-scf-f29685d-4'
     wfl_dir: './workflows/nwchem-mpi'
@@ -31,7 +31,7 @@ scale_tests:
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
-      nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
+      nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
     count: 4
   - name: 'nwchem-scf-f29685d-8'
     wfl_dir: './workflows/nwchem-mpi'
@@ -43,7 +43,7 @@ scale_tests:
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
-      nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
+      nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
     count: 4
   - name: 'nwchem-scf-f29685d-16'
     wfl_dir: './workflows/nwchem-mpi'
@@ -55,7 +55,7 @@ scale_tests:
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
-      nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
+      nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
     count: 4
 
   - name: 'nwchem-scf-05aafc8-2'
@@ -68,7 +68,7 @@ scale_tests:
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
-      nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
+      nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
     count: 4
   - name: 'nwchem-scf-05aafc8-4'
     wfl_dir: './workflows/nwchem-mpi'
@@ -80,7 +80,7 @@ scale_tests:
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
-      nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
+      nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
     count: 4
   - name: 'nwchem-scf-05aafc8-8'
     wfl_dir: './workflows/nwchem-mpi'
@@ -92,7 +92,7 @@ scale_tests:
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
-      nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
+      nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
     count: 4
   - name: 'nwchem-scf-05aafc8-16'
     wfl_dir: './workflows/nwchem-mpi'
@@ -104,7 +104,7 @@ scale_tests:
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
-      nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
+      nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
     count: 4
 
   - name: 'nwchem-scf-adab52a-2'
@@ -117,7 +117,7 @@ scale_tests:
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
-      nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
+      nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
     count: 4
   - name: 'nwchem-scf-adab52a-4'
     wfl_dir: './workflows/nwchem-mpi'
@@ -129,7 +129,7 @@ scale_tests:
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
-      nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
+      nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
     count: 4
   - name: 'nwchem-scf-adab52a-8'
     wfl_dir: './workflows/nwchem-mpi'
@@ -141,7 +141,7 @@ scale_tests:
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
-      nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
+      nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
     count: 4
   - name: 'nwchem-scf-adab52a-16'
     wfl_dir: './workflows/nwchem-mpi'
@@ -153,7 +153,7 @@ scale_tests:
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
-      nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
+      nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
     count: 4
 
   - name: 'nwchem-scf-519b710-2'
@@ -166,7 +166,7 @@ scale_tests:
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
-      nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
+      nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
     count: 4
   - name: 'nwchem-scf-519b710-4'
     wfl_dir: './workflows/nwchem-mpi'
@@ -178,7 +178,7 @@ scale_tests:
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
-      nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
+      nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
     count: 4
   - name: 'nwchem-scf-519b710-8'
     wfl_dir: './workflows/nwchem-mpi'
@@ -190,7 +190,7 @@ scale_tests:
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
-      nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
+      nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
     count: 4
   - name: 'nwchem-scf-519b710-16'
     wfl_dir: './workflows/nwchem-mpi'
@@ -202,7 +202,7 @@ scale_tests:
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
-      nw_file: "/nwchem/QA/tests/scf_feco5/scf_feco5.nw"
+      nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
     count: 4
 
 private_key_data: ${PRIVATE_KEY_DATA}
