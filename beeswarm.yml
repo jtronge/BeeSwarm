@@ -20,7 +20,7 @@ scale_tests:
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
       nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
-    count: 4
+    count: 2
   - name: 'nwchem-scf-f29685d-4'
     wfl_dir: './workflows/nwchem-mpi'
     # Workflow params
@@ -32,7 +32,7 @@ scale_tests:
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
       nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
-    count: 4
+    count: 2
   - name: 'nwchem-scf-f29685d-8'
     wfl_dir: './workflows/nwchem-mpi'
     # Workflow params
@@ -44,7 +44,7 @@ scale_tests:
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
       nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
-    count: 4
+    count: 2
   - name: 'nwchem-scf-f29685d-16'
     wfl_dir: './workflows/nwchem-mpi'
     # Workflow params
@@ -56,7 +56,7 @@ scale_tests:
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
       nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
-    count: 4
+    count: 2
 
   - name: 'nwchem-scf-05aafc8-2'
     wfl_dir: './workflows/nwchem-mpi'
@@ -69,7 +69,7 @@ scale_tests:
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
       nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
-    count: 4
+    count: 2
   - name: 'nwchem-scf-05aafc8-4'
     wfl_dir: './workflows/nwchem-mpi'
     # Workflow params
@@ -81,7 +81,7 @@ scale_tests:
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
       nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
-    count: 4
+    count: 2
   - name: 'nwchem-scf-05aafc8-8'
     wfl_dir: './workflows/nwchem-mpi'
     # Workflow params
@@ -93,7 +93,7 @@ scale_tests:
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
       nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
-    count: 4
+    count: 2
   - name: 'nwchem-scf-05aafc8-16'
     wfl_dir: './workflows/nwchem-mpi'
     # Workflow params
@@ -105,7 +105,7 @@ scale_tests:
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
       nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
-    count: 4
+    count: 2
 
   - name: 'nwchem-scf-adab52a-2'
     wfl_dir: './workflows/nwchem-mpi'
@@ -118,7 +118,7 @@ scale_tests:
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
       nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
-    count: 4
+    count: 2
   - name: 'nwchem-scf-adab52a-4'
     wfl_dir: './workflows/nwchem-mpi'
     # Workflow params
@@ -130,7 +130,7 @@ scale_tests:
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
       nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
-    count: 4
+    count: 2
   - name: 'nwchem-scf-adab52a-8'
     wfl_dir: './workflows/nwchem-mpi'
     # Workflow params
@@ -142,7 +142,7 @@ scale_tests:
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
       nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
-    count: 4
+    count: 2
   - name: 'nwchem-scf-adab52a-16'
     wfl_dir: './workflows/nwchem-mpi'
     # Workflow params
@@ -154,7 +154,7 @@ scale_tests:
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
       nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
-    count: 4
+    count: 2
 
   - name: 'nwchem-scf-519b710-2'
     wfl_dir: './workflows/nwchem-mpi'
@@ -167,7 +167,7 @@ scale_tests:
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
       nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
-    count: 4
+    count: 2
   - name: 'nwchem-scf-519b710-4'
     wfl_dir: './workflows/nwchem-mpi'
     # Workflow params
@@ -179,7 +179,7 @@ scale_tests:
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
       nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
-    count: 4
+    count: 2
   - name: 'nwchem-scf-519b710-8'
     wfl_dir: './workflows/nwchem-mpi'
     # Workflow params
@@ -191,7 +191,7 @@ scale_tests:
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
       nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
-    count: 4
+    count: 2
   - name: 'nwchem-scf-519b710-16'
     wfl_dir: './workflows/nwchem-mpi'
     # Workflow params
@@ -203,7 +203,7 @@ scale_tests:
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
       nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
-    count: 4
+    count: 2
 
 private_key_data: ${PRIVATE_KEY_DATA}
 private_key_path: '${HOME}/key'
