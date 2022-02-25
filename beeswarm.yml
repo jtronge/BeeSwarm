@@ -112,7 +112,7 @@ cloud_launcher_conf:
   # Compute node info
   compute_nodes:
     bee-node0:
-      machine_str: 'zones/us-east1-b/machineTypes/n1-standard-16'
+      machine_str: 'zones/us-east1-b/machineTypes/n1-standard-32'
       # machine_str: 'zones/us-east1-b/machineTypes/n1-standard-4'
       src_image: 'https://www.googleapis.com/compute/v1/projects/debian-cloud/global/images/family/debian-11'
       disk_size_gb: 10
