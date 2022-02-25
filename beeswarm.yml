@@ -9,31 +9,7 @@ tm_port: 7866
 bee_branch: 'beeswarm'
 ctr_archive: '${HOME}/.beeflow/container_archive'
 scale_tests:
-  - name: 'nwchem-scf-f29685d-2'
-    wfl_dir: './workflows/nwchem-mpi'
-    # Workflow params
-    params:
-      container: '/home/bee/nwchem_f29685d.tar.gz'
-      ntasks_per_node: 2
-      nodes: 1
-    template_files: ['nwchem-beeswarm.cwl']
-    main_cwl: 'nwchem-beeswarm.cwl'
-    inputs:
-      nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
-    count: 2
-  - name: 'nwchem-scf-f29685d-4'
-    wfl_dir: './workflows/nwchem-mpi'
-    # Workflow params
-    params:
-      container: '/home/bee/nwchem_f29685d.tar.gz'
-      ntasks_per_node: 4
-      nodes: 1
-    template_files: ['nwchem-beeswarm.cwl']
-    main_cwl: 'nwchem-beeswarm.cwl'
-    inputs:
-      nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
-    count: 2
-  - name: 'nwchem-scf-f29685d-8'
+  - name: 'nwchem-pspw-f29685d'
     wfl_dir: './workflows/nwchem-mpi'
     # Workflow params
     params:
@@ -43,46 +19,10 @@ scale_tests:
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
-      nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
-    count: 2
-  - name: 'nwchem-scf-f29685d-16'
-    wfl_dir: './workflows/nwchem-mpi'
-    # Workflow params
-    params:
-      container: '/home/bee/nwchem_f29685d.tar.gz'
-      ntasks_per_node: 16
-      nodes: 1
-    template_files: ['nwchem-beeswarm.cwl']
-    main_cwl: 'nwchem-beeswarm.cwl'
-    inputs:
-      nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
+      nw_file: "/nwchem/QA/tests/pspw_scan_h2o/pspw_scan_h2o.nw"
     count: 2
 
-  - name: 'nwchem-scf-05aafc8-2'
-    wfl_dir: './workflows/nwchem-mpi'
-    # Workflow params
-    params:
-      container: '/home/bee/nwchem_05aafc8.tar.gz'
-      ntasks_per_node: 2
-      nodes: 1
-    template_files: ['nwchem-beeswarm.cwl']
-    main_cwl: 'nwchem-beeswarm.cwl'
-    inputs:
-      nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
-    count: 2
-  - name: 'nwchem-scf-05aafc8-4'
-    wfl_dir: './workflows/nwchem-mpi'
-    # Workflow params
-    params:
-      container: '/home/bee/nwchem_05aafc8.tar.gz'
-      ntasks_per_node: 4
-      nodes: 1
-    template_files: ['nwchem-beeswarm.cwl']
-    main_cwl: 'nwchem-beeswarm.cwl'
-    inputs:
-      nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
-    count: 2
-  - name: 'nwchem-scf-05aafc8-8'
+  - name: 'nwchem-pspw-05aafc8'
     wfl_dir: './workflows/nwchem-mpi'
     # Workflow params
     params:
@@ -92,46 +32,10 @@ scale_tests:
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
-      nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
-    count: 2
-  - name: 'nwchem-scf-05aafc8-16'
-    wfl_dir: './workflows/nwchem-mpi'
-    # Workflow params
-    params:
-      container: '/home/bee/nwchem_05aafc8.tar.gz'
-      ntasks_per_node: 16
-      nodes: 1
-    template_files: ['nwchem-beeswarm.cwl']
-    main_cwl: 'nwchem-beeswarm.cwl'
-    inputs:
-      nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
+      nw_file: "/nwchem/QA/tests/pspw_scan_h2o/pspw_scan_h2o.nw"
     count: 2
 
-  - name: 'nwchem-scf-adab52a-2'
-    wfl_dir: './workflows/nwchem-mpi'
-    # Workflow params
-    params:
-      container: '/home/bee/nwchem_adab52a.tar.gz'
-      ntasks_per_node: 2
-      nodes: 1
-    template_files: ['nwchem-beeswarm.cwl']
-    main_cwl: 'nwchem-beeswarm.cwl'
-    inputs:
-      nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
-    count: 2
-  - name: 'nwchem-scf-adab52a-4'
-    wfl_dir: './workflows/nwchem-mpi'
-    # Workflow params
-    params:
-      container: '/home/bee/nwchem_adab52a.tar.gz'
-      ntasks_per_node: 4
-      nodes: 1
-    template_files: ['nwchem-beeswarm.cwl']
-    main_cwl: 'nwchem-beeswarm.cwl'
-    inputs:
-      nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
-    count: 2
-  - name: 'nwchem-scf-adab52a-8'
+  - name: 'nwchem-pspw-adab52a'
     wfl_dir: './workflows/nwchem-mpi'
     # Workflow params
     params:
@@ -141,46 +45,10 @@ scale_tests:
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
-      nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
-    count: 2
-  - name: 'nwchem-scf-adab52a-16'
-    wfl_dir: './workflows/nwchem-mpi'
-    # Workflow params
-    params:
-      container: '/home/bee/nwchem_adab52a.tar.gz'
-      ntasks_per_node: 16
-      nodes: 1
-    template_files: ['nwchem-beeswarm.cwl']
-    main_cwl: 'nwchem-beeswarm.cwl'
-    inputs:
-      nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
+      nw_file: "/nwchem/QA/tests/pspw_scan_h2o/pspw_scan_h2o.nw"
     count: 2
 
-  - name: 'nwchem-scf-519b710-2'
-    wfl_dir: './workflows/nwchem-mpi'
-    # Workflow params
-    params:
-      container: '/home/bee/nwchem_519b710.tar.gz'
-      ntasks_per_node: 2
-      nodes: 1
-    template_files: ['nwchem-beeswarm.cwl']
-    main_cwl: 'nwchem-beeswarm.cwl'
-    inputs:
-      nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
-    count: 2
-  - name: 'nwchem-scf-519b710-4'
-    wfl_dir: './workflows/nwchem-mpi'
-    # Workflow params
-    params:
-      container: '/home/bee/nwchem_519b710.tar.gz'
-      ntasks_per_node: 4
-      nodes: 1
-    template_files: ['nwchem-beeswarm.cwl']
-    main_cwl: 'nwchem-beeswarm.cwl'
-    inputs:
-      nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
-    count: 2
-  - name: 'nwchem-scf-519b710-8'
+  - name: 'nwchem-pspw-519b710'
     wfl_dir: './workflows/nwchem-mpi'
     # Workflow params
     params:
@@ -190,19 +58,7 @@ scale_tests:
     template_files: ['nwchem-beeswarm.cwl']
     main_cwl: 'nwchem-beeswarm.cwl'
     inputs:
-      nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
-    count: 2
-  - name: 'nwchem-scf-519b710-16'
-    wfl_dir: './workflows/nwchem-mpi'
-    # Workflow params
-    params:
-      container: '/home/bee/nwchem_519b710.tar.gz'
-      ntasks_per_node: 16
-      nodes: 1
-    template_files: ['nwchem-beeswarm.cwl']
-    main_cwl: 'nwchem-beeswarm.cwl'
-    inputs:
-      nw_file: "/nwchem/QA/tests/oniom2/oniom2.nw"
+      nw_file: "/nwchem/QA/tests/pspw_scan_h2o/pspw_scan_h2o.nw"
     count: 2
 
 private_key_data: ${PRIVATE_KEY_DATA}
@@ -265,7 +121,8 @@ cloud_launcher_conf:
       psk: ${SECRET_PSK_0}
       ip: '10.0.0.5'
       # node_config: 'CPUs=4 Boards=1 SocketsPerBoard=1 CoresPerSocket=2 ThreadsPerCore=2 RealMemory=15000'
-      node_config: 'CPUs=16 Boards=1 SocketsPerBoard=1 CoresPerSocket=8 ThreadsPerCore=2 RealMemory=60000'
+      # node_config: 'CPUs=16 Boards=1 SocketsPerBoard=1 CoresPerSocket=8 ThreadsPerCore=2 RealMemory=60000'
+      node_config: 'CPUs=32 Boards=1 SocketsPerBoard=1 CoresPerSocket=16 ThreadsPerCore=2 RealMemory=120000'
 
       # node_config: 'CPUs=16 Boards=1 SocketsPerBoard=1 CoresPerSocket=8 ThreadsPerCore=2 RealMemory=60000'
       # node_config: 'CPUs=32 Boards=1 SocketsPerBoard=1 CoresPerSocket=16 ThreadsPerCore=2 RealMemory=120000'
