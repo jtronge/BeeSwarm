@@ -1,236 +1,68 @@
-1645561316.3516624:bee_init_start
+1645827332.9648921:bee_init_start
 
-1645561334.363161:bee_init_end
+1645827350.9845712:bee_init_end
 
-1645561334.3632061:scale_tests_start
+1645827350.9846175:scale_tests_start
 
-1645561334.363239:scale_test_start|nwchem-scf-f29685d-2
+1645827350.984641:scale_test_start|nwchem-pspw-f29685d
 
-1645561334.3632503:scale_test_container_build_start|nwchem-scf-f29685d-2
+1645827350.9846506:scale_test_container_build_start|nwchem-pspw-f29685d
 
-1645561334.3632557:scale_test_workflow_prep_start|nwchem-scf-f29685d-2
+1645827350.9846554:scale_test_workflow_prep_start|nwchem-pspw-f29685d
 
-1645561334.3747978:scale_test_workflow_prep_end|nwchem-scf-f29685d-2
+1645827350.9944036:scale_test_workflow_prep_end|nwchem-pspw-f29685d
 
-1645561334.3748188:scale_test_workflow_exec_start|nwchem-scf-f29685d-2
+1645827350.9944239:scale_test_workflow_exec_start|nwchem-pspw-f29685d
 
-1645561967.902946:scale_test_workflow_exec_end|nwchem-scf-f29685d-2
+1645829173.210951:scale_test_workflow_exec_end|nwchem-pspw-f29685d
 
-1645561967.9029682:scale_test_end|nwchem-scf-f29685d-2
+1645829173.2109754:scale_test_end|nwchem-pspw-f29685d
 
-1645561967.9029732:scale_test_start|nwchem-scf-f29685d-4
+1645829173.2109814:scale_test_start|nwchem-pspw-05aafc8
 
-1645561967.9029758:scale_test_container_build_start|nwchem-scf-f29685d-4
+1645829173.2109842:scale_test_container_build_start|nwchem-pspw-05aafc8
 
-1645561967.902979:scale_test_workflow_prep_start|nwchem-scf-f29685d-4
+1645829173.2109878:scale_test_workflow_prep_start|nwchem-pspw-05aafc8
 
-1645561967.9118767:scale_test_workflow_prep_end|nwchem-scf-f29685d-4
+1645829173.2190824:scale_test_workflow_prep_end|nwchem-pspw-05aafc8
 
-1645561967.9119155:scale_test_workflow_exec_start|nwchem-scf-f29685d-4
+1645829173.2190983:scale_test_workflow_exec_start|nwchem-pspw-05aafc8
 
-1645562490.161999:scale_test_workflow_exec_end|nwchem-scf-f29685d-4
+1645830406.5121608:scale_test_workflow_exec_end|nwchem-pspw-05aafc8
 
-1645562490.1620245:scale_test_end|nwchem-scf-f29685d-4
+1645830406.5121846:scale_test_end|nwchem-pspw-05aafc8
 
-1645562490.1620333:scale_test_start|nwchem-scf-f29685d-8
+1645830406.5121913:scale_test_start|nwchem-pspw-adab52a
 
-1645562490.1620383:scale_test_container_build_start|nwchem-scf-f29685d-8
+1645830406.5121942:scale_test_container_build_start|nwchem-pspw-adab52a
 
-1645562490.162043:scale_test_workflow_prep_start|nwchem-scf-f29685d-8
+1645830406.5121975:scale_test_workflow_prep_start|nwchem-pspw-adab52a
 
-1645562490.1711698:scale_test_workflow_prep_end|nwchem-scf-f29685d-8
+1645830406.5200167:scale_test_workflow_prep_end|nwchem-pspw-adab52a
 
-1645562490.1711931:scale_test_workflow_exec_start|nwchem-scf-f29685d-8
+1645830406.5200405:scale_test_workflow_exec_start|nwchem-pspw-adab52a
 
-1645563028.016251:scale_test_workflow_exec_end|nwchem-scf-f29685d-8
+1645832077.0713172:scale_test_workflow_exec_end|nwchem-pspw-adab52a
 
-1645563028.016279:scale_test_end|nwchem-scf-f29685d-8
+1645832077.071338:scale_test_end|nwchem-pspw-adab52a
 
-1645563028.0163023:scale_test_start|nwchem-scf-f29685d-16
+1645832077.071343:scale_test_start|nwchem-pspw-519b710
 
-1645563028.0163078:scale_test_container_build_start|nwchem-scf-f29685d-16
+1645832077.0713456:scale_test_container_build_start|nwchem-pspw-519b710
 
-1645563028.0163128:scale_test_workflow_prep_start|nwchem-scf-f29685d-16
+1645832077.0713484:scale_test_workflow_prep_start|nwchem-pspw-519b710
 
-1645563028.0277205:scale_test_workflow_prep_end|nwchem-scf-f29685d-16
+1645832077.0790248:scale_test_workflow_prep_end|nwchem-pspw-519b710
 
-1645563028.0277436:scale_test_workflow_exec_start|nwchem-scf-f29685d-16
+1645832077.0790439:scale_test_workflow_exec_start|nwchem-pspw-519b710
 
-1645563710.5510461:scale_test_workflow_exec_end|nwchem-scf-f29685d-16
+1645833643.227744:scale_test_workflow_exec_end|nwchem-pspw-519b710
 
-1645563710.5510986:scale_test_end|nwchem-scf-f29685d-16
+1645833643.227765:scale_test_end|nwchem-pspw-519b710
 
-1645563710.5511127:scale_test_start|nwchem-scf-05aafc8-2
+1645833643.227769:scale_tests_end
 
-1645563710.5511177:scale_test_container_build_start|nwchem-scf-05aafc8-2
+1645833643.227771:bee_shutdown_start
 
-1645563710.5511246:scale_test_workflow_prep_start|nwchem-scf-05aafc8-2
-
-1645563710.561496:scale_test_workflow_prep_end|nwchem-scf-05aafc8-2
-
-1645563710.5615366:scale_test_workflow_exec_start|nwchem-scf-05aafc8-2
-
-1645564348.999101:scale_test_workflow_exec_end|nwchem-scf-05aafc8-2
-
-1645564348.9991229:scale_test_end|nwchem-scf-05aafc8-2
-
-1645564348.9991288:scale_test_start|nwchem-scf-05aafc8-4
-
-1645564348.9991355:scale_test_container_build_start|nwchem-scf-05aafc8-4
-
-1645564348.999139:scale_test_workflow_prep_start|nwchem-scf-05aafc8-4
-
-1645564349.0094206:scale_test_workflow_prep_end|nwchem-scf-05aafc8-4
-
-1645564349.009447:scale_test_workflow_exec_start|nwchem-scf-05aafc8-4
-
-1645564875.5871873:scale_test_workflow_exec_end|nwchem-scf-05aafc8-4
-
-1645564875.5872152:scale_test_end|nwchem-scf-05aafc8-4
-
-1645564875.5872228:scale_test_start|nwchem-scf-05aafc8-8
-
-1645564875.5872269:scale_test_container_build_start|nwchem-scf-05aafc8-8
-
-1645564875.587236:scale_test_workflow_prep_start|nwchem-scf-05aafc8-8
-
-1645564875.597783:scale_test_workflow_prep_end|nwchem-scf-05aafc8-8
-
-1645564875.5978103:scale_test_workflow_exec_start|nwchem-scf-05aafc8-8
-
-1645565425.8583143:scale_test_workflow_exec_end|nwchem-scf-05aafc8-8
-
-1645565425.8583388:scale_test_end|nwchem-scf-05aafc8-8
-
-1645565425.8583465:scale_test_start|nwchem-scf-05aafc8-16
-
-1645565425.8583505:scale_test_container_build_start|nwchem-scf-05aafc8-16
-
-1645565425.8583555:scale_test_workflow_prep_start|nwchem-scf-05aafc8-16
-
-1645565425.8687928:scale_test_workflow_prep_end|nwchem-scf-05aafc8-16
-
-1645565425.8688154:scale_test_workflow_exec_start|nwchem-scf-05aafc8-16
-
-1645566120.1791654:scale_test_workflow_exec_end|nwchem-scf-05aafc8-16
-
-1645566120.1791863:scale_test_end|nwchem-scf-05aafc8-16
-
-1645566120.1791918:scale_test_start|nwchem-scf-adab52a-2
-
-1645566120.1791942:scale_test_container_build_start|nwchem-scf-adab52a-2
-
-1645566120.179197:scale_test_workflow_prep_start|nwchem-scf-adab52a-2
-
-1645566120.1869721:scale_test_workflow_prep_end|nwchem-scf-adab52a-2
-
-1645566120.1869957:scale_test_workflow_exec_start|nwchem-scf-adab52a-2
-
-1645566750.5213656:scale_test_workflow_exec_end|nwchem-scf-adab52a-2
-
-1645566750.5213985:scale_test_end|nwchem-scf-adab52a-2
-
-1645566750.5214071:scale_test_start|nwchem-scf-adab52a-4
-
-1645566750.521412:scale_test_container_build_start|nwchem-scf-adab52a-4
-
-1645566750.521417:scale_test_workflow_prep_start|nwchem-scf-adab52a-4
-
-1645566750.5330596:scale_test_workflow_prep_end|nwchem-scf-adab52a-4
-
-1645566750.533082:scale_test_workflow_exec_start|nwchem-scf-adab52a-4
-
-1645567268.9147968:scale_test_workflow_exec_end|nwchem-scf-adab52a-4
-
-1645567268.9148185:scale_test_end|nwchem-scf-adab52a-4
-
-1645567268.914825:scale_test_start|nwchem-scf-adab52a-8
-
-1645567268.914828:scale_test_container_build_start|nwchem-scf-adab52a-8
-
-1645567268.914837:scale_test_workflow_prep_start|nwchem-scf-adab52a-8
-
-1645567268.9249542:scale_test_workflow_prep_end|nwchem-scf-adab52a-8
-
-1645567268.924999:scale_test_workflow_exec_start|nwchem-scf-adab52a-8
-
-1645567819.123762:scale_test_workflow_exec_end|nwchem-scf-adab52a-8
-
-1645567819.1237872:scale_test_end|nwchem-scf-adab52a-8
-
-1645567819.123795:scale_test_start|nwchem-scf-adab52a-16
-
-1645567819.1237993:scale_test_container_build_start|nwchem-scf-adab52a-16
-
-1645567819.1238039:scale_test_workflow_prep_start|nwchem-scf-adab52a-16
-
-1645567819.1342027:scale_test_workflow_prep_end|nwchem-scf-adab52a-16
-
-1645567819.1342256:scale_test_workflow_exec_start|nwchem-scf-adab52a-16
-
-1645568514.1274486:scale_test_workflow_exec_end|nwchem-scf-adab52a-16
-
-1645568514.127476:scale_test_end|nwchem-scf-adab52a-16
-
-1645568514.1274865:scale_test_start|nwchem-scf-519b710-2
-
-1645568514.127491:scale_test_container_build_start|nwchem-scf-519b710-2
-
-1645568514.1274958:scale_test_workflow_prep_start|nwchem-scf-519b710-2
-
-1645568514.1361964:scale_test_workflow_prep_end|nwchem-scf-519b710-2
-
-1645568514.1362185:scale_test_workflow_exec_start|nwchem-scf-519b710-2
-
-1645569144.5078437:scale_test_workflow_exec_end|nwchem-scf-519b710-2
-
-1645569144.5078695:scale_test_end|nwchem-scf-519b710-2
-
-1645569144.5078769:scale_test_start|nwchem-scf-519b710-4
-
-1645569144.5078819:scale_test_container_build_start|nwchem-scf-519b710-4
-
-1645569144.5078866:scale_test_workflow_prep_start|nwchem-scf-519b710-4
-
-1645569144.5175393:scale_test_workflow_prep_end|nwchem-scf-519b710-4
-
-1645569144.51756:scale_test_workflow_exec_start|nwchem-scf-519b710-4
-
-1645569663.0599189:scale_test_workflow_exec_end|nwchem-scf-519b710-4
-
-1645569663.059943:scale_test_end|nwchem-scf-519b710-4
-
-1645569663.0599554:scale_test_start|nwchem-scf-519b710-8
-
-1645569663.0599594:scale_test_container_build_start|nwchem-scf-519b710-8
-
-1645569663.0599632:scale_test_workflow_prep_start|nwchem-scf-519b710-8
-
-1645569663.068476:scale_test_workflow_prep_end|nwchem-scf-519b710-8
-
-1645569663.068499:scale_test_workflow_exec_start|nwchem-scf-519b710-8
-
-1645570209.0954201:scale_test_workflow_exec_end|nwchem-scf-519b710-8
-
-1645570209.095441:scale_test_end|nwchem-scf-519b710-8
-
-1645570209.0954533:scale_test_start|nwchem-scf-519b710-16
-
-1645570209.0954564:scale_test_container_build_start|nwchem-scf-519b710-16
-
-1645570209.0954592:scale_test_workflow_prep_start|nwchem-scf-519b710-16
-
-1645570209.1035113:scale_test_workflow_prep_end|nwchem-scf-519b710-16
-
-1645570209.1035352:scale_test_workflow_exec_start|nwchem-scf-519b710-16
-
-1645570895.9742084:scale_test_workflow_exec_end|nwchem-scf-519b710-16
-
-1645570895.9742305:scale_test_end|nwchem-scf-519b710-16
-
-1645570895.9742346:scale_tests_end
-
-1645570895.974237:bee_shutdown_start
-
-1645570896.0007205:bee_shutdown_end
+1645833643.2469952:bee_shutdown_end
 

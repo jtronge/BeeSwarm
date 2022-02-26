@@ -1,0 +1,17 @@
+{
+    "state_changes": [
+        {
+            "task_id": "14a2af1a-5f99-4d4b-9667-fe28fae8f953",
+            "task_name": "nwchem_bin",
+            "next_state": "RUNNING",
+            "timestamp": 1645832116
+        },
+        {
+            "task_id": "14a2af1a-5f99-4d4b-9667-fe28fae8f953",
+            "task_name": "nwchem_bin",
+            "next_state": "COMPLETED",
+            "timestamp": 1645832885
+        }
+    ],
+    "scheduling_results": []
+}
