@@ -1,7 +1,9 @@
 """Scaling test of NWChem with different numbers of MPI tasks for different committs."""
 import os
 import json
+import numpy as np
 import matplotlib.pyplot as plt
+import beeswarm_graph
 
 plt.style.use('./matplotlib-styles/paper.mplstyle')
 
@@ -27,9 +29,9 @@ markers = [
 
 fig, ax = plt.subplots()
 for i, commit in enumerate(commits):
-    runtimes = []
+    all_runtimes = []
     for tc in task_counts:
-        runtime = 0.0
+        runtimes = []
         for j in range(4):
             fname = 'nwchem-scf-{}-{}--{}.json'.format(commit, tc, j)
             path = os.path.join(result_dir, fname)
@@ -44,11 +46,12 @@ for i, commit in enumerate(commits):
                     complete_times.append(state['timestamp'])
             start_time = min(start_times)
             complete_time = max(complete_times)
-            runtime += (complete_time - start_time)
-        runtime /= 4.0
-        print('Runtime -', commit, '-', tc, 'tasks =>', runtime)
-        runtimes.append(runtime)
-    ax.plot(task_counts, runtimes, label=commit, marker=markers[i])
+            runtimes.append(complete_time - start_time)
+        print('Runtime -', commit, '-', tc, 'tasks =>', sum(runtimes) / len(runtimes))
+        all_runtimes.append(np.array(runtimes))
+    all_runtimes = np.array(all_runtimes)
+    runtime_average, error = beeswarm_graph.compute_average_error(all_runtimes)
+    ax.errorbar(task_counts, runtime_average, yerr=error, label=commit, marker=markers[i])
 ax.set_ylabel('Execution time (s)')
 ax.set_xlabel('MPI task counts')
 ax.legend()

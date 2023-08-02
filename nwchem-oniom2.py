@@ -1,7 +1,8 @@
 import os
-import beeswarm_graph
-import matplotlib.pyplot as plt
 import string
+import numpy as np
+import matplotlib.pyplot as plt
+import beeswarm_graph
 
 plt.style.use('./matplotlib-styles/paper.mplstyle')
 
@@ -29,7 +30,7 @@ markers = [
 
 fig, ax = plt.subplots()
 for i, commit in enumerate(commits):
-    avg_runtimes = []
+    all_runtimes = []
     for task_count in task_counts:
         runtimes = []
         for run in range(0, 2):
@@ -37,11 +38,9 @@ for i, commit in enumerate(commits):
             print(path)
             runtime = beeswarm_graph.parse_runtime(path)
             runtimes.append(runtime)
-        avg_runtime = sum(runtimes) / float(len(runtimes))
-        print(avg_runtime)
-        avg_runtimes.append(avg_runtime)
-    print(avg_runtimes)
-    ax.plot(task_counts, avg_runtimes, label=commit, marker=markers[i])
+        all_runtimes.append(runtimes)
+    runtimes, error = beeswarm_graph.compute_average_error(np.array(all_runtimes))
+    ax.errorbar(task_counts, runtimes, yerr=error, label=commit, marker=markers[i])
 ax.set_ylabel('Execution time (s)')
 ax.set_xlabel('MPI task counts')
 ax.legend()

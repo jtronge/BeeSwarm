@@ -1,5 +1,6 @@
 """BeeSwarm graphing functions."""
 import json
+import numpy as np
 
 def parse_runtime(path):
     """Parse a runtime from a workflow profile."""
@@ -15,3 +16,10 @@ def parse_runtime(path):
     start_time = min(start_times)
     complete_time = max(complete_times)
     return complete_time - start_time
+
+def compute_average_error(results):
+    """Compute the average value and the error from a matrix of results."""
+    average = np.average(results, 1)
+    lower_error = average - np.amin(results, 1)
+    upper_error = np.amax(results, 1) - average
+    return average, [lower_error, upper_error]
